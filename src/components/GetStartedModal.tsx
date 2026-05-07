@@ -33,7 +33,7 @@ ${formData.tasks}
     `.trim();
 
     // Trigger mailto link to open user's email client
-    window.location.href = `mailto:qarmllc@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:info@theqarm.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
     // Show success state
     setIsSubmitted(true);

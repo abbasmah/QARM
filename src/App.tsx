@@ -515,7 +515,7 @@ export default function App() {
               <ul className="space-y-3 text-sm">
                 <li className="flex items-center gap-3 mt-4">
                   <MessageSquare size={16} className="text-brand-500" />
-                  <a href="mailto:qarmllc@gmail.com" className="hover:text-brand-400 transition-colors">qarmllc@gmail.com</a>
+                  <a href="mailto:info@theqarm.com" className="hover:text-brand-400 transition-colors">info@theqarm.com</a>
                 </li>
               </ul>
             </div>

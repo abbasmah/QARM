@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { X, CheckCircle2 } from 'lucide-react';
 import { useState } from 'react';
+import type { FormEvent, ChangeEvent } from 'react';
 
 interface GetStartedModalProps {
   isOpen: boolean;
@@ -18,7 +19,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
     tasks: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     
     // Construct email content
@@ -49,7 +50,7 @@ ${formData.tasks}
     }, 3000);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 

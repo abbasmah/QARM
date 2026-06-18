@@ -20,18 +20,27 @@
     <meta name="twitter:title" content="QARM | Mortgage Operations Infrastructure" />
     <meta name="twitter:description" content="Premium mortgage workflow management and CRM coordination for Canadian brokers." />
     <meta name="theme-color" content="#0a0f1e" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=4" />
     <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Performance: critical preconnects -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+    <!-- Single optimized font load — only weights we use, display=swap prevents blocking -->
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+
+    <!-- Structured data -->
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"ProfessionalService","name":"QARM – Quality Assistance & Relationship Management","description":"Premium mortgage operations infrastructure for Canadian brokers.","url":"https://www.theqarm.com","email":"info@theqarm.com","foundingDate":"2023","areaServed":["CA","US","GB","AE","AU"]}
     </script>
   </head>
   <body>
     <script>
+      // Restore deep-link path after GitHub Pages 404 redirect
       (function(){
         var r = sessionStorage.redirect;
         delete sessionStorage.redirect;

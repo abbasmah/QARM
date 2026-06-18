@@ -1,399 +1,440 @@
-import { motion } from 'motion/react';
-import { 
-  CheckCircle2, 
-  FileEdit, 
-  Files, 
-  MessageSquare, 
-  PhoneCall, 
-  ShieldCheck, 
-  Target, 
-  Users, 
-  ArrowRight
-} from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { ArrowRight, CheckCircle2, ChevronRight, BarChart3, ShieldCheck, FileText, Calendar, MessageSquare, Target, Star, TrendingUp, Clock, Award, Globe } from 'lucide-react';
+import { AnimatedSection } from '../components/AnimatedSection';
+import { CountUp } from '../components/CountUp';
 
-export function HomePage({ onGetStarted }: { onGetStarted: () => void }) {
+interface HomePageProps { onGetStarted: () => void; }
+
+const IMGS = {
+  hero: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=700&q=55&auto=format&fit=crop',
+  brokerDesk: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=55&auto=format&fit=crop',
+  teamWork: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=55&auto=format&fit=crop',
+  toronto: 'https://images.unsplash.com/photo-1517090504586-fde19ea6066f?w=900&q=50&auto=format&fit=crop',
+  office: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=50&auto=format&fit=crop',
+};
+
+const testimonials = [
+  { quote: "QARM changed how my brokerage operates. I handed off document coordination and CRM management, and immediately freed up 20 hours a week. Funding volume is up significantly.", name: "D. Richards", role: "Mortgage Broker", location: "Ontario, Canada", initial: "D" },
+  { quote: "I was spending more time updating Filogix than actually talking to clients. QARM took over my entire pipeline within 48 hours. My deal flow hasn't changed but my stress level has dropped significantly.", name: "R. Sharma", role: "Mortgage Agent", location: "Ontario, Canada", initial: "R" },
+  { quote: "As a high-volume broker I was drowning in admin. QARM handles everything from condition fulfillment to lender follow-ups. My closing ratio improved because I'm actually spending time with clients now.", name: "M. Fournier", role: "Senior Mortgage Broker", location: "Quebec, Canada", initial: "M" },
+];
+
+export function HomePage({ onGetStarted }: HomePageProps) {
   return (
-    <main className="pt-20">
-      {/* HERO SECTION */}
-      <section className="relative overflow-hidden bg-white pt-16 pb-24 lg:pt-24 lg:pb-32">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-brand-100/40 via-white to-white -z-10" />
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="max-w-2xl"
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-100/50 text-brand-600 text-sm font-semibold mb-6 border border-brand-200">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
+    <div className="min-h-screen bg-[#0a0f1e]">
+
+      {/* HERO */}
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div className="absolute inset-0 bg-grid opacity-40" />
+        <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-[#1e3a8a] rounded-full blur-[200px] opacity-[0.12] pointer-events-none" style={{animation:'pulse 8s ease-in-out infinite'}} />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#f97316] rounded-full blur-[200px] opacity-[0.05] pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* LEFT */}
+            <div style={{animation:'slide-up 0.7s ease forwards'}}>
+              <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full border border-[#2d5bb5]/30 bg-[#2d5bb5]/10 text-[#7aa3e5] text-xs font-semibold tracking-wide mb-8">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4d7fd4] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#4d7fd4]" />
                 </span>
-                Canadian Mortgage Broker Specialists
+                Mortgage Operations Infrastructure — Canada
               </div>
-              
-              <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 leading-[1.1] mb-6">
-                Expert Mortgage Operations Support <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400">for Canadian Brokers</span>
+              <h1 className="font-display font-bold text-5xl lg:text-6xl xl:text-[4.25rem] text-white leading-[1.08] tracking-tight mb-6">
+                Your pipeline,<br />
+                <span className="text-gradient">managed with<br />precision.</span>
               </h1>
-              
-              <p className="text-lg lg:text-xl text-slate-600 mb-8 leading-relaxed">
-                Hire top-tier mortgage broker virtual assistants trained specifically for Canada. Outsource document collection, CRM management, and backend processing to scale faster without the overhead.
+              <p className="text-lg text-slate-400 leading-relaxed mb-8 max-w-xl">
+                QARM is the operational backbone for Canadian mortgage brokers — handling CRM coordination, workflow management, client follow-up systems, and pipeline operations so you close more and chase less.
               </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button 
-                  onClick={onGetStarted}
-                  aria-label="Book a Discovery Call"
-                  className="flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-full text-base font-semibold transition-all hover:shadow-lg hover:-translate-y-0.5"
-                >
-                  Book a Discovery Call <ArrowRight size={20} />
-                </button>
-                <a href="#pricing" className="flex items-center justify-center gap-2 bg-white border border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700 px-8 py-4 rounded-full text-base font-semibold transition-all">
-                  View Transparent Pricing
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all duration-200 hover:shadow-xl hover:shadow-[#2d5bb5]/30">
+                  Book a Discovery Call <ArrowRight size={18} />
                 </a>
+                <Link to="/services" className="flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 text-slate-300 hover:text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all duration-200">
+                  Explore Services
+                </Link>
               </div>
-              
-              <div className="mt-10 flex items-center gap-4 text-sm text-slate-500">
-                <div className="flex -space-x-2">
-                  {[1, 2, 3, 4].map((i) => (
-                    <img key={i} className="inline-block h-8 w-8 rounded-full border-2 border-white" src={`https://i.pravatar.cc/100?img=${i + 10}`} alt={`Broker avatar ${i}`} loading="lazy" />
+              <div className="flex items-center gap-4">
+                <div className="flex gap-0.5">{[...Array(5)].map((_,i) => <Star key={i} size={15} className="fill-orange-400 text-orange-400" />)}</div>
+                <p className="text-sm text-slate-400">Trusted by <span className="text-white font-semibold">50+ mortgage professionals</span> across Canada</p>
+              </div>
+            </div>
+
+            {/* RIGHT — Dashboard + floating cards */}
+            <div className="relative hidden lg:block" style={{animation:'slide-up 0.7s ease 0.2s both',opacity:0}}>
+              {/* Photo layer */}
+              <div className="absolute -inset-4 rounded-3xl overflow-hidden opacity-15">
+                <img src={IMGS.hero} alt="" width={800} height={600} className="w-full h-full object-cover" loading="eager" />
+                <div className="absolute inset-0 bg-gradient-to-br from-[#0a0f1e]/80 to-transparent" />
+              </div>
+
+              {/* Dashboard card */}
+              <div className="relative glass-card rounded-2xl p-6 glow-blue">
+                <div className="flex items-center justify-between mb-5">
+                  <div>
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Operations Dashboard</p>
+                    <h3 className="text-white font-display font-semibold text-sm">Pipeline Overview</h3>
+                  </div>
+                  <div className="flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />Live
+                  </div>
+                </div>
+                <div className="grid grid-cols-3 gap-3 mb-5">
+                  {[
+                    { label: 'Active Files', value: '24', change: '+3', up: true },
+                    { label: 'Pending Docs', value: '7', change: '-4', up: false },
+                    { label: 'CRM Updated', value: '100%', change: '+8%', up: true },
+                  ].map((m) => (
+                    <div key={m.label} className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-3">
+                      <p className="text-[9px] text-slate-500 uppercase tracking-wider mb-1.5">{m.label}</p>
+                      <p className="text-lg font-display font-bold text-white">{m.value}</p>
+                      <p className={`text-[9px] font-medium mt-1 ${m.up ? 'text-emerald-400' : 'text-red-400'}`}>{m.change} this week</p>
+                    </div>
                   ))}
                 </div>
-                <p>Trusted by 50+ mortgage brokers across Canada</p>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="relative lg:ml-auto w-full max-w-lg aspect-square lg:aspect-auto lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl shadow-brand-900/10 border border-slate-100"
-            >
-              <img 
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=2070&auto=format&fit=crop" 
-                alt="Canadian mortgage broker working with a remote virtual assistant"
-                loading="eager"
-                className="absolute inset-0 w-full h-full object-cover object-center"
-              />
-              {/* Floating UI Element */}
-              <motion.div 
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.6 }}
-                className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-xl border border-white/20"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center shrink-0">
-                    <CheckCircle2 size={24} />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-slate-900">Task Completed: Document Review</p>
-                    <p className="text-sm text-slate-500">NOA, Paystubs & IDs verified for Smith Application.</p>
-                  </div>
+                <div className="space-y-2">
+                  {[
+                    { action: 'Document Review Complete', client: 'Smith, J. — TD Bank submission', time: '2m ago', color: 'emerald' },
+                    { action: 'CRM Updated', client: 'Chen, M. — Commitment received', time: '18m ago', color: 'blue' },
+                    { action: 'Follow-Up Sent', client: 'Patel, R. — NOA requested', time: '1h ago', color: 'orange' },
+                    { action: 'Appointment Booked', client: 'Sharma, A. — Discovery call set', time: '2h ago', color: 'blue' },
+                  ].map((item) => (
+                    <div key={item.client} className="flex items-center gap-3 p-2.5 bg-white/[0.03] rounded-lg border border-white/[0.04]">
+                      <div className={`w-2 h-2 rounded-full shrink-0 ${item.color === 'emerald' ? 'bg-emerald-400' : item.color === 'blue' ? 'bg-[#4d7fd4]' : 'bg-orange-400'}`} />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-semibold text-white truncate">{item.action}</p>
+                        <p className="text-[10px] text-slate-500 truncate">{item.client}</p>
+                      </div>
+                      <span className="text-[10px] text-slate-600 shrink-0">{item.time}</span>
+                    </div>
+                  ))}
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
 
+              {/* Floating card — top right */}
+              <div className="absolute -top-6 -right-6 glass-card-light rounded-xl p-4 shadow-2xl animate-float border border-[#2d5bb5]/20">
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 bg-[#f97316]/15 rounded-lg flex items-center justify-center"><TrendingUp size={16} className="text-orange-400" /></div>
+                  <div><p className="text-[10px] text-slate-500">Avg. time saved</p><p className="text-base font-display font-bold text-white">22 hrs/wk</p></div>
+                </div>
+              </div>
+
+              {/* Floating card — bottom left */}
+              <div className="absolute -bottom-5 -left-6 glass-card-light rounded-xl p-4 shadow-2xl border border-emerald-400/20" style={{animation:'float 4s ease-in-out 0.5s infinite'}}>
+                <div className="flex items-center gap-3">
+                  <div className="w-9 h-9 bg-emerald-500/10 rounded-lg flex items-center justify-center"><CheckCircle2 size={16} className="text-emerald-400" /></div>
+                  <div><p className="text-[10px] text-slate-500">Onboarding time</p><p className="text-base font-display font-bold text-white">48 hours</p></div>
+                </div>
+              </div>
+
+              {/* Floating card — mid right */}
+              <div className="absolute top-1/2 -right-8 glass-card-light rounded-xl p-3 shadow-xl border border-[#f97316]/20" style={{animation:'float 5s ease-in-out 1s infinite'}}>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-7 h-7 bg-[#f97316]/10 rounded-lg flex items-center justify-center"><ShieldCheck size={13} className="text-orange-400" /></div>
+                  <div><p className="text-[9px] text-slate-500">PIPEDA</p><p className="text-xs font-display font-bold text-white">Compliant</p></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* LOGO CLOUD */}
-      <section className="bg-white border-y border-slate-100 py-10">
-         <div className="max-w-7xl mx-auto px-4 text-center">
-           <p className="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-6">Our VAs are proficient in Canadian broker tools</p>
-           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-             <span className="font-display font-bold text-xl text-slate-800">Filogix</span>
-             <span className="font-display font-bold text-xl text-slate-800">Velocity</span>
-             <span className="font-display font-bold text-xl text-slate-800">Finmo</span>
-             <span className="font-display font-bold text-xl text-slate-800">GoHighLevel</span>
-             <span className="font-display font-bold text-xl text-slate-800">HubSpot</span>
-           </div>
-         </div>
-      </section>
-
-      {/* SERVICES SECTION */}
-      <section id="services" className="py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Complete Mortgage Operations Support</h2>
-            <p className="text-lg text-slate-600">Our highly skilled Canadian-trained virtual assistants seamlessly integrate into your workflow, taking over the crucial but time-consuming backend processing tasks.</p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { 
-                icon: <Files size={24} />, 
-                title: "Condition Fulfillment & Docs", 
-                desc: "We chase clients for NOAs, T4s, and IDs, ensuring perfectly pristine and compliant files for Canadian A and B-lenders." 
-              },
-              { 
-                icon: <MessageSquare size={24} />, 
-                title: "Client & Partner Follow-ups", 
-                desc: "Providing proactive updates on commitment letters to clients, realtors, and lawyers so you stay out of the weeds." 
-              },
-              { 
-                icon: <FileEdit size={24} />, 
-                title: "Filogix & CRM Management", 
-                desc: "Accurate mortgage application data entry into Filogix Expert, Finmo, Velocity, and HubSpot to keep your pipeline spotless." 
-              },
-              { 
-                icon: <Target size={24} />, 
-                title: "Underwriting Preparation", 
-                desc: "Reviewing Equifax/TransUnion bureaus, organizing detailed notes, and structuring submission packages for fast approvals." 
-              },
-              { 
-                icon: <PhoneCall size={24} />, 
-                title: "Remote Administrative Staff", 
-                desc: "Handling lead intake securely, collecting preliminary details, and booking highly qualified appointments on your calendar." 
-              },
-              { 
-                icon: <ShieldCheck size={24} />, 
-                title: "Canadian Compliance Audits", 
-                desc: "Meticulous post-funding organization, ensuring all provincial brokerage compliance checklists and PIPEDA standards are met." 
-              }
-            ].map((service, idx) => (
-              <motion.div 
-                key={idx}
-                whileHover={{ y: -5 }}
-                className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-xl transition-all"
-              >
-                <div className="w-12 h-12 bg-brand-50 rounded-2xl flex items-center justify-center text-brand-600 mb-6">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{service.desc}</p>
-              </motion.div>
+      {/* TOOLS STRIP */}
+      <section className="border-y border-white/[0.05] bg-white/[0.015] py-10">
+        <div className="max-w-7xl mx-auto px-4">
+          <p className="text-center text-[10px] font-semibold text-slate-600 uppercase tracking-[0.3em] mb-7">Operations specialists proficient in</p>
+          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+            {['Filogix Expert','Velocity','Finmo','GoHighLevel','HubSpot','Salesforce'].map((tool) => (
+              <span key={tool} className="font-display font-bold text-sm text-slate-500 hover:text-slate-200 transition-colors cursor-default tracking-wide">{tool}</span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* WHY US (Bento Box style) */}
-      <section id="benefits" className="py-24 bg-brand-900 text-white rounded-[3rem] mx-2 lg:mx-6 my-12 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute top-0 right-0 -mr-32 -mt-32 w-96 h-96 bg-brand-600 rounded-full blur-[120px] opacity-50"></div>
-        <div className="absolute bottom-0 left-0 -ml-32 -mb-32 w-96 h-96 bg-blue-400 rounded-full blur-[120px] opacity-20"></div>
+      {/* STATS COUNTER STRIP */}
+      <section className="py-16 border-b border-white/[0.05]">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { value: 50, suffix: '+', label: 'Brokers served', color: 'text-[#7aa3e5]' },
+              { value: 22, suffix: ' hrs', label: 'Reclaimed weekly', color: 'text-orange-400' },
+              { value: 70, suffix: '%', label: 'Lower than local hire', color: 'text-[#7aa3e5]' },
+              { value: 48, suffix: 'h', label: 'To fully operational', color: 'text-orange-400' },
+            ].map((s, i) => (
+              <AnimatedSection key={i} delay={i * 80}>
+                <p className={`text-4xl font-display font-bold mb-2 ${s.color}`}>
+                  <CountUp end={s.value} suffix={s.suffix} duration={2000} />
+                </p>
+                <p className="text-xs text-slate-500 uppercase tracking-wider">{s.label}</p>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-[31px] font-bold mb-6 text-[#cad5e2]">Why top-producing brokers choose QARM</h2>
-              <p className="text-lg text-slate-300 mb-8 leading-relaxed max-w-xl">
-                Not just another VA agency. We specifically source, vet, and train talent exclusively for the Canadian mortgage ecosystem. Avoid the painful onboarding of generic assistants.
-              </p>
-              
-              <div className="space-y-6">
+      {/* SERVICES OVERVIEW */}
+      <section className="py-28 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center max-w-3xl mx-auto mb-20">
+            <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">What We Handle</p>
+            <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Complete mortgage operations,<br />covered.</h2>
+            <p className="text-slate-400 text-lg leading-relaxed">From CRM hygiene to full pipeline coordination — QARM manages the operational layer so nothing falls through the cracks.</p>
+          </AnimatedSection>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { icon: <BarChart3 size={22} />, title: 'CRM & Pipeline Management', desc: 'Your CRM stays current, accurate, and actionable. We manage Filogix, Finmo, Velocity, and GHL so your pipeline reflects reality at all times.', orange: false },
+              { icon: <FileText size={22} />, title: 'Document & Condition Fulfillment', desc: 'We coordinate document collection — NOAs, T4s, pay stubs, IDs — organized to lender spec and ready for clean submissions.', orange: true },
+              { icon: <MessageSquare size={22} />, title: 'Client Communication Systems', desc: 'Proactive status updates to clients, realtors, and legal. Your clients are always informed without you spending time in your inbox.', orange: false },
+              { icon: <Target size={22} />, title: 'Underwriting Preparation', desc: 'Bureau review, deal structuring notes, and submission package organization. Files go to underwriting complete the first time.', orange: true },
+              { icon: <Calendar size={22} />, title: 'Scheduling & Lead Coordination', desc: 'Qualified lead intake, preliminary information gathering, and calendar management — every booked call is with an engaged prospect.', orange: false },
+              { icon: <ShieldCheck size={22} />, title: 'Compliance & Post-Funding', desc: 'Post-funding file organization, provincial compliance checklists, and PIPEDA-compliant data handling as standard operating procedure.', orange: true },
+            ].map((svc, i) => (
+              <AnimatedSection key={i} delay={i * 80}>
+                <div className={`group rounded-2xl p-7 h-full transition-all duration-300 border ${svc.orange ? 'glass-card hover:border-orange-400/30 hover:bg-[#1a1510]/60' : 'glass-card hover:border-[#2d5bb5]/40 hover:bg-[#141d35]/60'}`}>
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-5 transition-colors ${svc.orange ? 'bg-orange-400/10 text-orange-400 group-hover:bg-orange-400/20' : 'bg-[#2d5bb5]/15 text-[#7aa3e5] group-hover:bg-[#2d5bb5]/25'}`}>
+                    {svc.icon}
+                  </div>
+                  <h3 className="font-display font-semibold text-white text-lg mb-3">{svc.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed">{svc.desc}</p>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[#7aa3e5] hover:text-white transition-colors group">
+              View all services <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY QARM */}
+      <section className="py-28 bg-[#080d18] border-y border-white/[0.05] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.13]">
+          <img src={IMGS.office} alt="" width={1200} height={600} className="w-full h-full object-cover" loading="lazy" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <AnimatedSection direction="left">
+              <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">Why QARM</p>
+              <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-6 leading-tight">
+                Not a generic agency.<br /><span className="text-gradient-blue">An operational partner.</span>
+              </h2>
+              <p className="text-slate-400 text-lg leading-relaxed mb-10">Generic assistants need months of onboarding and still don't understand the difference between a commitment letter and a commitment letter condition. QARM specialists are trained exclusively on Canadian mortgage workflows before they ever touch your pipeline.</p>
+              <div className="space-y-4">
                 {[
-                  "Top 1% of offshore talent, strictly vetted for English proficiency.",
-                  "Pre-trained on Canadian mortgage concepts and CRM tools.",
-                  "No long-term lock-in contracts. Cancel anytime.",
-                  "Dedicated account manager to ensure relationship success."
-                ].map((item, i) => (
-                  <div key={i} className="flex gap-4">
-                    <div className="mt-1 shrink-0 w-6 h-6 rounded-full bg-brand-500/20 flex items-center justify-center text-brand-400">
-                      <CheckCircle2 size={16} />
+                  { text: 'Pre-trained on Canadian lender requirements, A/B products, and CMHC/Sagen guidelines.', orange: false },
+                  { text: 'Proficient in Filogix Expert, Finmo, Velocity, GHL, and HubSpot on day one.', orange: true },
+                  { text: 'Operate under NDAs and PIPEDA-compliant data handling protocols.', orange: false },
+                  { text: 'Dedicated account management ensures quality, consistency, and accountability.', orange: true },
+                  { text: 'No long-term lock-in. Scale up or down to match your volume.', orange: false },
+                ].map((point, i) => (
+                  <div key={i} className="flex items-start gap-3.5">
+                    <div className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${point.orange ? 'bg-orange-400/15 border border-orange-400/30' : 'bg-[#2d5bb5]/20 border border-[#2d5bb5]/30'}`}>
+                      <CheckCircle2 size={12} className={point.orange ? 'text-orange-400' : 'text-[#4d7fd4]'} />
                     </div>
-                    <p className="text-slate-200">{item}</p>
+                    <p className="text-slate-300 text-sm leading-relaxed">{point.text}</p>
                   </div>
                 ))}
               </div>
-            </div>
+            </AnimatedSection>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-3xl border border-slate-700">
-                <div className="text-4xl font-display font-bold text-white mb-2">48h</div>
-                <p className="text-slate-400 text-sm">Average time to match and begin onboarding your new VA.</p>
-              </div>
-              <div className="bg-brand-600/50 backdrop-blur-sm p-6 rounded-3xl border border-brand-500">
-                <div className="text-4xl font-display font-bold text-white mb-2">70%</div>
-                <p className="text-blue-100 text-sm">Cost reduction compared to hiring local Canadian administrative staff.</p>
-              </div>
-              <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-3xl border border-slate-700 col-span-2">
-                <div className="flex items-center gap-4 mb-4">
-                   <Users className="text-brand-400" size={32} />
-                  <div className="text-2xl font-bold text-white">Scale Effortlessly</div>
+            <AnimatedSection direction="right" delay={150}>
+              <div className="relative">
+                {/* Main photo */}
+                <div className="rounded-2xl overflow-hidden shadow-2xl" style={{aspectRatio:'4/3'}}>
+                  <img src={IMGS.brokerDesk} alt="Professional mortgage team collaborating" width={800} height={600} className="w-full h-full object-cover opacity-90" loading="lazy" />
                 </div>
-                <p className="text-slate-400 text-sm">Flexible engagement models designed around the seasonality and volume of your specific brokerage. Pre-trained and ready to execute.</p>
+                {/* Stat cards — 4 individual rounded cards */}
+                <div className="grid grid-cols-4 gap-3 mt-4">
+                  <div className="bg-[#141d35] border border-white/10 rounded-2xl py-4 px-2 text-center">
+                    <p className="text-[10px] text-slate-400 mb-1.5 uppercase tracking-wide">Since</p>
+                    <p className="text-2xl font-display font-bold text-white">2023</p>
+                  </div>
+                  <div className="bg-[#141d35] border border-white/10 rounded-2xl py-4 px-2 text-center">
+                    <p className="text-2xl font-display font-bold text-[#7aa3e5] mb-1"><CountUp end={20} suffix="+" /></p>
+                    <p className="text-[10px] text-slate-400 leading-tight">hrs/wk saved</p>
+                  </div>
+                  <div className="bg-[#141d35] border border-white/10 rounded-2xl py-4 px-2 text-center">
+                    <p className="text-2xl font-display font-bold text-[#7aa3e5] mb-1"><CountUp end={48} suffix="h" /></p>
+                    <p className="text-[10px] text-slate-400 leading-tight">onboarding</p>
+                  </div>
+                  <div className="bg-[#f97316]/10 border border-[#f97316]/30 rounded-2xl py-4 px-2 text-center">
+                    <p className="text-2xl font-display font-bold text-orange-400 mb-1"><CountUp end={70} suffix="%" /></p>
+                    <p className="text-[10px] text-orange-200/70 leading-tight">cost savings</p>
+                  </div>
+                </div>
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* PROCESS */}
-      <section id="how-it-works" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-16">Get matched in 3 simple steps</h2>
-          
-          <div className="grid md:grid-cols-3 gap-8 relative">
-            {/* Connector line for desktop */}
-            <div className="hidden md:block absolute top-[45px] left-[15%] right-[15%] h-[2px] bg-slate-100 z-0"></div>
+      <section className="py-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center max-w-2xl mx-auto mb-20">
+            <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">How It Works</p>
+            <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Operational in 48 hours.</h2>
+            <p className="text-slate-400 text-lg">A streamlined onboarding designed around your workflow — not a generic playbook.</p>
+          </AnimatedSection>
+          <div className="relative">
+            <div className="hidden lg:block absolute top-[52px] left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-[#f97316]/30 to-transparent" />
+            <div className="grid lg:grid-cols-3 gap-10">
+              {[
+                { num: '01', title: 'Discovery Call', desc: 'We map your current workflow, identify operational bottlenecks, and clarify exactly what your business needs to run more efficiently.', accent: 'blue' },
+                { num: '02', title: 'Precision Match', desc: 'We match you with a specialist from our mortgage-trained roster based on your CRM stack, deal volume, and workflow preferences.', accent: 'orange' },
+                { num: '03', title: 'Integration & Execution', desc: 'Your QARM specialist integrates into your systems. Within 48 hours, your pipeline is being actively managed and your inbox is quieter.', accent: 'blue' },
+              ].map((step, i) => (
+                <AnimatedSection key={i} delay={i * 120} className="flex flex-col items-center text-center">
+                  <div className={`w-28 h-28 rounded-full flex items-center justify-center mb-8 relative border-2 ${step.accent === 'orange' ? 'border-orange-400/40 bg-orange-400/5 glow-orange' : 'border-[#2d5bb5]/40 glass-card glow-blue'}`}>
+                    <span className={`font-display font-bold text-3xl ${step.accent === 'orange' ? 'text-orange-400' : 'text-gradient'}`}>{step.num}</span>
+                    {step.accent === 'orange' && <div className="absolute -inset-1 rounded-full border border-orange-400/20 animate-ping opacity-30" />}
+                  </div>
+                  <h3 className="font-display font-semibold text-white text-xl mb-4">{step.title}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed max-w-xs">{step.desc}</p>
+                </AnimatedSection>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-            {[
-              { step: "01", title: "Discovery Call", desc: "We map out your current bottlenecks, tools, and the exact tasks you want off your plate." },
-              { step: "02", title: "Handpicked Match", desc: "We select the perfect candidate from our fully-trained roster who fits your work style and timezone." },
-              { step: "03", title: "Scale Up", desc: "We help integrate them into your systems. In days, you're closing more loans with less stress." },
-            ].map((item, idx) => (
-              <div key={idx} className="relative z-10 flex flex-col items-center">
-                <div className="w-24 h-24 bg-white border-4 border-brand-50 rounded-full flex items-center justify-center text-2xl font-bold text-brand-600 mb-6 font-display shadow-lg shadow-slate-100">
-                  {item.step}
+      {/* TESTIMONIALS */}
+      <section className="py-28 relative overflow-hidden">
+        {/* Toronto skyline bg */}
+        <div className="absolute inset-0">
+          <img src={IMGS.toronto} alt="" width={1200} height={600} className="w-full h-full object-cover opacity-[0.06]" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080d18] via-[#080d18]/80 to-[#080d18]" />
+        </div>
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatedSection className="text-center mb-16">
+            <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">Client Results</p>
+            <h2 className="font-display font-bold text-4xl text-white">What brokers are saying.</h2>
+          </AnimatedSection>
+          <div className="grid md:grid-cols-3 gap-6">
+            {testimonials.map((t, i) => (
+              <AnimatedSection key={i} delay={i * 100}>
+                <div className="glass-card rounded-2xl p-8 flex flex-col h-full hover:border-[#2d5bb5]/30 transition-all duration-300">
+                  <div className="flex gap-1 mb-5">
+                    {[...Array(5)].map((_,j) => <Star key={j} size={14} className="fill-orange-400 text-orange-400" />)}
+                  </div>
+                  <blockquote className="text-slate-300 text-sm leading-relaxed flex-grow mb-6">"{t.quote}"</blockquote>
+                  <div className="border-t border-white/[0.06] pt-5 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2d5bb5] to-[#1c2a4a] flex items-center justify-center text-white font-display font-bold text-sm shrink-0 border border-[#2d5bb5]/40">
+                      {t.initial}
+                    </div>
+                    <div>
+                      <p className="font-display font-semibold text-white text-sm">{t.name}</p>
+                      <p className="text-xs text-slate-500 mt-0.5">{t.role} · {t.location}</p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-3">{item.title}</h3>
-                <p className="text-slate-600 max-w-sm">{item.desc}</p>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PRICING SECTION */}
-      <section id="pricing" className="py-24 bg-slate-50">
+      {/* GLOBAL REACH */}
+      <section className="py-20 border-y border-white/[0.05] bg-[#080d18]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Simple, transparent pricing</h2>
-            <p className="text-lg text-slate-600">No hidden fees. No long-term contracts. Just access to top-tier, trained talent ready to scale your business.</p>
+          <AnimatedSection className="text-center mb-12">
+            <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">Global Reach</p>
+            <h2 className="font-display font-bold text-3xl text-white mb-3">Serving mortgage professionals worldwide.</h2>
+            <p className="text-slate-400">Operational infrastructure built for every major English-speaking lending market.</p>
+          </AnimatedSection>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+            {[
+              { flag: '🇨🇦', country: 'Canada', note: 'Primary market', href: '/services', orange: true },
+              { flag: '🇺🇸', country: 'United States', note: 'MLO support', href: '/us-mortgage-operations', orange: false },
+              { flag: '🇬🇧', country: 'United Kingdom', note: 'FCA-compliant', href: '/global-operations', orange: false },
+              { flag: '🇦🇺', country: 'Australia', note: 'MFAA/FBAA ops', href: '/global-operations', orange: false },
+              { flag: '🇦🇪', country: 'UAE', note: 'Home finance', href: '/global-operations', orange: false },
+            ].map((m) => (
+              <Link key={m.country} to={m.href}
+                className={`flex flex-col items-center p-5 rounded-2xl border text-center transition-all duration-300 hover:-translate-y-1 ${m.orange ? 'bg-orange-400/5 border-orange-400/20 hover:border-orange-400/40' : 'glass-card hover:border-[#2d5bb5]/40'}`}>
+                <span className="text-3xl mb-3">{m.flag}</span>
+                <p className={`font-display font-semibold text-sm mb-1 ${m.orange ? 'text-orange-400' : 'text-white'}`}>{m.country}</p>
+                <p className="text-[10px] text-slate-500">{m.note}</p>
+              </Link>
+            ))}
           </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {/* Part Time Plan */}
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="bg-white rounded-3xl p-8 lg:p-10 border border-slate-200 shadow-sm relative flex flex-col h-full"
-            >
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">Part-Time VA</h3>
-                <p className="text-slate-500">Perfect for individual brokers scaling up.</p>
+      {/* PRICING SNAPSHOT */}
+      <section className="py-28">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <AnimatedSection className="mb-16">
+            <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">Pricing</p>
+            <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Straightforward. No surprises.</h2>
+            <p className="text-slate-400 text-lg">No setup fees. No long-term commitments. Cancel anytime.</p>
+          </AnimatedSection>
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+            <AnimatedSection delay={60}>
+              <div className="glass-card rounded-2xl p-8 text-left h-full flex flex-col">
+                <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-3">Part-Time Support</p>
+                <div className="flex items-baseline gap-2 mb-1"><span className="text-4xl font-display font-bold text-white">$899</span><span className="text-slate-500 text-sm">CAD / month</span></div>
+                <p className="text-xs text-slate-600 mb-7">~$11/hr · 80 hrs/month · 4 hrs/day</p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  {['CRM management & pipeline updates','Document collection coordination','Client & realtor follow-ups','Appointment scheduling','Dedicated account management'].map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300"><CheckCircle2 size={14} className="text-[#4d7fd4] mt-0.5 shrink-0" />{f}</li>
+                  ))}
+                </ul>
+                <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
+                  className="block w-full py-3.5 text-center border border-[#2d5bb5]/40 hover:border-[#4d7fd4] text-[#7aa3e5] hover:text-white hover:bg-[#2d5bb5]/10 rounded-lg text-sm font-semibold transition-all">
+                  Get Started
+                </a>
               </div>
-              <div className="mb-8">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-display font-bold text-slate-900">$899</span>
-                  <span className="text-slate-500 font-medium">/ month</span>
+            </AnimatedSection>
+            <AnimatedSection delay={130}>
+              <div className="bg-gradient-to-b from-[#1c2a4a] to-[#141d35] border border-[#2d5bb5]/30 rounded-2xl p-8 text-left relative overflow-hidden h-full flex flex-col">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-[#f97316] rounded-full blur-[80px] opacity-10 pointer-events-none" />
+                <div className="flex items-start justify-between mb-3">
+                  <p className="text-xs font-semibold text-[#7aa3e5] uppercase tracking-widest">Full-Time Support</p>
+                  <span className="bg-[#f97316] text-white text-[10px] font-bold uppercase tracking-wider py-1 px-2.5 rounded-full">Most Popular</span>
                 </div>
-                <p className="text-sm text-slate-400 mt-2">Estimated ~$11/hour CAD</p>
+                <div className="flex items-baseline gap-2 mb-1"><span className="text-4xl font-display font-bold text-white">$1,599</span><span className="text-slate-400 text-sm">CAD / month</span></div>
+                <p className="text-xs text-slate-500 mb-7">~$10/hr · 160 hrs/month · 8 hrs/day</p>
+                <ul className="space-y-3 mb-8 flex-grow">
+                  {['Everything in Part-Time, plus:','Underwriting prep & bureau review','Lender submissions & follow-ups','Full pipeline management','Lead intake & appointment setting','Compliance & post-funding audits'].map((f, i) => (
+                    <li key={f} className={`flex items-start gap-2.5 text-sm ${i === 0 ? 'text-orange-400 font-semibold' : 'text-slate-200'}`}>
+                      <CheckCircle2 size={14} className="text-orange-400 mt-0.5 shrink-0" />{f}
+                    </li>
+                  ))}
+                </ul>
+                <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
+                  className="block w-full py-3.5 text-center bg-[#f97316] hover:bg-orange-500 text-white rounded-lg text-sm font-semibold transition-all hover:shadow-lg hover:shadow-orange-500/30">
+                  Get Started
+                </a>
               </div>
-              <ul className="space-y-4 mb-10 flex-grow">
-                {[
-                  "80 hours per month (4h/day)",
-                  "Dedicated Mortgage-Trained VA",
-                  "Document Collection & Review",
-                  "Basic CRM Management",
-                  "Client Status Updates",
-                  "Dedicated Account Manager",
-                  "Cancel anytime"
-                ].map((feature, i) => (
-                  <li key={i} className="flex gap-3">
-                    <CheckCircle2 className="text-brand-500 shrink-0" size={20} />
-                    <span className="text-slate-700">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <button 
-                onClick={onGetStarted}
-                aria-label="Get Started with Part-time VA"
-                className="w-full py-4 px-6 rounded-xl font-semibold border-2 border-brand-900 text-brand-900 hover:bg-brand-50 transition-colors"
-              >
-                Get Started
-              </button>
-            </motion.div>
-
-            {/* Full Time Plan */}
-            <motion.div 
-              whileHover={{ y: -5 }}
-              className="bg-brand-900 rounded-3xl p-8 lg:p-10 border border-brand-800 shadow-xl shadow-brand-900/20 relative flex flex-col h-full text-white"
-            >
-              <div className="absolute top-0 right-8 transform -translate-y-1/2">
-                <span className="bg-brand-500 text-white text-xs font-bold uppercase tracking-wider py-1.5 px-4 rounded-full">
-                  Most Popular
-                </span>
-              </div>
-              <div className="mb-8">
-                <h3 className="text-2xl font-bold text-white mb-2">Full-Time VA</h3>
-                <p className="text-slate-300">Total operational takeover for high-volume teams.</p>
-              </div>
-              <div className="mb-8">
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-display font-bold text-white">$1,599</span>
-                  <span className="text-slate-300 font-medium">/ month</span>
-                </div>
-                <p className="text-sm text-brand-300 mt-2">Estimated ~$10/hour CAD</p>
-              </div>
-              <ul className="space-y-4 mb-10 flex-grow">
-                {[
-                  "160 hours per month (8h/day)",
-                  "Everything in Part-Time, plus:",
-                  "Complex Underwriting Prep",
-                  "Lender Submissions & Follow-ups",
-                  "Full Pipeline Management",
-                  "Lead Intake & Appointment Setting",
-                  "Compliance & Post-Funding Checklists"
-                ].map((feature, i) => (
-                  <li key={i} className="flex gap-3">
-                    <CheckCircle2 className="text-brand-400 shrink-0" size={20} />
-                    <span className="text-slate-200">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <button 
-                onClick={onGetStarted}
-                aria-label="Get Started with Full-time VA"
-                className="w-full py-4 px-6 rounded-xl font-semibold bg-brand-500 text-white hover:bg-brand-400 transition-colors shadow-lg shadow-brand-500/25"
-              >
-                Get Started
-              </button>
-            </motion.div>
+            </AnimatedSection>
           </div>
+          <div className="mt-8"><Link to="/pricing" className="inline-flex items-center gap-1.5 text-sm text-[#7aa3e5] hover:text-white transition-colors">View full pricing details <ChevronRight size={14} /></Link></div>
         </div>
       </section>
 
-      {/* FAQ SECTION */}
-      <section className="py-24 bg-white border-t border-slate-100">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-slate-600">Everything you need to know about our virtual assistant services for Canadian mortgage brokers.</p>
-          </div>
-          
-          <div className="space-y-6">
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-              <h3 className="text-lg font-bold text-slate-900 mb-2">What does a mortgage broker virtual assistant do?</h3>
-              <p className="text-slate-600">A virtual assistant for mortgage brokers handles backend operations like document collection, strict CRM updates in platforms like Filogix or Finmo, routine client follow-ups, and underwriting preparation, freeing you to focus on origination.</p>
-            </div>
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Are your VAs trained specifically on Canadian mortgage processes?</h3>
-              <p className="text-slate-600">Yes, our remote mortgage staff specializes entirely in the Canadian market. They are familiar with local lender requirements, compliance checklists, and the precise tools Canadian brokers use daily.</p>
-            </div>
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-              <h3 className="text-lg font-bold text-slate-900 mb-2">How quickly can we start outsourcing our workflow?</h3>
-              <p className="text-slate-600">Our matching and onboarding process takes about 48 hours. We handle the heavy lifting of pairing you with a pre-trained assistant ready to plug straight into your business.</p>
-            </div>
-            <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Is our CRM and client data kept secure?</h3>
-              <p className="text-slate-600">Absolutely. Security is our top priority. Our virtual assistants operate under strict confidentially agreements and data privacy policies fully compliant with PIPEDA and Canadian financial handling standards.</p>
-            </div>
-          </div>
+      {/* CTA */}
+      <section className="py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[#0d1424] border-y border-white/[0.06]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#1e3a8a] rounded-full blur-[120px] opacity-10 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#f97316] rounded-full blur-[150px] opacity-[0.06] pointer-events-none" />
+        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+          <AnimatedSection>
+            <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Ready to scale your operations?</h2>
+            <p className="text-slate-400 text-lg mb-10 max-w-xl mx-auto">Book a 30-minute discovery call. We'll identify your top operational bottlenecks and build a plan to resolve them.</p>
+            <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-10 py-5 rounded-lg text-base font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">
+              Book Your Discovery Call <ArrowRight size={18} />
+            </a>
+            <p className="text-slate-600 text-xs mt-4">No obligation. Responds within 1 business day.</p>
+          </AnimatedSection>
         </div>
       </section>
-
-      {/* TESTIMONIAL PREVIEW */}
-      <section className="py-24 bg-slate-50 border-t border-slate-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="flex justify-center text-yellow-400 mb-6">
-            {[1,2,3,4,5].map(i => <svg key={i} className="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>)}
-          </div>
-          <h3 className="text-2xl md:text-3xl font-medium leading-tight text-slate-800 mb-8 max-w-3xl border-l-4 border-brand-500 pl-6 mx-auto text-left italic">
-            "QARM completely transformed my brokerage. I handed off condition fulfillment and CRM data entry, freeing up 20 hours a week to focus purely on realtor relationships. My funding volume is up $2.5M per month organically."
-          </h3>
-          <div className="flex flex-col items-center">
-            <div className="w-14 h-14 bg-slate-300 rounded-full mb-3 bg-[url('https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=200&auto=format&fit=crop')] bg-cover bg-center"></div>
-            <div className="font-bold text-slate-900">David R.</div>
-            <div className="text-sm text-slate-500">Mortgage Broker, Ontario</div>
-          </div>
-        </div>
-      </section>
-    </main>
+    </div>
   );
 }

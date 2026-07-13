@@ -128,7 +128,7 @@ export function AboutPage({ onGetStarted }: AboutPageProps) {
             {[
               { phase:'Now', title:'Premium Operational Support', desc:'Dedicated mortgage operations specialists across Canada, US, UK, Australia, and UAE.', orange:false },
               { phase:'Next', title:'AI-Powered Systems', desc:'Proprietary automation tools, mortgage workflow dashboards, and AI-enhanced pipeline intelligence.', orange:true },
-              { phase:'Future', title:'North American Platform', desc:'A full-stack mortgage operations platform for lending professionals globally.', orange:false },
+              { phase:'Future', title:'North American Platform', desc:'A full-stack mortgage operations platform for lending professionals globally — the same infrastructure built to extend to other relationship-driven, pipeline-based industries.', orange:false },
             ].map((v, i) => (
               <AnimatedSection key={v.phase} delay={i * 100}>
                 <div className={`rounded-2xl p-7 h-full border ${v.orange ? 'bg-orange-400/5 border-orange-400/20' : 'glass-card'}`}>

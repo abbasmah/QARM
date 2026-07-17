@@ -39,14 +39,14 @@ export function HomePage({ onGetStarted }: HomePageProps) {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4d7fd4] opacity-75" />
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#4d7fd4]" />
                 </span>
-                Mortgage Operations Infrastructure — Canada
+                Mortgage, Real Estate & Insurance Operations Infrastructure — Canada & US
               </div>
               <h1 className="font-display font-bold text-5xl lg:text-6xl xl:text-[4.25rem] text-white leading-[1.08] tracking-tight mb-6">
                 Your pipeline,<br />
                 <span className="text-gradient">managed with<br />precision.</span>
               </h1>
               <p className="text-lg text-slate-400 leading-relaxed mb-8 max-w-xl">
-                QARM is the operational backbone for Canadian mortgage brokers — handling CRM coordination, workflow management, client follow-up systems, and pipeline operations so you close more and chase less.
+                QARM is the operational backbone for mortgage, real estate, and insurance professionals across Canada and the US — handling CRM coordination, workflow management, client follow-up systems, and pipeline operations so you close more and chase less.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
                 <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
@@ -59,7 +59,7 @@ export function HomePage({ onGetStarted }: HomePageProps) {
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex gap-0.5">{[...Array(5)].map((_,i) => <Star key={i} size={15} className="fill-orange-400 text-orange-400" />)}</div>
-                <p className="text-sm text-slate-400">Trusted by <span className="text-white font-semibold">50+ mortgage professionals</span> across Canada</p>
+                <p className="text-sm text-slate-400">Trusted by <span className="text-white font-semibold">50+ mortgage, real estate, and insurance professionals</span> across Canada and the US</p>
               </div>
             </div>
 
@@ -180,7 +180,7 @@ export function HomePage({ onGetStarted }: HomePageProps) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-20">
             <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">What We Handle</p>
-            <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Complete mortgage operations,<br />covered.</h2>
+            <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Complete mortgage, real estate & insurance operations,<br />covered.</h2>
             <p className="text-slate-400 text-lg leading-relaxed">From CRM hygiene to full pipeline coordination — QARM manages the operational layer so nothing falls through the cracks.</p>
           </AnimatedSection>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -208,6 +208,7 @@ export function HomePage({ onGetStarted }: HomePageProps) {
               View all services <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
+          <p className="text-center text-xs text-slate-600 mt-6">Built for mortgage operations — the same infrastructure runs real estate and insurance pipelines today.</p>
         </div>
       </section>
 

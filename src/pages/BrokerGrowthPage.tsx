@@ -1,8 +1,8 @@
 import { ArrowRight, CheckCircle2, Globe, BarChart2, Share2, Search, Mail, Palette, Settings } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AnimatedSection } from '../components/AnimatedSection';
+import { useGetStarted } from '../context/GetStartedContext';
 
-interface BrokerGrowthPageProps { onGetStarted: () => void; }
 
 const IMGS = {
   hero: 'https://images.unsplash.com/photo-1432888622747-4eb9a8f2c293?w=900&q=55&auto=format&fit=crop',
@@ -23,7 +23,8 @@ const services = [
   { icon:<Settings size={22}/>, title:'CRM Setup & Configuration', desc:'Get maximum value from your CRM by having it configured, automated, and integrated correctly from the start.', includes:['GoHighLevel or HubSpot full setup','Pipeline stages and automation workflows','Lead capture integration','Email and SMS automation sequences','Team access and permissions','Training and handover session'], img: IMGS.crm, orange:true },
 ];
 
-export function BrokerGrowthPage({ onGetStarted }: BrokerGrowthPageProps) {
+export function BrokerGrowthPage() {
+  const onGetStarted = useGetStarted();
   return (
     <div className="min-h-screen bg-[#0a0f1e] pt-20">
       {/* Hero */}

@@ -2,15 +2,16 @@ import { ArrowRight, Target, Shield, Zap, Users, Award, Globe, BarChart3 } from 
 import { Link } from 'react-router-dom';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { CountUp } from '../components/CountUp';
+import { useGetStarted } from '../context/GetStartedContext';
 
-interface AboutPageProps { onGetStarted: () => void; }
 
 const IMGS = {
   team: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=55&auto=format&fit=crop',
   global: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=50&auto=format&fit=crop',
 };
 
-export function AboutPage({ onGetStarted }: AboutPageProps) {
+export function AboutPage() {
+  const onGetStarted = useGetStarted();
   return (
     <div className="min-h-screen bg-[#0a0f1e] pt-20">
       {/* Hero */}

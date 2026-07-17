@@ -1,15 +1,16 @@
 import { ArrowRight, CheckCircle2, Star, BarChart3, FileText, MessageSquare, Target, Calendar, ShieldCheck } from 'lucide-react';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { CountUp } from '../components/CountUp';
+import { useGetStarted } from '../context/GetStartedContext';
 
-interface USMortgagePageProps { onGetStarted: () => void; }
 
 const IMGS = {
   hero: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&q=55&auto=format&fit=crop',
   mlo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=700&q=55&auto=format&fit=crop',
 };
 
-export function USMortgagePage({ onGetStarted }: USMortgagePageProps) {
+export function USMortgagePage() {
+  const onGetStarted = useGetStarted();
   return (
     <div className="min-h-screen bg-[#0a0f1e] pt-20">
       {/* Hero */}

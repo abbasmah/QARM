@@ -1,8 +1,8 @@
 import { ArrowRight, CheckCircle2, BarChart3, FileText, MessageSquare, Target, Calendar, ShieldCheck, Workflow, Database } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AnimatedSection } from '../components/AnimatedSection';
+import { useGetStarted } from '../context/GetStartedContext';
 
-interface ServicesPageProps { onGetStarted: () => void; }
 
 const IMGS = {
   hero: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&q=55&auto=format&fit=crop',
@@ -27,7 +27,8 @@ const services = [
   { id:'ai', icon:<Database size={24}/>, label:'AI-Enhanced Workflow Systems', headline:'Human expertise. AI-optimised efficiency.', desc:'QARM integrates AI workflow tools to enhance the speed and consistency of operational tasks — automating data entry, document categorisation, and routine follow-ups while keeping human oversight on every decision.', deliverables:['Automated data entry verification and correction','Document classification and routing','Follow-up sequence automation configuration','CRM workflow automation setup and management','AI-assisted note-taking and summary generation','Workflow analytics and performance reporting'], img: IMGS.ai, orange: true },
 ];
 
-export function ServicesPage({ onGetStarted }: ServicesPageProps) {
+export function ServicesPage() {
+  const onGetStarted = useGetStarted();
   return (
     <div className="min-h-screen bg-[#0a0f1e] pt-20">
       {/* Hero with photo */}

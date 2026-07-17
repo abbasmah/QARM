@@ -1,7 +1,7 @@
 import { ArrowRight, CheckCircle2, Globe } from 'lucide-react';
 import { AnimatedSection } from '../components/AnimatedSection';
+import { useGetStarted } from '../context/GetStartedContext';
 
-interface GlobalOperationsPageProps { onGetStarted: () => void; }
 
 const IMGS = {
   london: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=500&q=55&auto=format&fit=crop',
@@ -37,7 +37,8 @@ const markets = [
   },
 ];
 
-export function GlobalOperationsPage({ onGetStarted }: GlobalOperationsPageProps) {
+export function GlobalOperationsPage() {
+  const onGetStarted = useGetStarted();
   return (
     <div className="min-h-screen bg-[#0a0f1e] pt-20">
       <section className="relative py-24 lg:py-32 overflow-hidden">

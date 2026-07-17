@@ -138,7 +138,7 @@ export function PricingPage({ onGetStarted }: PricingPageProps) {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
             <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mb-5">Still have questions?</h2>
-            <p className="text-slate-400 mb-8">Book a no-obligation discovery call. We'll walk you through the right plan for your brokerage.</p>
+            <p className="text-slate-400 mb-8">Book a no-obligation discovery call. We'll walk you through the right plan for your business, whether you're in mortgage, real estate, or insurance.</p>
             <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-[#2d5bb5]/30">
               Book a Discovery Call <ArrowRight size={18} />

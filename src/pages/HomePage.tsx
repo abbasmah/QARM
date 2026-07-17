@@ -208,7 +208,7 @@ export function HomePage({ onGetStarted }: HomePageProps) {
               View all services <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-          <p className="text-center text-xs text-slate-600 mt-6">Built for mortgage operations — the same infrastructure runs real estate and insurance pipelines today.</p>
+          <p className="text-center text-sm text-slate-400 mt-6">Built for mortgage operations — the same infrastructure runs real estate and insurance pipelines today.</p>
         </div>
       </section>
 

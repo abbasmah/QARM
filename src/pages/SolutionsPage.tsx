@@ -170,7 +170,7 @@ export function SolutionsPage() {
               Operating outside Canada?
             </h2>
             <p className="text-slate-400 mb-8">
-              Book a discovery call. We'll confirm our capabilities for your specific market and build a custom onboarding plan around your workflow.
+              Book a discovery call. We'll confirm our capabilities for your specific market and industry — mortgage, real estate, or insurance — and build a custom onboarding plan around your workflow.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href={CALENDLY} target="_blank" rel="noopener noreferrer"

@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, ChevronRight, BarChart3, ShieldCheck, FileText, Calendar, MessageSquare, Target, Star, TrendingUp, Clock, Award, Globe } from 'lucide-react';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { CountUp } from '../components/CountUp';
+import { useGetStarted } from '../context/GetStartedContext';
 
-interface HomePageProps { onGetStarted: () => void; }
 
 const IMGS = {
   hero: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=700&q=55&auto=format&fit=crop',
@@ -19,7 +19,8 @@ const testimonials = [
   { quote: "As a high-volume broker I was drowning in admin. QARM handles everything from condition fulfillment to lender follow-ups. My closing ratio improved because I'm actually spending time with clients now.", name: "M. Fournier", role: "Senior Mortgage Broker", location: "Quebec, Canada", initial: "M" },
 ];
 
-export function HomePage({ onGetStarted }: HomePageProps) {
+export function HomePage() {
+  const onGetStarted = useGetStarted();
   return (
     <div className="min-h-screen bg-[#0a0f1e]">
 
@@ -208,7 +209,7 @@ export function HomePage({ onGetStarted }: HomePageProps) {
               View all services <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
-          <p className="text-center text-sm text-slate-400 mt-6">Built for mortgage operations — the same infrastructure runs real estate and insurance pipelines today.</p>
+          <p className="text-center text-sm text-slate-400 mt-6">Built for mortgage operations — the same infrastructure runs <span className="text-[#7aa3e5]">real estate and insurance</span> pipelines today.</p>
         </div>
       </section>
 

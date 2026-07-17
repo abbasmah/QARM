@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { CheckCircle2, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { AnimatedSection } from '../components/AnimatedSection';
+import { useGetStarted } from '../context/GetStartedContext';
 
-interface PricingPageProps { onGetStarted: () => void; }
 
 const faqs = [
   { q: 'What exactly does an operations specialist do versus a virtual assistant?', a: 'A generic virtual assistant handles tasks. A QARM operations specialist manages systems. They understand the Canadian mortgage workflow end-to-end — from Filogix data entry standards to lender-specific submission requirements — and operate as a proactive member of your team, not just a task executor.' },
@@ -28,7 +28,8 @@ function FaqItem({ q, a }: { q: string; a: string }) {
   );
 }
 
-export function PricingPage({ onGetStarted }: PricingPageProps) {
+export function PricingPage() {
+  const onGetStarted = useGetStarted();
   return (
     <div className="min-h-screen bg-[#0a0f1e] pt-20">
 

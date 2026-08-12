@@ -84,8 +84,8 @@ export function HomePage() {
                   sizes="(max-width: 1024px) 900px, 1600px"
                   alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
                   width={1600} height={900} className="w-full h-full object-cover rounded-3xl"
-                  style={{filter: 'brightness(1.9) saturate(1.35) contrast(1.05)'}} loading="eager" />
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/25 to-transparent" />
+                  style={{filter: 'brightness(1.15) saturate(1.15)'}} loading="eager" />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/35 to-[#0a0f1e]/15" />
               </div>
               <div className="relative glass-card rounded-2xl p-6 glow-blue">
                 <div className="flex items-center justify-between mb-5">
@@ -181,9 +181,9 @@ export function HomePage() {
             srcSet="/images/services-pipeline-800w.webp 800w, /images/services-pipeline-1400w.webp 1400w"
             sizes="(max-width: 768px) 800px, 1400px"
             alt="Colorful pipeline visualization showing documents and tasks flowing through organized stages"
-            width={1400} height={1050} className="w-full h-full object-cover opacity-[0.30]" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#080d18] via-[#080d18]/75 to-[#080d18]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080d18] via-transparent to-[#080d18]" />
+            width={1400} height={1050} className="w-full h-full object-cover opacity-[0.55]" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080d18] via-[#080d18]/45 to-[#080d18]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080d18] via-[#080d18]/20 to-[#080d18]" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-20">
@@ -225,9 +225,9 @@ export function HomePage() {
             srcSet="/images/how-it-works-800w.webp 800w, /images/how-it-works-1400w.webp 1400w"
             sizes="(max-width: 768px) 800px, 1400px"
             alt="Three glass capsules showing the QARM process: scattered documents becoming organized, then fully structured and checked off"
-            width={1400} height={933} className="w-full h-full object-cover opacity-[0.22]" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e] via-[#0a0f1e]/70 to-[#0a0f1e]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-transparent to-[#0a0f1e]" />
+            width={1400} height={933} className="w-full h-full object-cover opacity-[0.50]" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e] via-[#0a0f1e]/45 to-[#0a0f1e]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/20 to-[#0a0f1e]" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center max-w-2xl mx-auto mb-20">

@@ -130,7 +130,7 @@ export function Nav({ onGetStarted }: NavProps) {
             ))}
             <div className="w-px h-5 bg-white/10 mx-2" />
             <button
-              onClick={onGetStarted}
+              onClick={() => onGetStarted()}
               type="button"
               className="flex items-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-[#2d5bb5]/30"
             >

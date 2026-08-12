@@ -30,7 +30,7 @@ export function Footer() {
               </h2>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button onClick={onGetStarted} type="button"
+              <button onClick={() => onGetStarted()} type="button"
                 className="flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-lg hover:shadow-[#2d5bb5]/30">
                 Get Your Support Plan
               </button>
@@ -66,7 +66,7 @@ export function Footer() {
               <span className="font-display font-bold text-xl text-white">QARM</span>
             </div>
             <p className="text-slate-400 text-sm leading-relaxed max-w-xs mb-6">
-              Premium mortgage operations infrastructure for brokers and mortgage professionals across Canada, the United States, and global lending markets. CRM coordination, pipeline management, and workflow systems built for the modern mortgage business.
+              Flexible operational support for mortgage, real estate, insurance and relationship-driven professionals across Canada, the United States and selected international markets.
             </p>
             <div className="flex items-center gap-2 text-sm text-slate-400 mb-4">
               <Mail size={14} className="text-[#4d7fd4]" />
@@ -129,7 +129,7 @@ export function Footer() {
         <div className="hr-brand mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-slate-600">
-            © QARM — Quality Assistance & Relationship Management. Est. 2023. All rights reserved.
+            © {new Date().getFullYear()} QARM Corp. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link to="/privacy" className="text-xs text-slate-600 hover:text-slate-400 transition-colors">Privacy Policy</Link>

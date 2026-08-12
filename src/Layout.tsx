@@ -13,7 +13,7 @@ const pageMeta: Record<string, PageMetaData> = {
   '/services': { title: 'QARM Services | CRM, Pipeline & Workflow Support for Mortgage, Real Estate & Insurance', description: 'QARM handles CRM management, document coordination, client communication, and lead & appointment coordination for mortgage, real estate, and insurance professionals.', keywords: 'CRM management, pipeline coordination, document coordination, client communication support, lead coordination, Filogix, Velocity, Finmo, mortgage operations, real estate operations, insurance operations' },
   '/pricing': { title: 'QARM Pricing | Flexible to Full-Time Operations Support Plans', description: 'Flexible operational support from $349 CAD/month. Part-time ($899), full-time ($1,599), and custom team plans available. No setup fees.', keywords: 'operations support pricing, mortgage operations cost, real estate operations cost, insurance operations cost, operations support pricing Canada' },
   '/about': { title: 'About QARM | Operational Infrastructure Company — Est. 2023', description: 'QARM has provided dedicated operational infrastructure since 2023 — founder-led accounts and a small specialist team supporting mortgage, real estate, and insurance professionals.', keywords: 'QARM company, operations infrastructure company, mortgage operations company, real estate operations company, insurance operations company' },
-  '/contact': { title: 'Contact QARM | Book a Discovery Call', description: 'Book a discovery call or send a message. QARM responds within one business day. Email: info@theqarm.com', keywords: 'contact QARM, book discovery call, QARM discovery call' },
+  '/contact': { title: 'Contact QARM | Get Your Support Plan', description: 'Tell QARM where your workload is getting stuck and receive a recommended operational support plan within one business day.', keywords: 'contact QARM, get support plan, QARM enquiry' },
   '/broker-growth': { title: 'QARM Digital Presence | Websites & Social Media Management', description: 'Professional websites and social media management for mortgage, real estate, and insurance professionals — from $1,499 CAD.', keywords: 'professional website design, social media management, small business website, mortgage broker website, real estate agent website' },
   '/us-mortgage-operations': { title: 'QARM | Mortgage Operations Support for US Loan Originators (MLOs)', description: 'Dedicated mortgage operations support for American MLOs. Pipeline management, file coordination, and RESPA-aware compliance coordination — final compliance review stays with your licensed team.', keywords: 'mortgage operations support USA, MLO operations support, mortgage loan originator back office' },
   '/privacy': { title: 'Privacy Policy | QARM', description: 'QARM Privacy Policy — how we collect, use, and protect your personal information.', keywords: 'QARM privacy policy, operations support privacy' },
@@ -44,8 +44,12 @@ const PageLoader = () => (
 
 export default function Layout() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [presetCapacity, setPresetCapacity] = useState<string | undefined>(undefined);
   const { pathname } = useLocation();
-  const onGetStarted = () => setModalOpen(true);
+  const onGetStarted = (preset?: string) => {
+    setPresetCapacity(preset);
+    setModalOpen(true);
+  };
 
   useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, [pathname]);
 
@@ -61,7 +65,7 @@ export default function Layout() {
           <Footer />
         </GetStartedProvider>
       </main>
-      <GetStartedModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <GetStartedModal isOpen={modalOpen} onClose={() => setModalOpen(false)} presetCapacity={presetCapacity} />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import { ArrowRight, Target, Shield, Zap, Users, Award, Globe, BarChart3, Palette } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AnimatedSection } from '../components/AnimatedSection';
-import { CountUp } from '../components/CountUp';
 import { useGetStarted } from '../context/GetStartedContext';
 
 
@@ -70,11 +69,11 @@ export function AboutPage() {
           <AnimatedSection className="text-center mb-16">
             <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">Our Organisation</p>
             <h2 className="font-display font-bold text-4xl text-white mb-5">A dedicated team. Direct accountability.</h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">QARM has operated as a dedicated mortgage operations partner since 2023. Every client works directly with QARM's founder on strategy and account direction, supported by a small team of specialists who execute the daily work.</p>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">QARM has provided dedicated operational support since 2023. Every client works with a single point of contact for strategy and account direction, supported by a team of specialists who execute the daily work.</p>
           </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { icon:<Target size={22}/>, role:'Founder-Led Accounts', desc:'Every client works directly with QARM\'s founder on strategy and account direction — not a rotating account manager.', orange:false },
+              { icon:<Target size={22}/>, role:'Direct Accountability', desc:'Every client has a single point of contact for strategy and account direction — not a rotating account manager.', orange:false },
               { icon:<BarChart3 size={22}/>, role:'CRM & Pipeline Management', desc:'A dedicated function keeping your CRM, pipeline, and follow-ups accurate and current, day in and day out.', orange:true },
               { icon:<Palette size={22}/>, role:'Marketing & Digital Support', desc:'Client outreach, content, and creative work — the team behind your communications and digital presence.', orange:false },
             ].map((t, i) => (
@@ -90,23 +89,24 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Stats with countup */}
+      {/* Stats */}
       <section className="py-16 border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            {[
-              { val:2023, suffix:'', label:'Founded', sub:'Est. in Toronto, Canada', isYear:true, orange:false },
-              { val:0, suffix:'', label:'Onboarding', sub:'Days, not weeks', isText:true, orange:false },
-              { val:5, suffix:'', label:'Markets active', sub:'Canada, US, UK, AU, UAE', orange:true },
-            ].map((s, i) => (
-              <AnimatedSection key={i} delay={i * 80}>
-                <p className={`text-3xl font-display font-bold mb-1 ${s.orange ? 'text-orange-400' : 'text-[#7aa3e5]'}`}>
-                  {(s as any).isText ? 'Days, not weeks' : s.isYear ? '2023' : <CountUp end={s.val} suffix={s.suffix} />}
-                </p>
-                <p className="text-sm font-semibold text-slate-300 mb-1">{s.label}</p>
-                <p className="text-xs text-slate-500">{s.sub}</p>
-              </AnimatedSection>
-            ))}
+            <AnimatedSection>
+              <p className="text-3xl font-display font-bold mb-1 text-[#7aa3e5]">2023</p>
+              <p className="text-sm font-semibold text-slate-300 mb-1">Established</p>
+              <p className="text-xs text-slate-500">QARM Corp.</p>
+            </AnimatedSection>
+            <AnimatedSection delay={80}>
+              <p className="text-3xl font-display font-bold mb-1 text-[#7aa3e5]">Days, not weeks</p>
+              <p className="text-sm font-semibold text-slate-300 mb-1">Onboarding</p>
+              <p className="text-xs text-slate-500">From confirmation to live</p>
+            </AnimatedSection>
+            <AnimatedSection delay={160}>
+              <p className="text-sm font-semibold text-slate-300 mb-3">Supporting Clients Across Multiple Markets</p>
+              <p className="text-orange-400 text-sm font-display font-semibold">Canada · United States · United Kingdom · Australia · UAE</p>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -146,7 +146,7 @@ export function AboutPage() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
             <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mb-5">Work with a partner who knows your industry.</h2>
-            <p className="text-slate-400 mb-8">Book a discovery call and see what QARM's mortgage-specific operations infrastructure can do for your business.</p>
+            <p className="text-slate-400 mb-8">Book a free workflow review and see what QARM's mortgage-specific operations infrastructure can do for your business.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">

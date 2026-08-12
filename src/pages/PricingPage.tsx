@@ -127,6 +127,13 @@ const pilotProjects = [
   'Workflow review and recommendations',
 ];
 
+const planToCapacity: Record<string, string> = {
+  'Flexible Support': 'Approximately 20 hours',
+  'Part-Time Support': 'Approximately 80 hours',
+  'Full-Time Operations': 'Approximately 160 hours',
+  'Custom Team': 'Custom team capacity',
+};
+
 export function PricingPage() {
   const onGetStarted = useGetStarted();
   return (
@@ -178,7 +185,7 @@ export function PricingPage() {
                       </li>
                     ))}
                   </ul>
-                  <button onClick={onGetStarted} type="button"
+                  <button onClick={() => onGetStarted(planToCapacity[tier.name])} type="button"
                     className={`w-full py-3.5 text-center rounded-lg text-sm font-semibold transition-all ${
                       tier.highlighted
                         ? 'bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white hover:shadow-xl hover:shadow-[#2d5bb5]/30'
@@ -206,9 +213,9 @@ export function PricingPage() {
             <div className="glass-card rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row md:items-center gap-8">
               <div className="flex-1">
                 <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-3">Not Ready for Monthly Support?</p>
-                <h3 className="font-display font-bold text-2xl text-white mb-3">Start with a focused Mortgage Operations Pilot.</h3>
+                <h3 className="font-display font-bold text-2xl text-white mb-3">Start with a Focused Operations Pilot.</h3>
                 <p className="text-slate-400 text-sm leading-relaxed mb-5">
-                  Use the pilot to address one defined operational priority and experience how QARM works before selecting an ongoing support plan.
+                  Address one defined operational priority and experience how QARM works before selecting an ongoing support plan.
                 </p>
                 <div className="flex flex-wrap gap-2 mb-5">
                   {pilotProjects.map((p) => (
@@ -223,7 +230,7 @@ export function PricingPage() {
                   <span className="text-slate-500 text-sm">CAD</span>
                 </div>
                 <p className="text-xs text-slate-600 mb-6">Up to 10 hours</p>
-                <button onClick={onGetStarted} type="button"
+                <button onClick={() => onGetStarted('10-hour pilot')} type="button"
                   className="w-full py-3.5 text-center bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white rounded-lg text-sm font-semibold transition-all">
                   Start My Pilot
                 </button>
@@ -275,7 +282,7 @@ export function PricingPage() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
             <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mb-5">Still have questions?</h2>
-            <p className="text-slate-400 mb-8">Book a quick call. We'll walk you through the right plan for your business, whether you're in mortgage, real estate, or insurance.</p>
+            <p className="text-slate-400 mb-8">Book a free workflow review. We'll walk you through the right plan for your business, whether you're in mortgage, real estate, or insurance.</p>
             <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-[#2d5bb5]/30">
               Book a Free Workflow Review <ArrowRight size={18} />

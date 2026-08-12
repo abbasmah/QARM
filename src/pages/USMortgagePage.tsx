@@ -132,7 +132,7 @@ export function USMortgagePage() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
             <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mb-5">Ready to offload your loan operations?</h2>
-            <p className="text-slate-400 mb-8">Book a discovery call. We'll map your current workflow and show you exactly how QARM fits into your origination process.</p>
+            <p className="text-slate-400 mb-8">Book a free workflow review. We'll map your current workflow and show you exactly how QARM fits into your origination process.</p>
             <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">
               Book a Free Workflow Review <ArrowRight size={18} />

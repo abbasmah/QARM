@@ -126,7 +126,7 @@ export function ServicesPage() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
             <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mb-5">Ready to offload your operations?</h2>
-            <p className="text-slate-400 mb-8">Book a discovery call and we'll identify exactly which services will have the highest impact on your business — whether that's mortgage, real estate, or insurance.</p>
+            <p className="text-slate-400 mb-8">Book a free workflow review and we'll identify exactly which services will have the highest impact on your business — whether that's mortgage, real estate, or insurance.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all">

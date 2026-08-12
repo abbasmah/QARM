@@ -58,7 +58,7 @@ export function BrokerGrowthPage() {
               Beyond day-to-day operations, QARM offers website and social media support for mortgage, real estate, insurance, and service-based professionals who want a stronger digital presence without hiring separately for it.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={onGetStarted} type="button"
+              <button onClick={() => onGetStarted()} type="button"
                 className="inline-flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">
                 Get Your Support Plan <ArrowRight size={18} />
               </button>
@@ -129,7 +129,7 @@ export function BrokerGrowthPage() {
               <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mb-5">Combine operations with a digital presence.</h2>
               <p className="text-slate-400 mb-8 max-w-xl mx-auto">Pair a QARM operations plan with a website build or social media management, and let one partner handle both your backend and your presence.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button onClick={onGetStarted} type="button"
+                <button onClick={() => onGetStarted()} type="button"
                   className="flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">
                   Get Your Support Plan <ArrowRight size={18} />
                 </button>

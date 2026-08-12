@@ -24,13 +24,20 @@ export function PrivacyPage() {
     <div className="min-h-screen bg-[#0a0f1e] pt-32 pb-24">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection>
-          <h1 className="font-display font-bold text-4xl lg:text-5xl text-white mb-6">QARM Privacy Policy</h1>
-          <p className="text-slate-400 leading-relaxed mb-3">QARM ("Quality Assistance Relationship Management") values your privacy and is committed to protecting your personal information.</p>
-          <p className="text-slate-400 leading-relaxed mb-14">This Privacy Policy explains how we collect, use, and protect information when you use our website and services.</p>
+          <h1 className="font-display font-bold text-4xl lg:text-5xl text-white mb-4">QARM Privacy Policy</h1>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 mb-6">
+            <p className="text-xs text-slate-500">Effective date: August 12, 2026</p>
+            <p className="text-xs text-slate-500">Last updated: August 12, 2026</p>
+          </div>
+          <p className="text-slate-400 leading-relaxed mb-3">QARM Corp. ("QARM") values your privacy and is committed to protecting your personal information.</p>
+          <p className="text-slate-400 leading-relaxed mb-3">This Privacy Policy explains how we collect, use, and protect information when you use our website and services.</p>
+          <p className="text-slate-400 leading-relaxed mb-14">Privacy enquiries: <a href="mailto:info@theqarm.com" className="text-[#7aa3e5] hover:text-white transition-colors">info@theqarm.com</a></p>
 
           <Section num="1" title="Information We Collect">
             <p className="font-semibold text-white text-sm mb-2">Personal Information</p>
-            <List items={['Name', 'Email address', 'Phone number', 'Company information']} />
+            <List items={['Full name', 'Business email address', 'Phone number', 'Country, province, state or region', 'Company name', 'Industry and professional role']} />
+            <p className="font-semibold text-white text-sm mb-2 pt-3">Support Plan Form Information</p>
+            <List items={['Type of operational support requested', 'Preferred monthly capacity', 'Operational challenges described in free-text fields', 'Preferred next step and communication preference']} />
             <p className="font-semibold text-white text-sm mb-2 pt-3">Technical Information</p>
             <List items={['IP address', 'Browser type', 'Device information', 'Website usage analytics']} />
             <p className="font-semibold text-white text-sm mb-2 pt-3">Business Information</p>

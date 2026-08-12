@@ -28,9 +28,9 @@ export function TermsPage() {
           <p className="text-slate-400 leading-relaxed mb-14">Welcome to QARM (Quality Assistance Relationship Management). By accessing or using our website and services, you agree to comply with and be bound by the following Terms of Service.</p>
 
           <Section num="1" title="Services">
-            <p className="text-sm">QARM provides remote mortgage operations support services for mortgage brokers and related businesses. Services may include, but are not limited to:</p>
-            <List items={['Document collection', 'CRM and system updates', 'Client follow-ups', 'Administrative support', 'Mortgage file processing assistance']} />
-            <p className="text-sm pt-2">QARM does not provide legal, financial, mortgage underwriting, or lending advice.</p>
+            <p className="text-sm">QARM Corp. provides remote operational and administrative support services for professionals and businesses. Services may include, but are not limited to:</p>
+            <List items={['Operational and administrative support', 'CRM and pipeline management', 'Client and referral-partner follow-up', 'Document coordination', 'Calendar and inbox support', 'Marketing coordination', 'Website and digital-presence services', 'Workflow setup and management', 'Mortgage-related administrative support where applicable']} />
+            <p className="text-sm pt-2">Mortgage-related services are limited to administrative and operational support performed under the direction and final approval of the licensed mortgage professional. QARM does not independently provide mortgage advice, lender approval, legal advice, financial advice or licensed underwriting services.</p>
           </Section>
 
           <Section num="2" title="Use of Website">
@@ -41,7 +41,7 @@ export function TermsPage() {
 
           <Section num="3" title="Client Responsibilities">
             <p className="text-sm">Clients are responsible for:</p>
-            <List items={['Providing accurate information', 'Maintaining compliance with applicable mortgage regulations', 'Reviewing all submitted documents and communications', 'Ensuring final approval of mortgage-related decisions']} />
+            <List items={['Providing accurate information', 'Maintaining compliance with applicable regulations in their industry and jurisdiction', 'Reviewing all submitted documents and communications', 'Ensuring final approval of regulated decisions where applicable']} />
             <p className="text-sm pt-2">QARM acts as an operational support provider only.</p>
           </Section>
 

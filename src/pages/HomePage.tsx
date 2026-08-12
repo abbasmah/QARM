@@ -6,12 +6,6 @@ import { useGetStarted } from '../context/GetStartedContext';
 
 const CALENDLY_URL = 'https://calendly.com/theqarm-info/30min';
 
-const IMGS = {
-  hero: 'https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=700&q=55&auto=format&fit=crop',
-  brokerDesk: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&q=55&auto=format&fit=crop',
-  office: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=50&auto=format&fit=crop',
-};
-
 const faqs = [
   { q: 'What types of professionals does QARM support?', a: 'Mortgage brokers and agents, real estate professionals, insurance advisors, and service-based professionals who need CRM, follow-up, document coordination, or administrative support.' },
   { q: 'Can I start small before committing?', a: 'Yes. Flexible Support starts at 20 hours per month, and a focused 10-hour pilot is available for $149 CAD if you want to begin with one immediate priority.' },
@@ -56,7 +50,7 @@ export function HomePage() {
               </p>
               <p className="text-sm text-slate-500 mb-8">Flexible support from $349 CAD/month. No long-term commitment.</p>
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button onClick={onGetStarted} type="button"
+                <button onClick={() => onGetStarted()} type="button"
                   className="flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all duration-200 hover:shadow-xl hover:shadow-[#2d5bb5]/30">
                   Get Your Support Plan <ArrowRight size={18} />
                 </button>
@@ -77,20 +71,25 @@ export function HomePage() {
               {/* Founder line — real social proof */}
               <div className="flex items-center gap-3 mt-6">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2d5bb5] to-[#1c2a4a] flex items-center justify-center text-white font-display font-bold text-xs border border-[#2d5bb5]/40">A</div>
-                <p className="text-xs text-slate-500">Founded by <span className="text-slate-400">Abbas Shah</span> · Toronto, Canada · Est. 2023 · Currently accepting new clients</p>
+                <p className="text-xs text-slate-500">QARM Corp. · Operational support since 2023 · Currently accepting new clients</p>
               </div>
             </div>
 
             {/* Dashboard preview */}
             <div className="relative hidden lg:block" style={{animation:'slide-up 0.7s ease 0.2s both',opacity:0}}>
-              <div className="absolute -inset-4 rounded-3xl overflow-hidden opacity-15">
-                <img src={IMGS.hero} alt="" width={800} height={600} className="w-full h-full object-cover" loading="eager" />
+              <div className="absolute -inset-4 rounded-3xl overflow-hidden opacity-30">
+                <img
+                  src="/images/hero-operations-1600w.webp"
+                  srcSet="/images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
+                  sizes="(max-width: 1024px) 900px, 1600px"
+                  alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
+                  width={1600} height={900} className="w-full h-full object-cover rounded-3xl" loading="eager" />
                 <div className="absolute inset-0 bg-gradient-to-br from-[#0a0f1e]/80 to-transparent" />
               </div>
               <div className="relative glass-card rounded-2xl p-6 glow-blue">
                 <div className="flex items-center justify-between mb-5">
                   <div>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Operations Dashboard</p>
+                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Sample Operations Dashboard</p>
                     <h3 className="text-white font-display font-semibold text-sm">Pipeline Overview</h3>
                   </div>
                   <div className="flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full">
@@ -112,10 +111,10 @@ export function HomePage() {
                 </div>
                 <div className="space-y-2">
                   {[
-                    { action: 'Document Review Complete', client: 'Smith, J. — Bank submission', time: '2m ago', color: 'emerald' },
-                    { action: 'CRM Updated', client: 'Chen, M. — Commitment received', time: '18m ago', color: 'blue' },
-                    { action: 'Follow-Up Sent', client: 'Patel, R. — Documents requested', time: '1h ago', color: 'orange' },
-                    { action: 'Appointment Booked', client: 'Sharma, A. — Discovery call set', time: '2h ago', color: 'blue' },
+                    { action: 'Document Review Complete', client: 'Client File A — Application review', time: '2m ago', color: 'emerald' },
+                    { action: 'CRM Updated', client: 'Client File B — Documents requested', time: '18m ago', color: 'blue' },
+                    { action: 'Follow-Up Sent', client: 'Client File C — Follow-up scheduled', time: '1h ago', color: 'orange' },
+                    { action: 'Appointment Booked', client: 'Client File D — Appointment confirmed', time: '2h ago', color: 'blue' },
                   ].map((item) => (
                     <div key={item.client} className="flex items-center gap-3 p-2.5 bg-white/[0.03] rounded-lg border border-white/[0.04]">
                       <div className={`w-2 h-2 rounded-full shrink-0 ${item.color === 'emerald' ? 'bg-emerald-400' : item.color === 'blue' ? 'bg-[#4d7fd4]' : 'bg-orange-400'}`} />
@@ -175,8 +174,14 @@ export function HomePage() {
 
       {/* 3. SERVICES OVERVIEW */}
       <section className="py-28 bg-[#080d18] border-y border-white/[0.05] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.08]">
-          <img src={IMGS.office} alt="" width={1200} height={600} className="w-full h-full object-cover" loading="lazy" />
+        <div className="absolute inset-0 opacity-[0.12]">
+          <img
+            src="/images/services-pipeline-1400w.webp"
+            srcSet="/images/services-pipeline-800w.webp 800w, /images/services-pipeline-1400w.webp 1400w"
+            sizes="(max-width: 768px) 800px, 1400px"
+            alt="Colorful pipeline visualization showing documents and tasks flowing through organized stages"
+            width={1400} height={1050} className="w-full h-full object-cover" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080d18]/60 via-[#080d18]/40 to-[#080d18]/80" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-20">
@@ -213,10 +218,20 @@ export function HomePage() {
       {/* 4. HOW QARM WORKS — 3 steps for homepage */}
       <section className="py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center max-w-2xl mx-auto mb-20">
+          <AnimatedSection className="text-center max-w-2xl mx-auto mb-12">
             <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">How It Works</p>
             <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Three steps. No complexity.</h2>
             <p className="text-slate-400 text-lg">Tell us what you need. We'll handle the rest.</p>
+          </AnimatedSection>
+          <AnimatedSection className="mb-16">
+            <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden shadow-2xl shadow-[#2d5bb5]/10 border border-white/[0.06]">
+              <img
+                src="/images/how-it-works-1400w.webp"
+                srcSet="/images/how-it-works-800w.webp 800w, /images/how-it-works-1400w.webp 1400w"
+                sizes="(max-width: 768px) 800px, 1400px"
+                alt="Three glass capsules showing the QARM process: scattered documents becoming organized, then fully structured and checked off"
+                width={1400} height={933} className="w-full h-auto" loading="lazy" />
+            </div>
           </AnimatedSection>
           <div className="relative">
             <div className="hidden lg:block absolute top-[52px] left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-[#2d5bb5]/20 to-transparent" />
@@ -237,7 +252,7 @@ export function HomePage() {
             </div>
           </div>
           <div className="text-center mt-14">
-            <button onClick={onGetStarted} type="button" className="inline-flex items-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-[#2d5bb5]/30">
+            <button onClick={() => onGetStarted()} type="button" className="inline-flex items-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-[#2d5bb5]/30">
               Start Step One <ArrowRight size={18} />
             </button>
           </div>
@@ -283,7 +298,7 @@ export function HomePage() {
           <div className="grid md:grid-cols-2 gap-5">
             {[
               { icon: <TrendingUp size={18} />, title: 'No forced migrations', desc: 'QARM adapts to your existing CRM and workflow — you keep using the tools you already know.', orange: false },
-              { icon: <CheckCircle2 size={18} />, title: 'Founder-led accounts', desc: 'You work directly with the person running QARM on strategy and direction — not a rotating account manager.', orange: true },
+              { icon: <CheckCircle2 size={18} />, title: 'Direct accountability', desc: 'Every client has a single point of contact for strategy and direction — not a rotating account manager.', orange: true },
               { icon: <Calendar size={18} />, title: 'No long-term lock-in', desc: 'Scale up or down to match your volume. Flexible Support is month-to-month with no commitment.', orange: false },
               { icon: <MessageSquare size={18} />, title: 'Capacity available now', desc: 'QARM is currently accepting new clients. Onboarding typically begins within days of confirmation.', orange: true },
             ].map((p, i) => (
@@ -340,7 +355,7 @@ export function HomePage() {
             <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Ready to take back your time?</h2>
             <p className="text-slate-400 text-lg mb-10 max-w-xl mx-auto">Tell us what's creating the most pressure. We'll recommend a plan within one business day.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={onGetStarted} type="button"
+              <button onClick={() => onGetStarted()} type="button"
                 className="inline-flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-10 py-5 rounded-lg text-base font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">
                 Get Your Support Plan <ArrowRight size={18} />
               </button>

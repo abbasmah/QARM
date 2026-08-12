@@ -1,10 +1,11 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { X, CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface GetStartedModalProps {
   isOpen: boolean;
   onClose: () => void;
+  presetCapacity?: string;
 }
 
 // Deployed Cloudflare Worker — receives the form POST and sends the email via Resend
@@ -25,8 +26,6 @@ const roles = [
   'Other',
 ];
 
-const volumes = ['Getting established', '1–5 files', '6–15 files', '16–30 files', 'More than 30 files', 'Prefer not to say'];
-
 const supportOptions = [
   'CRM and pipeline management',
   'Client follow-up',
@@ -36,6 +35,7 @@ const supportOptions = [
   'Administrative support',
   'Calendar and inbox management',
   'Social media and marketing coordination',
+  'Website support',
   'Workflow setup or cleanup',
   'Reporting and task management',
   'Not sure — recommend a plan',
@@ -43,11 +43,11 @@ const supportOptions = [
 
 const capacities = ['10-hour pilot', 'Approximately 20 hours', 'Approximately 80 hours', 'Approximately 160 hours', 'Custom team capacity', 'Not sure'];
 
-const nextSteps = ['Send me a recommended plan', 'Book a quick call', 'Contact me by email', 'Contact me by phone'];
+const nextSteps = ['Send me a recommended plan', 'Contact me by email', 'Contact me by phone', 'Book a free workflow review'];
 
 const initialForm = {
-  name: '', email: '', phone: '', region: '',
-  industry: '', role: '', volume: '',
+  name: '', email: '', phone: '', country: '', region: '', company: '',
+  industry: '', role: '',
   support: [] as string[], capacity: '', challenge: '', nextStep: '',
   website: '', // honeypot — real visitors never fill this in, bots often do
 };
@@ -68,11 +68,17 @@ function Chip({ label, active, onClick }: { label: string; active: boolean; onCl
   );
 }
 
-export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
+export function GetStartedModal({ isOpen, onClose, presetCapacity }: GetStartedModalProps) {
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'submitted' | 'error'>('idle');
   const [form, setForm] = useState(initialForm);
   const totalSteps = 3;
+
+  useEffect(() => {
+    if (isOpen && presetCapacity) {
+      setForm((f) => ({ ...f, capacity: presetCapacity }));
+    }
+  }, [isOpen, presetCapacity]);
 
   const update = (field: string, value: string) => setForm((f) => ({ ...f, [field]: value }));
   const toggleSupport = (opt: string) =>
@@ -93,7 +99,7 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
   };
 
   const canAdvance =
-    step === 1 ? form.name && form.email && form.phone && form.region
+    step === 1 ? form.name && form.email && form.phone && form.country && form.region
     : step === 2 ? form.support.length > 0
     : true;
 
@@ -107,10 +113,11 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
           name: form.name,
           email: form.email,
           phone: form.phone,
+          country: form.country,
           region: form.region,
+          company: form.company,
           industry: form.industry,
           role: form.role,
-          monthlyVolume: form.volume,
           supportNeeded: form.support.join(', '),
           preferredCapacity: form.capacity,
           challenge: form.challenge,
@@ -141,13 +148,21 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
                 <p className="text-sm text-slate-400 mt-1">
                   {status === 'submitted'
                     ? 'Request received.'
-                    : 'Tell us where your workload is getting stuck. We\u2019ll respond within one business day.'}
+                    : 'Tell us where your workload is getting stuck. QARM will review your requirements and recommend an appropriate scope and support plan within one business day.'}
                 </p>
               </div>
               <button onClick={handleClose} className="p-2 text-slate-500 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors shrink-0" type="button">
                 <X size={20} />
               </button>
             </div>
+
+            {status !== 'submitted' && presetCapacity && (
+              <div className="px-6 sm:px-7 pt-4">
+                <span className="inline-flex items-center gap-1.5 text-xs text-[#7aa3e5] bg-[#2d5bb5]/10 border border-[#2d5bb5]/20 rounded-full px-3 py-1.5">
+                  <CheckCircle2 size={12} /> Pre-selected: {presetCapacity}
+                </span>
+              </div>
+            )}
 
             {status !== 'submitted' && (
               <div className="flex gap-1.5 px-6 sm:px-7 pt-5">
@@ -165,12 +180,12 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
                   </div>
                   <h3 className="text-xl font-display font-bold text-white mb-2">Thank you.</h3>
                   <p className="text-slate-400 text-sm max-w-sm mb-6">
-                    Your requirements have been received. A QARM representative will review your information and respond within one business day.
+                    Your requirements have been received. QARM will review your information and respond within one business day.
                   </p>
-                  {form.nextStep === 'Book a quick call' && (
+                  {form.nextStep === 'Book a free workflow review' && (
                     <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-6 py-3.5 rounded-lg text-sm font-semibold transition-all">
-                      Book My Quick Call <ArrowRight size={16} />
+                      Book My Free Workflow Review <ArrowRight size={16} />
                     </a>
                   )}
                 </div>
@@ -198,6 +213,18 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
                         <div>
                           <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Phone</label>
                           <input type="tel" value={form.phone} onChange={(e) => update('phone', e.target.value)} placeholder="(416) 555-0100"
+                            className="w-full bg-white/[0.04] border border-white/[0.1] rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#2d5bb5] focus:ring-1 focus:ring-[#2d5bb5] transition-all" />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Company Name</label>
+                          <input type="text" value={form.company} onChange={(e) => update('company', e.target.value)} placeholder="Pinnacle Group"
+                            className="w-full bg-white/[0.04] border border-white/[0.1] rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#2d5bb5] focus:ring-1 focus:ring-[#2d5bb5] transition-all" />
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div>
+                          <label className="block text-xs font-medium text-slate-400 mb-2 uppercase tracking-wider">Country</label>
+                          <input type="text" value={form.country} onChange={(e) => update('country', e.target.value)} placeholder="Canada"
                             className="w-full bg-white/[0.04] border border-white/[0.1] rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#2d5bb5] focus:ring-1 focus:ring-[#2d5bb5] transition-all" />
                         </div>
                         <div>
@@ -244,12 +271,6 @@ export function GetStartedModal({ isOpen, onClose }: GetStartedModalProps) {
                         <label className="block text-xs font-medium text-slate-400 mb-3 uppercase tracking-wider">Role</label>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                           {roles.map((r) => <Chip key={r} label={r} active={form.role === r} onClick={() => update('role', r)} />)}
-                        </div>
-                      </div>
-                      <div>
-                        <label className="block text-xs font-medium text-slate-400 mb-3 uppercase tracking-wider">Current Monthly Volume</label>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-                          {volumes.map((v) => <Chip key={v} label={v} active={form.volume === v} onClick={() => update('volume', v)} />)}
                         </div>
                       </div>
                       <div>

@@ -57,10 +57,11 @@ export default {
 Name: ${data.name}
 Email: ${data.email}
 Phone: ${data.phone}
+Country: ${data.country || '—'}
 Region: ${data.region || '—'}
+Company: ${data.company || '—'}
 Industry: ${data.industry || '—'}
 Role: ${data.role || '—'}
-Monthly Volume: ${data.monthlyVolume || '—'}
 Support Needed: ${data.supportNeeded || '—'}
 Preferred Capacity: ${data.preferredCapacity || '—'}
 Challenge: ${data.challenge || '—'}

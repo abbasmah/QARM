@@ -26,7 +26,7 @@ const markets = [
   {
     flag: '🇦🇪', country: 'United Arab Emirates', title: 'Home Finance Operations Support',
     desc: "The UAE's property market is among the fastest-growing in the world. As home finance volumes rise across Dubai, Abu Dhabi, and the Emirates, mortgage consultants need operational infrastructure that matches the pace.",
-    context: ['Home finance consultants and mortgage advisers','CRM and pipeline coordination','Developer and resale property document coordination','Multilingual client communication support','Final compliance review stays with your licensed team'],
+    context: ['Home finance consultants and mortgage advisers','CRM and pipeline coordination','Developer and resale property document coordination','Multilingual communication coordination may be available depending on language and current capacity','Final compliance review stays with your licensed team'],
     highlight: "Supporting the UAE's booming property finance market.", img: IMGS.dubai, orange: false,
   },
   {
@@ -161,6 +161,13 @@ export function GlobalOperationsPage() {
               </AnimatedSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Service boundary */}
+      <section className="py-12 border-t border-white/[0.06]">
+        <div className="max-w-3xl mx-auto px-4">
+          <p className="text-xs text-slate-600 leading-relaxed text-center">Administrative and operational support is provided under client-approved procedures and the direction and final approval of the appropriately licensed professional.</p>
         </div>
       </section>
 

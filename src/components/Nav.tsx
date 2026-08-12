@@ -10,9 +10,8 @@ interface NavProps {
 const navLinks = [
   { label: 'Services', href: '/services' },
   {
-    label: 'Solutions',
+    label: 'Markets',
     children: [
-      { label: 'Broker Growth Services', href: '/broker-growth', desc: 'Websites, SEO & social for brokers' },
       { label: 'US Mortgage Operations', href: '/us-mortgage-operations', desc: 'Built for American MLOs' },
       { label: 'Global Operations', href: '/global-operations', desc: 'UK, UAE & emerging markets' },
     ],
@@ -130,14 +129,13 @@ export function Nav({ onGetStarted }: NavProps) {
               </a>
             ))}
             <div className="w-px h-5 bg-white/10 mx-2" />
-            <a
-              href="https://calendly.com/theqarm-info/30min"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={onGetStarted}
+              type="button"
               className="flex items-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 hover:shadow-lg hover:shadow-[#2d5bb5]/30"
             >
-              Book Discovery Call
-            </a>
+              Get Your Support Plan
+            </button>
           </div>
 
           {/* Mobile Toggle */}
@@ -153,8 +151,7 @@ export function Nav({ onGetStarted }: NavProps) {
           <div className="space-y-1 pt-2">
             <Link to="/services" className="block px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:text-white">Services</Link>
             <div className="px-4 py-2">
-              <p className="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-2">Solutions</p>
-              <Link to="/broker-growth" className="block py-2 text-sm text-slate-400 hover:text-white">Broker Growth Services</Link>
+              <p className="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-2">Markets</p>
               <Link to="/us-mortgage-operations" className="block py-2 text-sm text-slate-400 hover:text-white">US Mortgage Operations</Link>
               <Link to="/global-operations" className="block py-2 text-sm text-slate-400 hover:text-white">Global Operations</Link>
             </div>
@@ -168,10 +165,10 @@ export function Nav({ onGetStarted }: NavProps) {
               ))}
             </div>
             <div className="pt-3">
-              <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
+              <button onClick={() => { setMobileOpen(false); onGetStarted(); }} type="button"
                 className="block w-full text-center bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-5 py-3.5 rounded-lg text-sm font-semibold transition-all">
-                Book Discovery Call
-              </a>
+                Get Your Support Plan
+              </button>
             </div>
           </div>
         </div>

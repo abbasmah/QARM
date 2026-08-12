@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Mail } from 'lucide-react';
 import { QarmLogo } from './QarmLogo';
+import { useGetStarted } from '../context/GetStartedContext';
 
 const InstagramIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -15,6 +16,7 @@ const FacebookIcon = () => (
 );
 
 export function Footer() {
+  const onGetStarted = useGetStarted();
   return (
     <footer className="bg-[#050810] border-t border-white/[0.06]">
       {/* CTA Strip */}
@@ -28,15 +30,28 @@ export function Footer() {
               </h2>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
+              <button onClick={onGetStarted} type="button"
                 className="flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-lg hover:shadow-[#2d5bb5]/30">
-                Book a Discovery Call
-              </a>
+                Get Your Support Plan
+              </button>
               <Link to="/pricing"
                 className="flex items-center justify-center gap-2 bg-white/[0.06] hover:bg-white/[0.1] border border-white/10 text-slate-300 hover:text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all">
                 View Pricing
               </Link>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Security trust bar */}
+      <div className="border-b border-white/[0.06] bg-white/[0.01]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-slate-500">
+            <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#4d7fd4]" />Confidentiality agreements</span>
+            <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#4d7fd4]" />Role-based access</span>
+            <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#4d7fd4]" />Multi-factor authentication</span>
+            <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#4d7fd4]" />Access removed when services end</span>
+            <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#4d7fd4]" />Final approval by the licensed professional</span>
           </div>
         </div>
       </div>
@@ -78,10 +93,9 @@ export function Footer() {
             <ul className="space-y-3">
               {[
                 { label: 'CRM & Pipeline Management', href: '/services#crm' },
-                { label: 'Workflow Coordination', href: '/services#workflow' },
-                { label: 'Client Communication', href: '/services#communication' },
-                { label: 'Underwriting Support', href: '/services#underwriting' },
-                { label: 'Broker Growth Services', href: '/broker-growth' },
+                { label: 'Document & Workflow Coordination', href: '/services#documents' },
+                { label: 'Client & Partner Communication', href: '/services#communication' },
+                { label: 'Lead & Appointment Coordination', href: '/services#scheduling' },
                 { label: 'US Mortgage Operations', href: '/us-mortgage-operations' },
                 { label: 'Global Operations', href: '/global-operations' },
               ].map((item) => (

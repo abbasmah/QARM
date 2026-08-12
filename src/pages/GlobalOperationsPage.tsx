@@ -13,20 +13,20 @@ const IMGS = {
 const markets = [
   {
     flag: '🇬🇧', country: 'United Kingdom', title: 'Mortgage Adviser Operations Support',
-    desc: 'The UK mortgage market demands tight FCA compliance and high-volume operational precision. QARM supports mortgage advisers, DAs, ARs, and networks with dedicated back-office infrastructure.',
-    context: ['Mortgage advisers, DAs, ARs, and networks','FCA-compliant operational protocols','Criteria Hub, Twenty7Tec, Synaptic support','AIP and full application coordination','Sourcing system and lender portal management'],
-    highlight: 'FCA-aware operations. Compliance-first by design.', img: IMGS.london, orange: false,
+    desc: 'The UK mortgage market runs on tight compliance and high-volume operational precision. QARM supports mortgage advisers, DAs, ARs, and networks with dedicated back-office infrastructure that adapts to your existing systems.',
+    context: ['Mortgage advisers, DAs, ARs, and networks','CRM and pipeline management in your existing platform','AIP and full application coordination','Client communication and document collection','Final compliance review stays with your licensed team'],
+    highlight: 'Adapts to your systems. Compliance stays with you.', img: IMGS.london, orange: false,
   },
   {
     flag: '🇦🇺', country: 'Australia', title: 'Mortgage Broker Operations Support',
-    desc: "Australia's mortgage broking industry is one of the most broker-driven in the world. MFAA and FBAA members handle high application volumes across multiple lenders — QARM provides the operational infrastructure to manage it all efficiently.",
-    context: ['MFAA and FBAA member brokers','NCCP and responsible lending compliance','NextGen.Net, ApplyOnline, Loanapp support','Aggregator platform workflow coordination','Best interests duty documentation support'],
+    desc: "Australia's mortgage broking industry is one of the most broker-driven in the world. QARM provides the operational infrastructure to help brokers manage high application volumes across multiple lenders.",
+    context: ['Mortgage and finance brokers','CRM and aggregator platform coordination','Application tracking and lender follow-up','Document collection and organisation','Final compliance review stays with your licensed team'],
     highlight: "Supporting Australia's growing broker channel.", img: IMGS.sydney, orange: true,
   },
   {
     flag: '🇦🇪', country: 'United Arab Emirates', title: 'Home Finance Operations Support',
     desc: "The UAE's property market is among the fastest-growing in the world. As home finance volumes rise across Dubai, Abu Dhabi, and the Emirates, mortgage consultants need operational infrastructure that matches the pace.",
-    context: ['Home finance consultants and mortgage advisers','CBUAE regulation awareness','Islamic finance and conventional mortgage support','Developer and resale property coordination','Multilingual client communication support'],
+    context: ['Home finance consultants and mortgage advisers','CRM and pipeline coordination','Developer and resale property document coordination','Multilingual client communication support','Final compliance review stays with your licensed team'],
     highlight: "Supporting the UAE's booming property finance market.", img: IMGS.dubai, orange: false,
   },
   {
@@ -58,7 +58,7 @@ export function GlobalOperationsPage() {
             </p>
             <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-[#2d5bb5]/30">
-              Book a Discovery Call <ArrowRight size={18} />
+              Book a Free Workflow Review <ArrowRight size={18} />
             </a>
           </AnimatedSection>
         </div>
@@ -142,14 +142,14 @@ export function GlobalOperationsPage() {
       <section className="py-20 bg-[#080d18] border-y border-white/[0.05]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-12">
-            <h2 className="font-display font-bold text-3xl text-white mb-4">Active across 5 lending markets.</h2>
+            <h2 className="font-display font-bold text-3xl text-white mb-4">Supporting mortgage operations across 5 markets.</h2>
           </AnimatedSection>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
             {[
-              { flag: '🇨🇦', market: 'Canada', status: 'Full service', orange: true },
+              { flag: '🇨🇦', market: 'Canada', status: 'Home market', orange: true },
               { flag: '🇺🇸', market: 'United States', status: 'MLO support', orange: false },
-              { flag: '🇬🇧', market: 'UK', status: 'FCA-aware ops', orange: false },
-              { flag: '🇦🇺', market: 'Australia', status: 'MFAA/FBAA ops', orange: false },
+              { flag: '🇬🇧', market: 'UK', status: 'Adviser support', orange: false },
+              { flag: '🇦🇺', market: 'Australia', status: 'Broker support', orange: false },
               { flag: '🇦🇪', market: 'UAE', status: 'Home finance', orange: false },
             ].map((m, i) => (
               <AnimatedSection key={i} delay={i * 60}>
@@ -172,7 +172,7 @@ export function GlobalOperationsPage() {
             <p className="text-slate-400 mb-8">Tell us about your market and your workflow. We'll tell you whether — and how — QARM can support your business.</p>
             <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-[#2d5bb5]/30">
-              Book a Discovery Call <ArrowRight size={18} />
+              Book a Free Workflow Review <ArrowRight size={18} />
             </a>
           </AnimatedSection>
         </div>

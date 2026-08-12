@@ -1,4 +1,4 @@
-import { ArrowRight, Target, Shield, Zap, Users, Award, Globe, BarChart3 } from 'lucide-react';
+import { ArrowRight, Target, Shield, Zap, Users, Award, Globe, BarChart3, Palette } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { CountUp } from '../components/CountUp';
@@ -21,8 +21,8 @@ export function AboutPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>
             <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">About QARM</p>
-            <h1 className="font-display font-bold text-5xl lg:text-6xl text-white mb-6 leading-tight">Built for mortgage<br />professionals. Full stop.</h1>
-            <p className="text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto">QARM was founded on a single conviction: mortgage professionals deserve operational infrastructure built specifically for their industry — not adapted from something else.</p>
+            <h1 className="font-display font-bold text-5xl lg:text-6xl text-white mb-6 leading-tight">Built for relationship-driven<br />professionals. Full stop.</h1>
+            <p className="text-xl text-slate-400 leading-relaxed max-w-2xl mx-auto">QARM was founded on a single conviction: mortgage, real estate, and insurance professionals deserve operational infrastructure built specifically for their industry — not adapted from something else.</p>
           </AnimatedSection>
         </div>
       </section>
@@ -33,10 +33,10 @@ export function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
               <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">Our Mission</p>
-              <h2 className="font-display font-bold text-4xl text-white mb-6 leading-tight">The operational infrastructure<br />your brokerage deserves.</h2>
-              <p className="text-slate-400 leading-relaxed mb-5">The best mortgage brokers aren't losing to competitors — they're losing to their own inboxes, disorganised CRMs, and hours spent chasing documents instead of building relationships.</p>
-              <p className="text-slate-400 leading-relaxed mb-5">QARM exists to eliminate that friction. We build the operational backbone that lets high-performing brokers do what they do best — originate, advise, and close — while QARM runs everything behind the scenes with precision and accountability.</p>
-              <p className="text-slate-400 leading-relaxed">This isn't generalist support. It's a mortgage-specific operations system, staffed by trained specialists who understand your world.</p>
+              <h2 className="font-display font-bold text-4xl text-white mb-6 leading-tight">The operational infrastructure<br />your business deserves.</h2>
+              <p className="text-slate-400 leading-relaxed mb-5">The best mortgage, real estate, and insurance professionals aren't losing to competitors — they're losing to their own inboxes, disorganised CRMs, and hours spent chasing documents instead of building relationships.</p>
+              <p className="text-slate-400 leading-relaxed mb-5">QARM exists to eliminate that friction. We build the operational backbone that lets high-performing professionals do what they do best — advise, originate, and close — while QARM runs everything behind the scenes with precision and accountability.</p>
+              <p className="text-slate-400 leading-relaxed">This isn't generalist support. It's an industry-specific operations system, built by a team that understands your world.</p>
             </AnimatedSection>
             <AnimatedSection direction="right" delay={150}>
               <div className="relative">
@@ -46,10 +46,10 @@ export function AboutPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-3 mt-3">
                   {[
-                    { icon:<Target size={18}/>, label:'Mortgage-Specific', desc:'Built exclusively for the mortgage industry.', orange:false },
-                    { icon:<Shield size={18}/>, label:'Privacy-Compliant', desc:'PIPEDA-compliant data handling always.', orange:true },
+                    { icon:<Target size={18}/>, label:'Industry-Focused', desc:'Built for mortgage, real estate, and insurance professionals.', orange:false },
+                    { icon:<Shield size={18}/>, label:'Privacy-First', desc:'Data handling adapted to each market\'s privacy requirements.', orange:true },
                     { icon:<Zap size={18}/>, label:'AI-Enhanced', desc:'Workflow intelligence with human oversight.', orange:false },
-                    { icon:<Users size={18}/>, label:'Dedicated Teams', desc:'One specialist assigned to your brokerage.', orange:true },
+                    { icon:<Users size={18}/>, label:'Direct Access', desc:'A dedicated point of contact for your account, always.', orange:true },
                   ].map((v) => (
                     <div key={v.label} className={`rounded-xl p-4 border ${v.orange ? 'bg-orange-400/5 border-orange-400/20' : 'glass-card'}`}>
                       <div className={`w-7 h-7 rounded-lg flex items-center justify-center mb-3 ${v.orange ? 'bg-orange-400/15 text-orange-400' : 'bg-[#2d5bb5]/15 text-[#7aa3e5]'}`}>{v.icon}</div>
@@ -69,15 +69,14 @@ export function AboutPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">Our Organisation</p>
-            <h2 className="font-display font-bold text-4xl text-white mb-5">A structured team built around your success.</h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">QARM operates as a dedicated operational organisation — not a freelance network. Each client is supported by a structured team with defined accountability at every level.</p>
+            <h2 className="font-display font-bold text-4xl text-white mb-5">A dedicated team. Direct accountability.</h2>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">QARM has operated as a dedicated mortgage operations partner since 2023. Every client works directly with QARM's founder on strategy and account direction, supported by a small team of specialists who execute the daily work.</p>
           </AnimatedSection>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid md:grid-cols-3 gap-5">
             {[
-              { icon:<BarChart3 size={22}/>, role:'Operations Leadership', desc:'Strategic oversight of client operations, quality standards, and delivery consistency across all accounts.', orange:false },
-              { icon:<Users size={22}/>, role:'Mortgage Operations Specialists', desc:'Mortgage-trained specialists assigned to each client — managing CRM, pipeline, documents, and workflows daily.', orange:true },
-              { icon:<Award size={22}/>, role:'Client Success Management', desc:'Dedicated account managers who oversee onboarding, quality assurance, and ongoing client relationships.', orange:false },
-              { icon:<Globe size={22}/>, role:'Market Development', desc:"Teams expanding QARM's capabilities across Canada, US, UK, Australia, UAE, and emerging markets.", orange:true },
+              { icon:<Target size={22}/>, role:'Founder-Led Accounts', desc:'Every client works directly with QARM\'s founder on strategy and account direction — not a rotating account manager.', orange:false },
+              { icon:<BarChart3 size={22}/>, role:'CRM & Pipeline Management', desc:'A dedicated function keeping your CRM, pipeline, and follow-ups accurate and current, day in and day out.', orange:true },
+              { icon:<Palette size={22}/>, role:'Marketing & Digital Support', desc:'Client outreach, content, and creative work — the team behind your communications and digital presence.', orange:false },
             ].map((t, i) => (
               <AnimatedSection key={i} delay={i * 80}>
                 <div className={`rounded-2xl p-7 h-full border ${t.orange ? 'bg-orange-400/5 border-orange-400/20' : 'glass-card'}`}>
@@ -94,16 +93,15 @@ export function AboutPage() {
       {/* Stats with countup */}
       <section className="py-16 border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8 text-center">
+          <div className="grid md:grid-cols-3 gap-8 text-center">
             {[
               { val:2023, suffix:'', label:'Founded', sub:'Est. in Toronto, Canada', isYear:true, orange:false },
-              { val:50, suffix:'+', label:'Mortgage professionals served', sub:'Canada, US, UK, AU, UAE', orange:true },
-              { val:48, suffix:'h', label:'Average onboarding', sub:'From discovery call to live', orange:false },
+              { val:0, suffix:'', label:'Onboarding', sub:'Days, not weeks', isText:true, orange:false },
               { val:5, suffix:'', label:'Markets active', sub:'Canada, US, UK, AU, UAE', orange:true },
             ].map((s, i) => (
               <AnimatedSection key={i} delay={i * 80}>
                 <p className={`text-3xl font-display font-bold mb-1 ${s.orange ? 'text-orange-400' : 'text-[#7aa3e5]'}`}>
-                  {s.isYear ? '2023' : <CountUp end={s.val} suffix={s.suffix} />}
+                  {(s as any).isText ? 'Days, not weeks' : s.isYear ? '2023' : <CountUp end={s.val} suffix={s.suffix} />}
                 </p>
                 <p className="text-sm font-semibold text-slate-300 mb-1">{s.label}</p>
                 <p className="text-xs text-slate-500">{s.sub}</p>
@@ -152,7 +150,7 @@ export function AboutPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">
-                Book Discovery Call <ArrowRight size={18} />
+                Book a Free Workflow Review <ArrowRight size={18} />
               </a>
               <Link to="/services" className="flex items-center justify-center gap-2 border border-white/10 hover:border-white/20 text-slate-300 hover:text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all">
                 Explore Services

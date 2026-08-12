@@ -76,7 +76,7 @@ ${formData.message}`.trim();
  </div>
  <h3 className="font-display font-semibold text-white mb-2">Onboarding Timeline</h3>
  <p className="text-slate-400 text-sm leading-relaxed">
- From discovery call to fully operational: <span className="text-white font-semibold">48 hours</span>. We handle the briefing, system integration, and SOP setup — you just show up ready to delegate.
+ From discovery call to fully operational: <span className="text-white font-semibold">days, not weeks</span>. We handle the briefing, system integration, and SOP setup — you just show up ready to delegate.
  </p>
  </div>
 
@@ -87,7 +87,7 @@ ${formData.message}`.trim();
  'We review your message the same business day',
  'A discovery call is booked at your convenience',
  'We map your workflow in 30 minutes',
- 'Your specialist is matched and onboarded within 48h',
+ 'Your specialist is matched and onboarding begins within days',
  ].map((step) => (
  <li key={step} className="flex items-start gap-3 text-sm text-slate-400">
  <CheckCircle2 size={14} className="text-[#4d7fd4] shrink-0 mt-0.5" />

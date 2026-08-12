@@ -34,7 +34,7 @@ export function USMortgagePage() {
             </p>
             <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">
-              Book a Discovery Call <ArrowRight size={18} />
+              Book a Free Workflow Review <ArrowRight size={18} />
             </a>
           </AnimatedSection>
         </div>
@@ -47,12 +47,11 @@ export function USMortgagePage() {
             <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">Built for the US Market</p>
             <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mb-5">We understand how American mortgage lending works.</h2>
           </AnimatedSection>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-4xl mx-auto">
             {[
-              { title: 'LOS Platforms', items: ['Encompass (ICE)','Calyx Point','Blend','BytePro','SimpleNexus'], orange: false },
-              { title: 'CRM Systems', items: ['Salesforce','HubSpot','Total Expert','Surefire','Velocify'], orange: true },
-              { title: 'Compliance', items: ['RESPA/TRID','HMDA reporting','TILA disclosures','NMLS filing support','State licensing compliance'], orange: false },
-              { title: 'Loan Types', items: ['Conventional (Fannie/Freddie)','FHA & VA loans','USDA loans','Jumbo & non-QM','DSCR & investor loans'], orange: true },
+              { title: 'Systems We Adapt To', items: ['Your existing LOS platform','Your existing CRM','No forced migrations'], orange: false },
+              { title: 'Compliance Awareness', items: ['RESPA/TRID timeline tracking','Standard disclosure coordination','Final review stays with your licensed team'], orange: true },
+              { title: 'Loan Types Supported', items: ['Conventional','FHA & VA','USDA, jumbo & non-QM'], orange: false },
             ].map((col, i) => (
               <AnimatedSection key={i} delay={i * 70}>
                 <div className={`rounded-2xl p-6 h-full ${col.orange ? 'bg-orange-400/5 border border-orange-400/20' : 'glass-card'}`}>
@@ -106,7 +105,7 @@ export function USMortgagePage() {
                 { icon:<Target size={20}/>, title:'Processing Support', desc:'Pre-underwriting file review, PTD/PTF condition tracking, appraisal coordination, and submission preparation.', orange:false },
                 { icon:<MessageSquare size={20}/>, title:'Borrower Communication', desc:'Status updates with borrowers, realtors, settlement agents, and title companies throughout the loan lifecycle.', orange:true },
                 { icon:<Calendar size={20}/>, title:'Lead Management', desc:'Inbound lead intake, pre-qualification data gathering, and calendar management for closeable opportunities.', orange:false },
-                { icon:<ShieldCheck size={20}/>, title:'Compliance Operations', desc:'RESPA/TRID timeline tracking, disclosure management, and post-closing file organisation to NMLS standards.', orange:true },
+                { icon:<ShieldCheck size={20}/>, title:'Compliance Operations', desc:'RESPA/TRID timeline tracking and disclosure coordination — final compliance review always stays with your licensed team.', orange:true },
               ].map((svc, i) => (
                 <AnimatedSection key={i} delay={i * 60}>
                   <div className={`rounded-xl p-5 h-full border transition-all ${svc.orange ? 'bg-orange-400/5 border-orange-400/15 hover:border-orange-400/30' : 'glass-card hover:border-[#2d5bb5]/40'}`}>
@@ -121,22 +120,10 @@ export function USMortgagePage() {
         </div>
       </section>
 
-      {/* Testimonial */}
-      <section className="py-20 bg-[#080d18] border-y border-white/[0.05]">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <AnimatedSection>
-            <div className="glass-card rounded-2xl p-10 border-[#f97316]/20 hover:border-orange-400/30 transition-all">
-              <div className="flex justify-center gap-1 mb-6">{[...Array(5)].map((_,i) => <Star key={i} size={16} className="fill-orange-400 text-orange-400" />)}</div>
-              <blockquote className="text-xl text-slate-300 leading-relaxed mb-8">"As a solo MLO doing 15+ units a month I couldn't keep up with the file management. QARM handles my pipeline tracking, borrower follow-ups, and condition chasing. My processor relationship improved because files arrive complete. Huge ROI."</blockquote>
-              <div className="flex items-center justify-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#f97316] to-[#c2410c] flex items-center justify-center text-white font-display font-bold">R</div>
-                <div className="text-left">
-                  <p className="font-display font-semibold text-white">R. Martinez</p>
-                  <p className="text-sm text-slate-500">Mortgage Loan Originator · Texas, United States</p>
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
+      {/* Regulatory disclaimer */}
+      <section className="py-12 border-t border-white/[0.06]">
+        <div className="max-w-3xl mx-auto px-4">
+          <p className="text-xs text-slate-600 leading-relaxed text-center">Mortgage-related services are limited to administrative and operational support performed under the direction and final approval of the licensed mortgage professional. QARM does not independently provide mortgage advice, lender approval, or licensed underwriting services.</p>
         </div>
       </section>
 
@@ -148,7 +135,7 @@ export function USMortgagePage() {
             <p className="text-slate-400 mb-8">Book a discovery call. We'll map your current workflow and show you exactly how QARM fits into your origination process.</p>
             <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">
-              Book a Discovery Call <ArrowRight size={18} />
+              Book a Free Workflow Review <ArrowRight size={18} />
             </a>
           </AnimatedSection>
         </div>

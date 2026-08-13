@@ -76,8 +76,8 @@ export function HomePage() {
             </div>
 
             {/* Dashboard preview */}
-            <div className="relative hidden lg:block" style={{animation:'slide-up 0.7s ease 0.2s both',opacity:0}}>
-              <div className="absolute -inset-6 rounded-3xl overflow-hidden">
+            <div className="relative" style={{animation:'slide-up 0.7s ease 0.2s both',opacity:0}}>
+              <div className="absolute -inset-4 sm:-inset-6 rounded-3xl overflow-hidden">
                 <img
                   src="/images/hero-operations-1600w.webp"
                   srcSet="/images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
@@ -85,9 +85,10 @@ export function HomePage() {
                   alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
                   width={1600} height={900} className="w-full h-full object-cover rounded-3xl"
                   style={{filter: 'brightness(1.15) saturate(1.15)'}} loading="eager" />
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/35 to-[#0a0f1e]/15" />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/40 to-[#0a0f1e]/25" />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-t from-[#0a0f1e] via-transparent to-[#0a0f1e]/40" />
               </div>
-              <div className="relative glass-card rounded-2xl p-6 glow-blue">
+              <div className="relative rounded-2xl p-6 bg-[#0d1424]/[0.94] backdrop-blur-md border border-white/10 shadow-2xl shadow-[#2d5bb5]/20">
                 <div className="flex items-center justify-between mb-5">
                   <div>
                     <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Sample Operations Dashboard</p>
@@ -128,15 +129,15 @@ export function HomePage() {
                   ))}
                 </div>
               </div>
-              <div className="absolute -bottom-5 -left-6 glass-card-light rounded-xl p-4 shadow-2xl border border-emerald-400/20" style={{animation:'float 4s ease-in-out 0.5s infinite'}}>
+              <div className="hidden sm:block absolute -bottom-6 -left-4 lg:-left-8 rounded-xl p-4 bg-[#0d1424]/95 backdrop-blur-md shadow-2xl border border-emerald-400/25" style={{animation:'float 4s ease-in-out 0.5s infinite'}}>
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-emerald-500/10 rounded-lg flex items-center justify-center"><CheckCircle2 size={16} className="text-emerald-400" /></div>
+                  <div className="w-9 h-9 bg-emerald-500/15 rounded-lg flex items-center justify-center"><CheckCircle2 size={16} className="text-emerald-400" /></div>
                   <div><p className="text-[10px] text-slate-500">Onboarding</p><p className="text-base font-display font-bold text-white">Days, not weeks</p></div>
                 </div>
               </div>
-              <div className="absolute top-1/2 -right-8 glass-card-light rounded-xl p-3 shadow-xl border border-[#f97316]/20" style={{animation:'float 5s ease-in-out 1s infinite'}}>
+              <div className="hidden sm:block absolute -top-5 -right-4 lg:-right-8 rounded-xl p-3 bg-[#0d1424]/95 backdrop-blur-md shadow-xl border border-[#f97316]/25" style={{animation:'float 5s ease-in-out 1s infinite'}}>
                 <div className="flex items-center gap-2.5">
-                  <div className="w-7 h-7 bg-[#f97316]/10 rounded-lg flex items-center justify-center"><ShieldCheck size={13} className="text-orange-400" /></div>
+                  <div className="w-7 h-7 bg-[#f97316]/15 rounded-lg flex items-center justify-center"><ShieldCheck size={13} className="text-orange-400" /></div>
                   <div><p className="text-[9px] text-slate-500">Data Handling</p><p className="text-xs font-display font-bold text-white">Privacy-First</p></div>
                 </div>
               </div>

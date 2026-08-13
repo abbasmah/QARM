@@ -1,0 +1,28 @@
+# Normalize line endings for all text files.
+# Git stores LF internally and checks out the platform-native ending.
+* text=auto
+
+# Explicitly treat these as text
+*.ts    text
+*.tsx   text
+*.js    text
+*.jsx   text
+*.json  text
+*.css   text
+*.html  text
+*.md    text
+*.yml   text
+*.yaml  text
+*.xml   text
+*.txt   text
+*.svg   text
+
+# Binary files — never convert
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.webp  binary
+*.gif   binary
+*.ico   binary
+*.woff  binary
+*.woff2 binary

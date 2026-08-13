@@ -77,18 +77,18 @@ export function HomePage() {
 
             {/* Dashboard preview */}
             <div className="relative" style={{animation:'slide-up 0.7s ease 0.2s both',opacity:0}}>
-              <div className="absolute -inset-6 rounded-3xl overflow-hidden">
+              <div className="absolute -top-6 -left-5 -right-14 -bottom-16 rounded-3xl overflow-hidden">
                 <img
                   src="/images/hero-operations-1600w.webp"
                   srcSet="/images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
                   sizes="(max-width: 1024px) 900px, 1600px"
                   alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
                   width={1600} height={900} className="w-full h-full object-cover rounded-3xl"
-                  style={{filter: 'brightness(1.15) saturate(1.15)'}} loading="eager" />
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/35 to-[#0a0f1e]/15" />
+                  style={{filter: 'brightness(1.3) saturate(1.25)'}} loading="eager" />
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#0a0f1e]/80 via-[#0a0f1e]/15 to-transparent" />
               </div>
-              <div className="relative rounded-2xl p-6 pb-10 border border-[#2d5bb5]/40 shadow-2xl shadow-[#050810]/70"
-                style={{background: 'rgba(9,14,28,0.93)', backdropFilter: 'blur(20px) saturate(1.2)', WebkitBackdropFilter: 'blur(20px) saturate(1.2)'}}>
+              <div className="relative rounded-2xl p-6 pb-10 border border-white/[0.14] shadow-2xl shadow-[#050810]/70"
+                style={{background: 'rgba(11,17,33,0.55)', backdropFilter: 'blur(28px) saturate(1.3)', WebkitBackdropFilter: 'blur(28px) saturate(1.3)'}}>
                 <div className="flex items-center justify-between mb-5">
                   <div>
                     <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Sample Operations Dashboard</p>
@@ -104,8 +104,8 @@ export function HomePage() {
                     { label: 'Pending Docs', value: '7', change: '-4', up: false },
                     { label: 'CRM Updated', value: '100%', change: '+8%', up: true },
                   ].map((m) => (
-                    <div key={m.label} className="bg-white/[0.04] border border-white/[0.06] rounded-xl p-3">
-                      <p className="text-[9px] text-slate-500 uppercase tracking-wider mb-1.5">{m.label}</p>
+                    <div key={m.label} className="bg-[#0a0f1e]/45 border border-white/[0.10] rounded-xl p-3">
+                      <p className="text-[9px] text-slate-400 uppercase tracking-wider mb-1.5">{m.label}</p>
                       <p className="text-lg font-display font-bold text-white">{m.value}</p>
                       <p className={`text-[9px] font-medium mt-1 ${m.up ? 'text-emerald-400' : 'text-red-400'}`}>{m.change} this week</p>
                     </div>
@@ -118,26 +118,26 @@ export function HomePage() {
                     { action: 'Follow-Up Sent', client: 'Client File C — Follow-up scheduled', time: '1h ago', color: 'orange' },
                     { action: 'Appointment Booked', client: 'Client File D — Appointment confirmed', time: '2h ago', color: 'blue' },
                   ].map((item) => (
-                    <div key={item.client} className="flex items-center gap-3 p-2.5 bg-white/[0.03] rounded-lg border border-white/[0.04]">
+                    <div key={item.client} className="flex items-center gap-3 p-2.5 bg-[#0a0f1e]/40 rounded-lg border border-white/[0.08]">
                       <div className={`w-2 h-2 rounded-full shrink-0 ${item.color === 'emerald' ? 'bg-emerald-400' : item.color === 'blue' ? 'bg-[#4d7fd4]' : 'bg-orange-400'}`} />
                       <div className="flex-1 min-w-0">
                         <p className="text-xs font-semibold text-white truncate">{item.action}</p>
-                        <p className="text-[10px] text-slate-500 truncate">{item.client}</p>
+                        <p className="text-[10px] text-slate-400 truncate">{item.client}</p>
                       </div>
-                      <span className="text-[10px] text-slate-600 shrink-0">{item.time}</span>
+                      <span className="text-[10px] text-slate-400 shrink-0">{item.time}</span>
                     </div>
                   ))}
                 </div>
               </div>
               {/* Floating badges */}
-              <div className="absolute -bottom-5 -left-6 rounded-xl p-4 shadow-2xl shadow-[#050810]/70 border border-emerald-400/30"
-                style={{background: 'rgba(11,17,33,0.92)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', animation:'float 4s ease-in-out 0.5s infinite'}}>
+              <div className="absolute -bottom-12 left-2 sm:left-6 rounded-xl p-4 shadow-2xl shadow-[#050810]/80 border border-emerald-400/35"
+                style={{background: 'rgba(9,14,28,0.94)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', animation:'float 4s ease-in-out 0.5s infinite'}}>
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 bg-emerald-500/15 rounded-lg flex items-center justify-center shrink-0"><CheckCircle2 size={16} className="text-emerald-400" /></div>
                   <div><p className="text-[10px] text-slate-500 leading-tight">Onboarding</p><p className="text-base font-display font-bold text-white leading-tight">Days, not weeks</p></div>
                 </div>
               </div>
-              <div className="absolute -top-5 -right-6 rounded-xl p-3 shadow-xl shadow-[#050810]/70 border border-[#f97316]/30"
+              <div className="absolute -top-3 -right-10 rounded-xl p-3 shadow-xl shadow-[#050810]/80 border border-[#f97316]/35"
                 style={{background: 'rgba(9,14,28,0.94)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', animation:'float 5s ease-in-out 1s infinite'}}>
                 <div className="flex items-center gap-2.5">
                   <div className="w-7 h-7 bg-[#f97316]/15 rounded-lg flex items-center justify-center shrink-0"><ShieldCheck size={13} className="text-orange-400" /></div>

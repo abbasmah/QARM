@@ -43,7 +43,8 @@ export function HomePage() {
             alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
             width={1600} height={900} className="w-full h-full object-cover"
             style={{filter: 'brightness(1.15) saturate(1.2)'}} loading="eager" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/75 via-[#0a0f1e]/60 to-[#0a0f1e]" />
+          <div className="absolute inset-0" style={{background: 'radial-gradient(ellipse 900px 700px at 50% 42%, rgba(10,15,30,0.94) 0%, rgba(10,15,30,0.82) 38%, rgba(10,15,30,0.45) 68%, rgba(10,15,30,0.15) 100%)'}} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/60 via-transparent to-[#0a0f1e]" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-25" />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#1e3a8a] rounded-full blur-[200px] opacity-[0.12] pointer-events-none" style={{animation:'pulse 8s ease-in-out infinite'}} />
@@ -202,9 +203,9 @@ export function HomePage() {
             srcSet="/images/services-pipeline-800w.webp 800w, /images/services-pipeline-1400w.webp 1400w"
             sizes="(max-width: 768px) 800px, 1400px"
             alt="Colorful pipeline visualization showing documents and tasks flowing through organized stages"
-            width={1400} height={1050} className="w-full h-full object-cover opacity-[0.55]" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#080d18] via-[#080d18]/45 to-[#080d18]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080d18] via-[#080d18]/20 to-[#080d18]" />
+            width={1400} height={1050} className="w-full h-full object-cover opacity-[0.70]" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#080d18] via-[#080d18]/30 to-[#080d18]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#080d18] via-[#080d18]/10 to-[#080d18]" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-20">
@@ -246,9 +247,9 @@ export function HomePage() {
             srcSet="/images/how-it-works-800w.webp 800w, /images/how-it-works-1400w.webp 1400w"
             sizes="(max-width: 768px) 800px, 1400px"
             alt="Three glass capsules showing the QARM process: scattered documents becoming organized, then fully structured and checked off"
-            width={1400} height={933} className="w-full h-full object-cover opacity-[0.50]" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e] via-[#0a0f1e]/45 to-[#0a0f1e]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/20 to-[#0a0f1e]" />
+            width={1400} height={933} className="w-full h-full object-cover opacity-[0.65]" loading="lazy" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e] via-[#0a0f1e]/30 to-[#0a0f1e]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/10 to-[#0a0f1e]" />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center max-w-2xl mx-auto mb-20">
@@ -283,8 +284,9 @@ export function HomePage() {
       </section>
 
       {/* 5. PRICING PREVIEW */}
-      <section className="py-28 bg-[#080d18] border-y border-white/[0.05]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-28 bg-[#080d18] border-y border-white/[0.05] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[500px] h-[400px] bg-[#f97316] rounded-full blur-[180px] opacity-[0.05] pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <AnimatedSection className="mb-10">
             <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">Pricing</p>
             <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Straightforward. No surprises.</h2>
@@ -313,8 +315,9 @@ export function HomePage() {
       </section>
 
       {/* 6. WHY QARM — conversion-focused only, security moves to compact footer trust bar */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-[#1e3a8a] rounded-full blur-[180px] opacity-[0.08] pointer-events-none" />
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <AnimatedSection className="text-center mb-12">
             <h2 className="font-display font-bold text-3xl text-white mb-3">Why QARM over a generic agency?</h2>
           </AnimatedSection>
@@ -366,29 +369,6 @@ export function HomePage() {
               </AnimatedSection>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* 8. FINAL CTA */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[#0d1424] border-y border-white/[0.06]" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-[#1e3a8a] rounded-full blur-[120px] opacity-10 pointer-events-none" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <AnimatedSection>
-            <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Ready to take back your time?</h2>
-            <p className="text-slate-400 text-lg mb-10 max-w-xl mx-auto">Tell us what's creating the most pressure. We'll recommend a plan within one business day.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={() => onGetStarted()} type="button"
-                className="inline-flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-10 py-5 rounded-lg text-base font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">
-                Get Your Support Plan <ArrowRight size={18} />
-              </button>
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 border border-white/10 hover:border-white/20 text-slate-300 hover:text-white px-8 py-5 rounded-lg text-sm font-semibold transition-all">
-                Book a Free Workflow Review
-              </a>
-            </div>
-            <p className="text-slate-600 text-xs mt-4">No obligation. Responds within 1 business day.</p>
-          </AnimatedSection>
         </div>
       </section>
     </div>

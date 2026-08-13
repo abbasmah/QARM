@@ -33,121 +33,137 @@ export function HomePage() {
   return (
     <div className="min-h-screen bg-[#0a0f1e]">
 
-      {/* 1. HERO — pain-driven, specific */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-        <div className="absolute inset-0 bg-grid opacity-40" />
-        <div className="absolute top-1/3 left-1/4 w-[700px] h-[700px] bg-[#1e3a8a] rounded-full blur-[200px] opacity-[0.12] pointer-events-none" style={{animation:'pulse 8s ease-in-out infinite'}} />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#f97316] rounded-full blur-[200px] opacity-[0.05] pointer-events-none" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative z-20" style={{animation:'slide-up 0.7s ease forwards'}}>
-              <h1 className="font-display font-bold text-5xl lg:text-6xl xl:text-[4.25rem] text-white leading-[1.08] tracking-tight mb-6">
-                Stop chasing files.<br />
-                <span className="text-gradient">Start closing deals.</span>
-              </h1>
-              <p className="text-lg text-slate-400 leading-relaxed mb-4 max-w-xl">
-                Your CRM is out of date. Follow-ups are falling through. Documents are being chased instead of deals. QARM takes over the operational work so you can get back to what actually grows your business.
-              </p>
-              <p className="text-sm text-slate-500 mb-8">Flexible support from $349 CAD/month. No long-term commitment.</p>
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button onClick={() => onGetStarted()} type="button"
-                  className="flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all duration-200 hover:shadow-xl hover:shadow-[#2d5bb5]/30">
-                  Get Your Support Plan <ArrowRight size={18} />
-                </button>
-                <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 text-slate-300 hover:text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all duration-200">
-                  Book a Free Workflow Review
-                </a>
-              </div>
-              {/* Tools strip — inline under hero CTAs */}
-              <div className="border-t border-white/[0.06] pt-6">
-                <p className="text-[10px] font-semibold text-slate-600 uppercase tracking-[0.2em] mb-4">We adapt to the platforms you already use</p>
-                <div className="flex flex-wrap gap-x-6 gap-y-2">
-                  {['Filogix', 'Velocity', 'Finmo', 'GoHighLevel', 'HubSpot', 'Salesforce'].map((tool) => (
-                    <span key={tool} className="font-display font-bold text-xs text-slate-500 tracking-wide">{tool}</span>
-                  ))}
-                </div>
-              </div>
-              {/* Founder line — real social proof */}
-              <div className="flex items-center gap-3 mt-6">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2d5bb5] to-[#1c2a4a] flex items-center justify-center text-white font-display font-bold text-xs border border-[#2d5bb5]/40">A</div>
-                <p className="text-xs text-slate-500">QARM Corp. · Operational support since 2023 · Currently accepting new clients</p>
+      {/* 1. HERO — full-bleed background image, centered layout matching site-wide hero pattern */}
+      <section className="relative py-32 lg:py-40 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/hero-operations-1600w.webp"
+            srcSet="/images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
+            sizes="100vw"
+            alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
+            width={1600} height={900} className="w-full h-full object-cover"
+            style={{filter: 'brightness(1.15) saturate(1.2)'}} loading="eager" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/75 via-[#0a0f1e]/60 to-[#0a0f1e]" />
+        </div>
+        <div className="absolute inset-0 bg-grid opacity-25" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#1e3a8a] rounded-full blur-[200px] opacity-[0.12] pointer-events-none" style={{animation:'pulse 8s ease-in-out infinite'}} />
+
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <AnimatedSection>
+            <h1 className="font-display font-bold text-5xl lg:text-6xl xl:text-[4.25rem] text-white leading-[1.08] tracking-tight mb-6">
+              Stop chasing files.<br />
+              <span className="text-gradient">Start closing deals.</span>
+            </h1>
+            <p className="text-lg text-slate-400 leading-relaxed mb-4 max-w-xl mx-auto">
+              Your CRM is out of date. Follow-ups are falling through. Documents are being chased instead of deals. QARM takes over the operational work so you can get back to what actually grows your business.
+            </p>
+            <p className="text-sm text-slate-500 mb-8">Flexible support from $349 CAD/month. No long-term commitment.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+              <button onClick={() => onGetStarted()} type="button"
+                className="flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all duration-200 hover:shadow-xl hover:shadow-[#2d5bb5]/30">
+                Get Your Support Plan <ArrowRight size={18} />
+              </button>
+              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 text-slate-300 hover:text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all duration-200">
+                Book a Free Workflow Review
+              </a>
+            </div>
+            {/* Tools strip */}
+            <div className="border-t border-white/[0.06] pt-6 max-w-lg mx-auto">
+              <p className="text-[10px] font-semibold text-slate-600 uppercase tracking-[0.2em] mb-4">We adapt to the platforms you already use</p>
+              <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
+                {['Filogix', 'Velocity', 'Finmo', 'GoHighLevel', 'HubSpot', 'Salesforce'].map((tool) => (
+                  <span key={tool} className="font-display font-bold text-xs text-slate-500 tracking-wide">{tool}</span>
+                ))}
               </div>
             </div>
+            {/* Founder line — real social proof */}
+            <div className="flex items-center justify-center gap-3 mt-6">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2d5bb5] to-[#1c2a4a] flex items-center justify-center text-white font-display font-bold text-xs border border-[#2d5bb5]/40">A</div>
+              <p className="text-xs text-slate-500">QARM Corp. · Operational support since 2023 · Currently accepting new clients</p>
+            </div>
+          </AnimatedSection>
+        </div>
 
-            {/* Dashboard preview */}
-            <div className="relative" style={{animation:'slide-up 0.7s ease 0.2s both',opacity:0}}>
-              <div className="absolute -top-10 -bottom-20 -right-14 -left-[10%] lg:-left-[75%] rounded-3xl overflow-hidden pointer-events-none">
-                <img
-                  src="/images/hero-operations-1600w.webp"
-                  srcSet="/images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
-                  sizes="(max-width: 1024px) 900px, 1600px"
-                  alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
-                  width={1600} height={900} className="w-full h-full object-cover rounded-3xl"
-                  style={{filter: 'brightness(1.3) saturate(1.25)'}} loading="eager" />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/85 to-transparent" style={{backgroundSize: '100% 100%'}} />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-[#0a0f1e]/50" />
+        {/* ============================================================
+            SAMPLE OPERATIONS DASHBOARD — hidden for now, kept for a later revision.
+            Was the two-column hero layout: headline+CTAs on the left,
+            this glass dashboard card + floating badges on the right,
+            sitting over a stretched version of the hero image.
+            To restore: wrap the section above back in a lg:grid-cols-2,
+            move this block into the second column, and drop the
+            full-bleed background image treatment above.
+
+        <div className="relative" style={{animation:'slide-up 0.7s ease 0.2s both',opacity:0}}>
+          <div className="absolute -top-10 -bottom-20 -right-14 -left-[10%] lg:-left-[75%] rounded-3xl overflow-hidden pointer-events-none">
+            <img
+              src="/images/hero-operations-1600w.webp"
+              srcSet="/images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
+              sizes="(max-width: 1024px) 900px, 1600px"
+              alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
+              width={1600} height={900} className="w-full h-full object-cover rounded-3xl"
+              style={{filter: 'brightness(1.3) saturate(1.25)'}} loading="eager" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/85 to-transparent" style={{backgroundSize: '100% 100%'}} />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-[#0a0f1e]/50" />
+          </div>
+          <div className="relative rounded-2xl p-6 pb-10 border border-white/[0.10] shadow-2xl shadow-[#050810]/50"
+            style={{background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)'}}>
+            <div className="flex items-center justify-between mb-5">
+              <div>
+                <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Sample Operations Dashboard</p>
+                <h3 className="text-white font-display font-semibold text-sm">Pipeline Overview</h3>
               </div>
-              <div className="relative rounded-2xl p-6 pb-10 border border-white/[0.10] shadow-2xl shadow-[#050810]/50"
-                style={{background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)'}}>
-                <div className="flex items-center justify-between mb-5">
-                  <div>
-                    <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Sample Operations Dashboard</p>
-                    <h3 className="text-white font-display font-semibold text-sm">Pipeline Overview</h3>
+              <div className="flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />Live
+              </div>
+            </div>
+            <div className="grid grid-cols-3 gap-3 mb-5">
+              {[
+                { label: 'Active Files', value: '24', change: '+3', up: true, boost: false },
+                { label: 'Pending Docs', value: '7', change: '-4', up: false, boost: false },
+                { label: 'CRM Updated', value: '100%', change: '+8%', up: true, boost: true },
+              ].map((m) => (
+                <div key={m.label} className={`rounded-xl p-3 border ${m.boost ? 'bg-[#0a0f1e]/45 border-white/[0.10]' : 'bg-white/[0.02] border-white/[0.06]'}`}>
+                  <p className="text-[9px] text-slate-400 uppercase tracking-wider mb-1.5">{m.label}</p>
+                  <p className="text-lg font-display font-bold text-white">{m.value}</p>
+                  <p className={`text-[9px] font-medium mt-1 ${m.up ? 'text-emerald-400' : 'text-red-400'}`}>{m.change} this week</p>
+                </div>
+              ))}
+            </div>
+            <div className="space-y-2">
+              {[
+                { action: 'Document Review Complete', client: 'Client File A — Application review', time: '2m ago', color: 'emerald' },
+                { action: 'CRM Updated', client: 'Client File B — Documents requested', time: '18m ago', color: 'blue' },
+                { action: 'Follow-Up Sent', client: 'Client File C — Follow-up scheduled', time: '1h ago', color: 'orange' },
+                { action: 'Appointment Booked', client: 'Client File D — Appointment confirmed', time: '2h ago', color: 'blue' },
+              ].map((item) => (
+                <div key={item.client} className="flex items-center gap-3 p-2.5 bg-white/[0.02] rounded-lg border border-white/[0.06]">
+                  <div className={`w-2 h-2 rounded-full shrink-0 ${item.color === 'emerald' ? 'bg-emerald-400' : item.color === 'blue' ? 'bg-[#4d7fd4]' : 'bg-orange-400'}`} />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-semibold text-white truncate">{item.action}</p>
+                    <p className="text-[10px] text-slate-400 truncate">{item.client}</p>
                   </div>
-                  <div className="flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />Live
-                  </div>
+                  <span className="text-[10px] text-slate-400 shrink-0">{item.time}</span>
                 </div>
-                <div className="grid grid-cols-3 gap-3 mb-5">
-                  {[
-                    { label: 'Active Files', value: '24', change: '+3', up: true, boost: false },
-                    { label: 'Pending Docs', value: '7', change: '-4', up: false, boost: false },
-                    { label: 'CRM Updated', value: '100%', change: '+8%', up: true, boost: true },
-                  ].map((m) => (
-                    <div key={m.label} className={`rounded-xl p-3 border ${m.boost ? 'bg-[#0a0f1e]/45 border-white/[0.10]' : 'bg-white/[0.02] border-white/[0.06]'}`}>
-                      <p className="text-[9px] text-slate-400 uppercase tracking-wider mb-1.5">{m.label}</p>
-                      <p className="text-lg font-display font-bold text-white">{m.value}</p>
-                      <p className={`text-[9px] font-medium mt-1 ${m.up ? 'text-emerald-400' : 'text-red-400'}`}>{m.change} this week</p>
-                    </div>
-                  ))}
-                </div>
-                <div className="space-y-2">
-                  {[
-                    { action: 'Document Review Complete', client: 'Client File A — Application review', time: '2m ago', color: 'emerald' },
-                    { action: 'CRM Updated', client: 'Client File B — Documents requested', time: '18m ago', color: 'blue' },
-                    { action: 'Follow-Up Sent', client: 'Client File C — Follow-up scheduled', time: '1h ago', color: 'orange' },
-                    { action: 'Appointment Booked', client: 'Client File D — Appointment confirmed', time: '2h ago', color: 'blue' },
-                  ].map((item) => (
-                    <div key={item.client} className="flex items-center gap-3 p-2.5 bg-white/[0.02] rounded-lg border border-white/[0.06]">
-                      <div className={`w-2 h-2 rounded-full shrink-0 ${item.color === 'emerald' ? 'bg-emerald-400' : item.color === 'blue' ? 'bg-[#4d7fd4]' : 'bg-orange-400'}`} />
-                      <div className="flex-1 min-w-0">
-                        <p className="text-xs font-semibold text-white truncate">{item.action}</p>
-                        <p className="text-[10px] text-slate-400 truncate">{item.client}</p>
-                      </div>
-                      <span className="text-[10px] text-slate-400 shrink-0">{item.time}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {/* Floating badges */}
-              <div className="absolute -bottom-12 left-2 sm:left-6 rounded-xl p-4 shadow-2xl shadow-[#050810]/80 border border-emerald-400/35"
-                style={{background: 'rgba(9,14,28,0.82)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', animation:'float 4s ease-in-out 0.5s infinite'}}>
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-emerald-500/15 rounded-lg flex items-center justify-center shrink-0"><CheckCircle2 size={16} className="text-emerald-400" /></div>
-                  <div><p className="text-[10px] text-slate-500 leading-tight">Onboarding</p><p className="text-base font-display font-bold text-white leading-tight">Days, not weeks</p></div>
-                </div>
-              </div>
-              <div className="absolute top-[58%] -right-12 rounded-xl p-3 shadow-xl shadow-[#050810]/80 border border-[#f97316]/35"
-                style={{background: 'rgba(9,14,28,0.82)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', animation:'float 7s ease-in-out 2.2s infinite'}}>
-                <div className="flex items-center gap-2.5">
-                  <div className="w-7 h-7 bg-[#f97316]/15 rounded-lg flex items-center justify-center shrink-0"><ShieldCheck size={13} className="text-orange-400" /></div>
-                  <div><p className="text-[9px] text-slate-500 leading-tight">Data Handling</p><p className="text-xs font-display font-bold text-white leading-tight">Privacy-First</p></div>
-                </div>
-              </div>
+              ))}
+            </div>
+          </div>
+          <div className="absolute -bottom-12 left-2 sm:left-6 rounded-xl p-4 shadow-2xl shadow-[#050810]/80 border border-emerald-400/35"
+            style={{background: 'rgba(9,14,28,0.82)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', animation:'float 4s ease-in-out 0.5s infinite'}}>
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 bg-emerald-500/15 rounded-lg flex items-center justify-center shrink-0"><CheckCircle2 size={16} className="text-emerald-400" /></div>
+              <div><p className="text-[10px] text-slate-500 leading-tight">Onboarding</p><p className="text-base font-display font-bold text-white leading-tight">Days, not weeks</p></div>
+            </div>
+          </div>
+          <div className="absolute top-[58%] -right-12 rounded-xl p-3 shadow-xl shadow-[#050810]/80 border border-[#f97316]/35"
+            style={{background: 'rgba(9,14,28,0.82)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', animation:'float 7s ease-in-out 2.2s infinite'}}>
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 bg-[#f97316]/15 rounded-lg flex items-center justify-center shrink-0"><ShieldCheck size={13} className="text-orange-400" /></div>
+              <div><p className="text-[9px] text-slate-500 leading-tight">Data Handling</p><p className="text-xs font-display font-bold text-white leading-tight">Privacy-First</p></div>
             </div>
           </div>
         </div>
+        ============================================================ */}
       </section>
 
       {/* 2. WHERE IS YOUR BUSINESS LOSING TIME? — immediately after hero */}

@@ -40,7 +40,7 @@ export function HomePage() {
         <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#f97316] rounded-full blur-[200px] opacity-[0.05] pointer-events-none" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div style={{animation:'slide-up 0.7s ease forwards'}}>
+            <div className="relative z-20" style={{animation:'slide-up 0.7s ease forwards'}}>
               <h1 className="font-display font-bold text-5xl lg:text-6xl xl:text-[4.25rem] text-white leading-[1.08] tracking-tight mb-6">
                 Stop chasing files.<br />
                 <span className="text-gradient">Start closing deals.</span>
@@ -77,7 +77,7 @@ export function HomePage() {
 
             {/* Dashboard preview */}
             <div className="relative" style={{animation:'slide-up 0.7s ease 0.2s both',opacity:0}}>
-              <div className="absolute -top-6 -left-5 -right-14 -bottom-16 rounded-3xl overflow-hidden">
+              <div className="absolute -top-10 -bottom-20 -right-14 -left-[10%] lg:-left-[75%] rounded-3xl overflow-hidden pointer-events-none">
                 <img
                   src="/images/hero-operations-1600w.webp"
                   srcSet="/images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
@@ -85,10 +85,11 @@ export function HomePage() {
                   alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
                   width={1600} height={900} className="w-full h-full object-cover rounded-3xl"
                   style={{filter: 'brightness(1.3) saturate(1.25)'}} loading="eager" />
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-tr from-[#0a0f1e]/80 via-[#0a0f1e]/15 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/85 to-transparent" style={{backgroundSize: '100% 100%'}} />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-[#0a0f1e]/50" />
               </div>
-              <div className="relative rounded-2xl p-6 pb-10 border border-white/[0.14] shadow-2xl shadow-[#050810]/70"
-                style={{background: 'rgba(11,17,33,0.55)', backdropFilter: 'blur(28px) saturate(1.3)', WebkitBackdropFilter: 'blur(28px) saturate(1.3)'}}>
+              <div className="relative rounded-2xl p-6 pb-10 border border-white/[0.10] shadow-2xl shadow-[#050810]/50"
+                style={{background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)'}}>
                 <div className="flex items-center justify-between mb-5">
                   <div>
                     <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Sample Operations Dashboard</p>
@@ -100,11 +101,11 @@ export function HomePage() {
                 </div>
                 <div className="grid grid-cols-3 gap-3 mb-5">
                   {[
-                    { label: 'Active Files', value: '24', change: '+3', up: true },
-                    { label: 'Pending Docs', value: '7', change: '-4', up: false },
-                    { label: 'CRM Updated', value: '100%', change: '+8%', up: true },
+                    { label: 'Active Files', value: '24', change: '+3', up: true, boost: false },
+                    { label: 'Pending Docs', value: '7', change: '-4', up: false, boost: false },
+                    { label: 'CRM Updated', value: '100%', change: '+8%', up: true, boost: true },
                   ].map((m) => (
-                    <div key={m.label} className="bg-[#0a0f1e]/45 border border-white/[0.10] rounded-xl p-3">
+                    <div key={m.label} className={`rounded-xl p-3 border ${m.boost ? 'bg-[#0a0f1e]/45 border-white/[0.10]' : 'bg-white/[0.02] border-white/[0.06]'}`}>
                       <p className="text-[9px] text-slate-400 uppercase tracking-wider mb-1.5">{m.label}</p>
                       <p className="text-lg font-display font-bold text-white">{m.value}</p>
                       <p className={`text-[9px] font-medium mt-1 ${m.up ? 'text-emerald-400' : 'text-red-400'}`}>{m.change} this week</p>
@@ -118,7 +119,7 @@ export function HomePage() {
                     { action: 'Follow-Up Sent', client: 'Client File C — Follow-up scheduled', time: '1h ago', color: 'orange' },
                     { action: 'Appointment Booked', client: 'Client File D — Appointment confirmed', time: '2h ago', color: 'blue' },
                   ].map((item) => (
-                    <div key={item.client} className="flex items-center gap-3 p-2.5 bg-[#0a0f1e]/40 rounded-lg border border-white/[0.08]">
+                    <div key={item.client} className="flex items-center gap-3 p-2.5 bg-white/[0.02] rounded-lg border border-white/[0.06]">
                       <div className={`w-2 h-2 rounded-full shrink-0 ${item.color === 'emerald' ? 'bg-emerald-400' : item.color === 'blue' ? 'bg-[#4d7fd4]' : 'bg-orange-400'}`} />
                       <div className="flex-1 min-w-0">
                         <p className="text-xs font-semibold text-white truncate">{item.action}</p>
@@ -131,14 +132,14 @@ export function HomePage() {
               </div>
               {/* Floating badges */}
               <div className="absolute -bottom-12 left-2 sm:left-6 rounded-xl p-4 shadow-2xl shadow-[#050810]/80 border border-emerald-400/35"
-                style={{background: 'rgba(9,14,28,0.94)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', animation:'float 4s ease-in-out 0.5s infinite'}}>
+                style={{background: 'rgba(9,14,28,0.82)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', animation:'float 4s ease-in-out 0.5s infinite'}}>
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 bg-emerald-500/15 rounded-lg flex items-center justify-center shrink-0"><CheckCircle2 size={16} className="text-emerald-400" /></div>
                   <div><p className="text-[10px] text-slate-500 leading-tight">Onboarding</p><p className="text-base font-display font-bold text-white leading-tight">Days, not weeks</p></div>
                 </div>
               </div>
-              <div className="absolute -top-3 -right-10 rounded-xl p-3 shadow-xl shadow-[#050810]/80 border border-[#f97316]/35"
-                style={{background: 'rgba(9,14,28,0.94)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', animation:'float 5s ease-in-out 1s infinite'}}>
+              <div className="absolute top-[58%] -right-12 rounded-xl p-3 shadow-xl shadow-[#050810]/80 border border-[#f97316]/35"
+                style={{background: 'rgba(9,14,28,0.82)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', animation:'float 7s ease-in-out 2.2s infinite'}}>
                 <div className="flex items-center gap-2.5">
                   <div className="w-7 h-7 bg-[#f97316]/15 rounded-lg flex items-center justify-center shrink-0"><ShieldCheck size={13} className="text-orange-400" /></div>
                   <div><p className="text-[9px] text-slate-500 leading-tight">Data Handling</p><p className="text-xs font-display font-bold text-white leading-tight">Privacy-First</p></div>

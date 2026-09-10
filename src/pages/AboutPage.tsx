@@ -5,8 +5,8 @@ import { useGetStarted } from '../context/GetStartedContext';
 
 
 const IMGS = {
-  team: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=700&q=55&auto=format&fit=crop',
-  global: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=900&q=50&auto=format&fit=crop',
+  team: '/images/about-people.webp',
+  global: '/images/global-expansion.webp',
 };
 
 export function AboutPage() {
@@ -15,6 +15,15 @@ export function AboutPage() {
     <div className="min-h-screen bg-[#0a0f1e] pt-20">
       {/* Hero */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/about-hero-1600w.webp"
+            srcSet="/images/about-hero-900w.webp 900w, /images/about-hero-1600w.webp 1600w"
+            sizes="100vw"
+            alt="Toronto skyline at dusk — QARM's Canadian home base"
+            width={1600} height={854} className="w-full h-full object-cover" loading="eager" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/55 via-[#0a0f1e]/75 to-[#0a0f1e]" />
+        </div>
         <div className="absolute inset-0 bg-grid opacity-25" />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#f97316] rounded-full blur-[200px] opacity-[0.05] pointer-events-none" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -120,14 +129,14 @@ export function AboutPage() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-16">
             <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">Where We're Going</p>
-            <h2 className="font-display font-bold text-4xl text-white mb-5">Building the mortgage operations platform for North America and beyond.</h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">The long-term vision is a proprietary mortgage workflow platform — purpose-built CRM tools, automation systems, and AI-powered infrastructure that scales with every business we serve.</p>
+            <h2 className="font-display font-bold text-4xl text-white mb-5">Building the operations platform for relationship-driven professionals — grounded in mortgage.</h2>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">The long-term vision is a proprietary CRM and workflow platform — purpose-built automation, growth systems, and AI-enhanced infrastructure — built first for mortgage, and extending naturally to real estate, financial services, and other relationship-driven industries.</p>
           </AnimatedSection>
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              { phase:'Now', title:'Premium Operational Support', desc:'Dedicated mortgage operations specialists across Canada, US, UK, Australia, and UAE.', orange:false },
-              { phase:'Next', title:'AI-Powered Systems', desc:'Proprietary automation tools, mortgage workflow dashboards, and AI-enhanced pipeline intelligence.', orange:true },
-              { phase:'Future', title:'North American Platform', desc:'A full-stack mortgage operations platform for lending professionals globally — the same infrastructure built to extend to other relationship-driven, pipeline-based industries.', orange:false },
+              { phase:'Now', title:'Premium Operational Support', desc:'Dedicated operations specialists supporting mortgage, real estate, and financial services professionals across Canada, US, UK, Australia, and UAE.', orange:false },
+              { phase:'Next', title:'AI-Powered Systems', desc:'Proprietary automation tools, CRM workflow dashboards, and AI-enhanced pipeline intelligence — built on our mortgage-operations foundation.', orange:true },
+              { phase:'Future', title:'North American Platform', desc:'A full-stack operations platform for relationship-driven professionals globally — mortgage remains our specialization, extending naturally to real estate, financial services, and other pipeline-based industries.', orange:false },
             ].map((v, i) => (
               <AnimatedSection key={v.phase} delay={i * 100}>
                 <div className={`rounded-2xl p-7 h-full border ${v.orange ? 'bg-orange-400/5 border-orange-400/20' : 'glass-card'}`}>
@@ -146,7 +155,7 @@ export function AboutPage() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>
             <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mb-5">Work with a partner who knows your industry.</h2>
-            <p className="text-slate-400 mb-8">Book a free workflow review and see what QARM's mortgage-specific operations infrastructure can do for your business.</p>
+            <p className="text-slate-400 mb-8">Book a free workflow review and see what QARM's operations infrastructure — grounded in deep mortgage expertise — can do for your business.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://calendly.com/theqarm-info/30min" target="_blank" rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 bg-[#f97316] hover:bg-orange-500 text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-orange-500/30">

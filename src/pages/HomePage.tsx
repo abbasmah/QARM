@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, ChevronRight, ChevronDown, ChevronUp, BarChart3, ShieldCheck, FileText, Calendar, MessageSquare, TrendingUp } from 'lucide-react';
+import { ArrowRight, ChevronRight, ChevronDown, ChevronUp, CheckCircle2, Calendar, MessageSquare, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { useGetStarted } from '../context/GetStartedContext';
-
-const CALENDLY_URL = 'https://calendly.com/theqarm-info/30min';
+import {
+  HeroV2Section, GrowthEngineSection, SolutionsSection, AIHumanExecutionSection,
+  IndustriesSection, HowQarmWorksV2Section, FinalCTASection,
+} from './HomeSections';
 
 const faqs = [
   { q: 'What types of professionals does QARM support?', a: 'Mortgage brokers and agents, real estate professionals, insurance advisors, and service-based professionals who need CRM, follow-up, document coordination, or administrative support.' },
@@ -32,142 +34,10 @@ export function HomePage() {
   const onGetStarted = useGetStarted();
   return (
     <div className="min-h-screen bg-[#0a0f1e]">
+      {/* 1. HERO — Option B */}
+      <HeroV2Section />
 
-      {/* 1. HERO — full-bleed background image, centered layout matching site-wide hero pattern */}
-      <section className="relative py-32 lg:py-40 overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/hero-operations-1600w.webp"
-            srcSet="/images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
-            sizes="100vw"
-            alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
-            width={1600} height={900} className="w-full h-full object-cover"
-            style={{filter: 'brightness(1.15) saturate(1.2)'}} loading="eager" />
-          <div className="absolute inset-0" style={{background: 'radial-gradient(ellipse 900px 700px at 50% 42%, rgba(10,15,30,0.94) 0%, rgba(10,15,30,0.82) 38%, rgba(10,15,30,0.45) 68%, rgba(10,15,30,0.15) 100%)'}} />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/60 via-transparent to-[#0a0f1e]" />
-        </div>
-        <div className="absolute inset-0 bg-grid opacity-25" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#1e3a8a] rounded-full blur-[200px] opacity-[0.12] pointer-events-none" style={{animation:'pulse 8s ease-in-out infinite'}} />
-
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <AnimatedSection>
-            <h1 className="font-display font-bold text-5xl lg:text-6xl xl:text-[4.25rem] text-white leading-[1.08] tracking-tight mb-6">
-              Stop chasing files.<br />
-              <span className="text-gradient">Start closing deals.</span>
-            </h1>
-            <p className="text-lg text-slate-400 leading-relaxed mb-4 max-w-xl mx-auto">
-              Your CRM is out of date. Follow-ups are falling through. Documents are being chased instead of deals. QARM takes over the operational work so you can get back to what actually grows your business.
-            </p>
-            <p className="text-sm text-slate-500 mb-8">Flexible support from $349 CAD/month. No long-term commitment.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
-              <button onClick={() => onGetStarted()} type="button"
-                className="flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all duration-200 hover:shadow-xl hover:shadow-[#2d5bb5]/30">
-                Get Your Support Plan <ArrowRight size={18} />
-              </button>
-              <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 bg-white/[0.05] hover:bg-white/[0.09] border border-white/10 text-slate-300 hover:text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all duration-200">
-                Book a Free Workflow Review
-              </a>
-            </div>
-            {/* Tools strip */}
-            <div className="border-t border-white/[0.06] pt-6 max-w-lg mx-auto">
-              <p className="text-[10px] font-semibold text-slate-600 uppercase tracking-[0.2em] mb-4">We adapt to the platforms you already use</p>
-              <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
-                {['Filogix', 'Velocity', 'Finmo', 'GoHighLevel', 'HubSpot', 'Salesforce'].map((tool) => (
-                  <span key={tool} className="font-display font-bold text-xs text-slate-500 tracking-wide">{tool}</span>
-                ))}
-              </div>
-            </div>
-            {/* Founder line — real social proof */}
-            <div className="flex items-center justify-center gap-3 mt-6">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2d5bb5] to-[#1c2a4a] flex items-center justify-center text-white font-display font-bold text-xs border border-[#2d5bb5]/40">A</div>
-              <p className="text-xs text-slate-500">QARM Corp. · Operational support since 2023 · Currently accepting new clients</p>
-            </div>
-          </AnimatedSection>
-        </div>
-
-        {/* ============================================================
-            SAMPLE OPERATIONS DASHBOARD — hidden for now, kept for a later revision.
-            Was the two-column hero layout: headline+CTAs on the left,
-            this glass dashboard card + floating badges on the right,
-            sitting over a stretched version of the hero image.
-            To restore: wrap the section above back in a lg:grid-cols-2,
-            move this block into the second column, and drop the
-            full-bleed background image treatment above.
-
-        <div className="relative" style={{animation:'slide-up 0.7s ease 0.2s both',opacity:0}}>
-          <div className="absolute -top-10 -bottom-20 -right-14 -left-[10%] lg:-left-[75%] rounded-3xl overflow-hidden pointer-events-none">
-            <img
-              src="/images/hero-operations-1600w.webp"
-              srcSet="/images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
-              sizes="(max-width: 1024px) 900px, 1600px"
-              alt="Glass folders and documents connected by glowing data streams — representing organized operational workflows"
-              width={1600} height={900} className="w-full h-full object-cover rounded-3xl"
-              style={{filter: 'brightness(1.3) saturate(1.25)'}} loading="eager" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/85 to-transparent" style={{backgroundSize: '100% 100%'}} />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-transparent to-[#0a0f1e]/50" />
-          </div>
-          <div className="relative rounded-2xl p-6 pb-10 border border-white/[0.10] shadow-2xl shadow-[#050810]/50"
-            style={{background: 'rgba(255,255,255,0.02)', backdropFilter: 'blur(6px)', WebkitBackdropFilter: 'blur(6px)'}}>
-            <div className="flex items-center justify-between mb-5">
-              <div>
-                <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">Sample Operations Dashboard</p>
-                <h3 className="text-white font-display font-semibold text-sm">Pipeline Overview</h3>
-              </div>
-              <div className="flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />Live
-              </div>
-            </div>
-            <div className="grid grid-cols-3 gap-3 mb-5">
-              {[
-                { label: 'Active Files', value: '24', change: '+3', up: true, boost: false },
-                { label: 'Pending Docs', value: '7', change: '-4', up: false, boost: false },
-                { label: 'CRM Updated', value: '100%', change: '+8%', up: true, boost: true },
-              ].map((m) => (
-                <div key={m.label} className={`rounded-xl p-3 border ${m.boost ? 'bg-[#0a0f1e]/45 border-white/[0.10]' : 'bg-white/[0.02] border-white/[0.06]'}`}>
-                  <p className="text-[9px] text-slate-400 uppercase tracking-wider mb-1.5">{m.label}</p>
-                  <p className="text-lg font-display font-bold text-white">{m.value}</p>
-                  <p className={`text-[9px] font-medium mt-1 ${m.up ? 'text-emerald-400' : 'text-red-400'}`}>{m.change} this week</p>
-                </div>
-              ))}
-            </div>
-            <div className="space-y-2">
-              {[
-                { action: 'Document Review Complete', client: 'Client File A — Application review', time: '2m ago', color: 'emerald' },
-                { action: 'CRM Updated', client: 'Client File B — Documents requested', time: '18m ago', color: 'blue' },
-                { action: 'Follow-Up Sent', client: 'Client File C — Follow-up scheduled', time: '1h ago', color: 'orange' },
-                { action: 'Appointment Booked', client: 'Client File D — Appointment confirmed', time: '2h ago', color: 'blue' },
-              ].map((item) => (
-                <div key={item.client} className="flex items-center gap-3 p-2.5 bg-white/[0.02] rounded-lg border border-white/[0.06]">
-                  <div className={`w-2 h-2 rounded-full shrink-0 ${item.color === 'emerald' ? 'bg-emerald-400' : item.color === 'blue' ? 'bg-[#4d7fd4]' : 'bg-orange-400'}`} />
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs font-semibold text-white truncate">{item.action}</p>
-                    <p className="text-[10px] text-slate-400 truncate">{item.client}</p>
-                  </div>
-                  <span className="text-[10px] text-slate-400 shrink-0">{item.time}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="absolute -bottom-12 left-2 sm:left-6 rounded-xl p-4 shadow-2xl shadow-[#050810]/80 border border-emerald-400/35"
-            style={{background: 'rgba(9,14,28,0.82)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', animation:'float 4s ease-in-out 0.5s infinite'}}>
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-emerald-500/15 rounded-lg flex items-center justify-center shrink-0"><CheckCircle2 size={16} className="text-emerald-400" /></div>
-              <div><p className="text-[10px] text-slate-500 leading-tight">Onboarding</p><p className="text-base font-display font-bold text-white leading-tight">Days, not weeks</p></div>
-            </div>
-          </div>
-          <div className="absolute top-[58%] -right-12 rounded-xl p-3 shadow-xl shadow-[#050810]/80 border border-[#f97316]/35"
-            style={{background: 'rgba(9,14,28,0.82)', backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)', animation:'float 7s ease-in-out 2.2s infinite'}}>
-            <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 bg-[#f97316]/15 rounded-lg flex items-center justify-center shrink-0"><ShieldCheck size={13} className="text-orange-400" /></div>
-              <div><p className="text-[9px] text-slate-500 leading-tight">Data Handling</p><p className="text-xs font-display font-bold text-white leading-tight">Privacy-First</p></div>
-            </div>
-          </div>
-        </div>
-        ============================================================ */}
-      </section>
-
-      {/* 2. WHERE IS YOUR BUSINESS LOSING TIME? — immediately after hero */}
+      {/* 2. WHERE IS YOUR BUSINESS LOSING TIME? — kept unchanged */}
       <section className="py-28 border-t border-white/[0.05]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center max-w-2xl mx-auto mb-16">
@@ -195,95 +65,22 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 3. SERVICES OVERVIEW */}
-      <section className="py-28 bg-[#080d18] border-y border-white/[0.05] relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/services-pipeline-1400w.webp"
-            srcSet="/images/services-pipeline-800w.webp 800w, /images/services-pipeline-1400w.webp 1400w"
-            sizes="(max-width: 768px) 800px, 1400px"
-            alt="Colorful pipeline visualization showing documents and tasks flowing through organized stages"
-            width={1400} height={1050} className="w-full h-full object-cover opacity-[0.70]" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#080d18] via-[#080d18]/30 to-[#080d18]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#080d18] via-[#080d18]/10 to-[#080d18]" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center max-w-3xl mx-auto mb-20">
-            <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">What We Handle</p>
-            <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Core operational support.</h2>
-            <p className="text-slate-400 text-lg leading-relaxed">From CRM hygiene to full pipeline coordination — QARM manages the operational layer so nothing falls through the cracks.</p>
-          </AnimatedSection>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { icon: <BarChart3 size={22} />, title: 'CRM & Pipeline Management', desc: 'Your CRM stays current, accurate, and actionable — Filogix, Velocity, Finmo, GoHighLevel, HubSpot, and more.', orange: false },
-              { icon: <FileText size={22} />, title: 'Document & Workflow Coordination', desc: 'Document collection, organization, and structured workflows so nothing falls through.', orange: true },
-              { icon: <MessageSquare size={22} />, title: 'Client & Partner Communication', desc: 'Proactive status updates to clients and referral partners. You stay out of your inbox.', orange: false },
-              { icon: <Calendar size={22} />, title: 'Lead & Appointment Coordination', desc: 'Qualified lead intake and calendar management — every booked call is with an engaged prospect.', orange: true },
-            ].map((svc, i) => (
-              <AnimatedSection key={i} delay={i * 80}>
-                <div className={`group rounded-2xl p-7 h-full transition-all duration-300 border ${svc.orange ? 'glass-card hover:border-orange-400/30 hover:bg-[#1a1510]/60' : 'glass-card hover:border-[#2d5bb5]/40 hover:bg-[#141d35]/60'}`}>
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-5 transition-colors ${svc.orange ? 'bg-orange-400/10 text-orange-400 group-hover:bg-orange-400/20' : 'bg-[#2d5bb5]/15 text-[#7aa3e5] group-hover:bg-[#2d5bb5]/25'}`}>
-                    {svc.icon}
-                  </div>
-                  <h3 className="font-display font-semibold text-white text-lg mb-3">{svc.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{svc.desc}</p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-[#7aa3e5] hover:text-white transition-colors group">
-              View all services <ChevronRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* 3. GROWTH ENGINE — new, photo section (breathing rhythm: card / card / photo) */}
+      <GrowthEngineSection />
 
-      {/* 4. HOW QARM WORKS — 3 steps for homepage */}
-      <section className="py-28 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/how-it-works-1400w.webp"
-            srcSet="/images/how-it-works-800w.webp 800w, /images/how-it-works-1400w.webp 1400w"
-            sizes="(max-width: 768px) 800px, 1400px"
-            alt="Three glass capsules showing the QARM process: scattered documents becoming organized, then fully structured and checked off"
-            width={1400} height={933} className="w-full h-full object-cover opacity-[0.65]" loading="lazy" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e] via-[#0a0f1e]/30 to-[#0a0f1e]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0f1e] via-[#0a0f1e]/10 to-[#0a0f1e]" />
-        </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <AnimatedSection className="text-center max-w-2xl mx-auto mb-20">
-            <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">How It Works</p>
-            <h2 className="font-display font-bold text-4xl lg:text-5xl text-white mb-5">Three steps. No complexity.</h2>
-            <p className="text-slate-400 text-lg">Tell us what you need. We'll handle the rest.</p>
-          </AnimatedSection>
-          <div className="relative">
-            <div className="hidden lg:block absolute top-[52px] left-[16%] right-[16%] h-px bg-gradient-to-r from-transparent via-[#2d5bb5]/20 to-transparent" />
-            <div className="grid lg:grid-cols-3 gap-10">
-              {[
-                { num: '01', title: 'Tell Us What You Need', desc: 'Complete the short support-plan form. Identify what\'s creating the most pressure in your operations right now.', accent: 'blue' },
-                { num: '02', title: 'Receive a Recommended Plan', desc: 'QARM reviews your requirements and recommends a scope, capacity, and monthly plan within one business day.', accent: 'orange' },
-                { num: '03', title: 'Onboard and Execute', desc: 'We document responsibilities, set up access, and begin handling your operations under your direction.', accent: 'blue' },
-              ].map((step, i) => (
-                <AnimatedSection key={i} delay={i * 120} className="flex flex-col items-center text-center">
-                  <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-8 relative border-2 ${step.accent === 'orange' ? 'border-orange-400/40 bg-orange-400/5' : 'border-[#2d5bb5]/40 glass-card'}`}>
-                    <span className={`font-display font-bold text-2xl ${step.accent === 'orange' ? 'text-orange-400' : 'text-[#7aa3e5]'}`}>{step.num}</span>
-                  </div>
-                  <h3 className="font-display font-semibold text-white text-xl mb-4">{step.title}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed max-w-xs">{step.desc}</p>
-                </AnimatedSection>
-              ))}
-            </div>
-          </div>
-          <div className="text-center mt-14">
-            <button onClick={() => onGetStarted()} type="button" className="inline-flex items-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-[#2d5bb5]/30">
-              Start Step One <ArrowRight size={18} />
-            </button>
-          </div>
-        </div>
-      </section>
+      {/* 4. SOLUTIONS — new, replaces flat services grid */}
+      <SolutionsSection />
 
-      {/* 5. PRICING PREVIEW */}
+      {/* 5. AI + HUMAN EXECUTION — new */}
+      <AIHumanExecutionSection />
+
+      {/* 6. INDUSTRIES — new */}
+      <IndustriesSection />
+
+      {/* 7. HOW QARM WORKS v2 — new, photo section (breathing rhythm) */}
+      <HowQarmWorksV2Section />
+
+      {/* 8. PRICING PREVIEW — kept unchanged */}
       <section className="py-28 bg-[#080d18] border-y border-white/[0.05] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[400px] bg-[#f97316] rounded-full blur-[180px] opacity-[0.05] pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
@@ -314,7 +111,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* 6. WHY QARM — conversion-focused only, security moves to compact footer trust bar */}
+      {/* 9. WHY QARM — kept unchanged */}
       <section className="py-20 relative overflow-hidden">
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-[#1e3a8a] rounded-full blur-[180px] opacity-[0.08] pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -342,20 +139,7 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* PLACEHOLDER: Client experience — ready for real quotes when available */}
-      {/* To add a real testimonial later, uncomment and replace the quote/attribution:
-      <section className="py-20 bg-[#080d18] border-y border-white/[0.05]">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <AnimatedSection>
-            <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-6">Client Experience</p>
-            <blockquote className="text-xl text-slate-300 leading-relaxed mb-6">"[Real client quote here]"</blockquote>
-            <p className="text-sm text-slate-500">— [Role], [Province/State]</p>
-          </AnimatedSection>
-        </div>
-      </section>
-      */}
-
-      {/* 7. FAQ */}
+      {/* 10. FAQ — kept unchanged */}
       <section className="py-20 bg-[#080d18] border-y border-white/[0.05]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-14">
@@ -371,6 +155,9 @@ export function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* 11. FINAL CTA — new, replaces FAQ as the weak page-ending */}
+      <FinalCTASection />
     </div>
   );
 }

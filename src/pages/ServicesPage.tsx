@@ -5,11 +5,11 @@ import { useGetStarted } from '../context/GetStartedContext';
 
 
 const IMGS = {
-  hero: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=900&q=55&auto=format&fit=crop',
-  crm: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&q=55&auto=format&fit=crop',
-  docs: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500&q=55&auto=format&fit=crop',
-  comms: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=500&q=55&auto=format&fit=crop',
-  scheduling: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=500&q=55&auto=format&fit=crop',
+  hero: '/images/services-hero-1600w.webp',
+  crm: '/images/svc-crm-pipeline.webp',
+  docs: '/images/svc-documents.webp',
+  comms: '/images/svc-communication.webp',
+  scheduling: '/images/svc-scheduling.webp',
 };
 
 const services = [

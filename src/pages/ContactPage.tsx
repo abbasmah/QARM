@@ -65,6 +65,14 @@ export function ContactPage() {
 
       {/* Hero */}
       <section className="py-20 lg:py-28 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/contact-consultation-1600w.webp"
+            srcSet="/images/contact-consultation-900w.webp 900w, /images/contact-consultation-1600w.webp 1600w"
+            sizes="100vw"
+            alt="" width={1600} height={854} className="w-full h-full object-cover opacity-[0.25]" loading="eager" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/65 via-[#0a0f1e]/85 to-[#0a0f1e]" />
+        </div>
         <div className="absolute inset-0 bg-grid opacity-25" />
         <div className="relative z-10 max-w-3xl mx-auto px-4 text-center">
           <AnimatedSection>

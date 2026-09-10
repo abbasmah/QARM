@@ -1,3 +1,4 @@
+import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight, Zap, Send, MessageCircle, Heart, Handshake, Repeat,
@@ -65,31 +66,57 @@ export function GrowthEngineSection() {
 /* ============================================================
    4. SOLUTIONS — four categories replacing the flat services grid
    ============================================================ */
+function MicroFlow({ stages, orange }: { stages: string[]; orange: boolean }) {
+  return (
+    <div className="flex items-center gap-0 mt-5 pt-5 border-t border-white/[0.06]" aria-hidden="true">
+      {stages.map((label, i) => (
+        <div key={label} className="flex items-center">
+          <div className="flex flex-col items-center gap-1.5">
+            <div
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ease-out group-hover:scale-125 ${orange ? 'bg-orange-400/25 group-hover:bg-orange-400' : 'bg-[#7aa3e5]/25 group-hover:bg-[#7aa3e5]'}`}
+              style={{ transitionDelay: `${i * 120}ms` }}
+            />
+            <span
+              className="text-[9px] text-slate-600 group-hover:text-slate-300 whitespace-nowrap transition-colors duration-300 ease-out"
+              style={{ transitionDelay: `${i * 120}ms` }}
+            >
+              {label}
+            </span>
+          </div>
+          {i < stages.length - 1 && (
+            <div className="w-4 sm:w-6 h-px bg-white/10 mx-1 mb-4" />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function SolutionsSection() {
   const solutions = [
     {
       icon: <BarChart3 size={22} />, tag: 'AI & CRM Automation',
       title: 'Intelligent systems. Real results.',
       desc: 'CRM setup and hygiene, automated follow-up sequences, pipeline automation, and reporting — so every opportunity is tracked and nothing depends on memory.',
-      orange: false,
+      orange: false, flow: ['New', 'Working', 'Synced'],
     },
     {
       icon: <Megaphone size={22} />, tag: 'Growth & Marketing',
       title: 'More visibility. Better opportunities.',
       desc: 'Database segmentation, reactivation campaigns, and coordinated outreach that keep your pipeline fed between referrals.',
-      orange: true,
+      orange: true, flow: ['Campaign', 'Enquiry', 'CRM', 'Follow-up'],
     },
     {
       icon: <PhoneCall size={22} />, tag: 'Sales & Appointment Support',
       title: 'Conversations that move business forward.',
       desc: 'Lead qualification, follow-up, and appointment coordination — so every booked call is with someone ready to talk.',
-      orange: false,
+      orange: false, flow: ['Message', 'Response', 'Task'],
     },
     {
       icon: <ClipboardList size={22} />, tag: 'Managed Operations',
       title: 'A more organized business, every day.',
       desc: 'Documentation, client communication, and workflow coordination that keeps your operations running smoothly in the background.',
-      orange: true,
+      orange: true, flow: ['Received', 'Checked', 'Completed'],
     },
   ];
   return (
@@ -110,6 +137,7 @@ export function SolutionsSection() {
                 <p className={`text-[10px] font-semibold uppercase tracking-widest mb-3 ${s.orange ? 'text-orange-400' : 'text-[#4d7fd4]'}`}>{s.tag}</p>
                 <h3 className="font-display font-semibold text-white text-lg mb-3 leading-snug">{s.title}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">{s.desc}</p>
+                <MicroFlow stages={s.flow} orange={s.orange} />
               </div>
             </AnimatedSection>
           ))}
@@ -174,6 +202,7 @@ export function AIHumanExecutionSection() {
             </div>
           </AnimatedSection>
         </div>
+        <PeopleSystemsAutomationDiagram />
       </div>
     </section>
   );
@@ -251,7 +280,7 @@ export function HowQarmWorksV2Section() {
         </AnimatedSection>
         <div className="relative">
           {/* Desktop: 5-across row, connecting line, zero leftover space */}
-          <div className="hidden lg:block absolute top-[52px] left-[8%] right-[8%] h-px bg-gradient-to-r from-transparent via-[#2d5bb5]/20 to-transparent" />
+          <ScrollProgressLine orientation="h" className="hidden lg:block absolute top-[52px] left-[8%] right-[8%] h-px bg-gradient-to-r from-[#2d5bb5] via-[#4d7fd4] to-[#7aa3e5]" />
           <div className="hidden lg:grid grid-cols-5 gap-10">
             {steps.map((step, i) => (
               <AnimatedSection key={step.num} delay={i * 100} className="flex flex-col items-center text-center">
@@ -266,7 +295,7 @@ export function HowQarmWorksV2Section() {
 
           {/* Mobile/tablet: single vertical column, connecting line down the left — no dangling odd card */}
           <div className="lg:hidden relative max-w-md mx-auto">
-            <div className="absolute top-2 bottom-2 left-9 w-px bg-gradient-to-b from-transparent via-[#2d5bb5]/25 to-transparent" />
+            <ScrollProgressLine orientation="v" className="absolute top-2 bottom-2 left-9 w-px bg-gradient-to-b from-[#2d5bb5] via-[#4d7fd4] to-[#7aa3e5]" />
             <div className="space-y-10">
               {steps.map((step, i) => (
                 <AnimatedSection key={step.num} delay={i * 100} className="flex items-start gap-5 relative">
@@ -324,9 +353,176 @@ export function FinalCTASection() {
   );
 }
 
+function ScrollProgressLine({ orientation, className }: { orientation: 'h' | 'v'; className: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setActive(true); observer.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  return <div ref={ref} className={`${className} ${orientation === 'h' ? 'progress-line-h' : 'progress-line-v'} ${active ? 'active' : ''}`} />;
+}
 /* ============================================================
-   1. HERO V2 — Option B, lightened overlay so the photo breathes more
+   PEOPLE + SYSTEMS + AUTOMATION — connected-node diagram.
+   Human Expertise -> CRM -> Workflow Automation -> Client Experience -> Growth.
+   One IntersectionObserver triggers the whole sequence; each node/line
+   is staggered via transitionDelay so it reads as information moving
+   through the system, with Growth activating last.
    ============================================================ */
+function PeopleSystemsAutomationDiagram() {
+  const nodes = ['Human Expertise', 'CRM', 'Workflow Automation', 'Client Experience', 'Growth'];
+  const ref = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setActive(true); observer.disconnect(); } },
+      { threshold: 0.35 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+  const stepMs = 220; // stagger between each node/line activating
+
+  return (
+    <div ref={ref} className="mt-20 pt-16 border-t border-white/[0.06]">
+      <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest text-center mb-10">How the system connects</p>
+
+      {/* Desktop: horizontal chain */}
+      <div className="hidden md:flex items-start justify-center gap-0">
+        {nodes.map((label, i) => {
+          const isFinal = i === nodes.length - 1;
+          return (
+            <div key={label} className="flex items-start">
+              <div className="flex flex-col items-center gap-3 w-28">
+                <div
+                  className={`psa-node-dot w-4 h-4 rounded-full ${active ? 'active' : ''} ${isFinal ? 'psa-final' : ''}`}
+                  style={{ transitionDelay: `${i * stepMs}ms` }}
+                />
+                <span
+                  className={`psa-node-label text-xs font-medium text-center leading-tight ${active ? 'active' : ''}`}
+                  style={{ transitionDelay: `${i * stepMs}ms` }}
+                >
+                  {label}
+                </span>
+              </div>
+              {!isFinal && (
+                <div className="w-10 lg:w-16 h-0.5 mt-[7px] rounded-full overflow-hidden">
+                  <div className={`psa-line h-full ${active ? 'active' : ''}`} style={{ transitionDelay: `${i * stepMs + 100}ms` }} />
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Mobile: vertical chain */}
+      <div className="md:hidden max-w-[200px] mx-auto">
+        {nodes.map((label, i) => {
+          const isFinal = i === nodes.length - 1;
+          return (
+            <div key={label} className="flex items-start gap-4">
+              <div className="flex flex-col items-center">
+                <div
+                  className={`psa-node-dot w-4 h-4 rounded-full shrink-0 ${active ? 'active' : ''} ${isFinal ? 'psa-final' : ''}`}
+                  style={{ transitionDelay: `${i * stepMs}ms` }}
+                />
+                {!isFinal && (
+                  <div className="w-0.5 h-8 rounded-full overflow-hidden">
+                    <div className={`psa-line-v w-full ${active ? 'active' : ''}`} style={{ transitionDelay: `${i * stepMs + 100}ms` }} />
+                  </div>
+                )}
+              </div>
+              <span
+                className={`psa-node-label text-sm font-medium pt-0 pb-6 ${active ? 'active' : ''}`}
+                style={{ transitionDelay: `${i * stepMs}ms` }}
+              >
+                {label}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+/* ============================================================
+   OPERATIONS ENGINE — quiet looping workflow visualization for the hero.
+   Pure CSS animation, no JS state, no fabricated data/labels.
+   Respects prefers-reduced-motion (see index.css).
+   ============================================================ */
+function OperationsEngine() {
+  const stages = ['New Opportunity', 'CRM Updated', 'Follow-up', 'Documents', 'Task Assigned', 'Ready'];
+  const stepDelay = 1.5; // seconds; 6 stages × 1.5s = 9s full loop, matches index.css keyframes
+  return (
+    <>
+      {/* Desktop: horizontal chain */}
+      <div className="hidden md:flex items-center justify-center gap-0 mt-10 mb-2 select-none" aria-hidden="true">
+        {stages.map((label, i) => (
+          <div key={label} className="flex items-center">
+            <div className="flex flex-col items-center gap-2.5">
+              <div
+                className="engine-dot w-2.5 h-2.5 rounded-full bg-[#2d5bb5]/25"
+                style={{ animationDelay: `${i * stepDelay}s` }}
+              />
+              <span
+                className="engine-node text-[10px] text-slate-500 tracking-wide whitespace-nowrap"
+                style={{ animationDelay: `${i * stepDelay}s` }}
+              >
+                {label}
+              </span>
+            </div>
+            {i < stages.length - 1 && (
+              <div className="w-10 lg:w-14 h-px bg-white/10 mx-1.5 mb-5 relative overflow-hidden">
+                <div
+                  className="engine-line absolute inset-0 bg-gradient-to-r from-[#4d7fd4] to-[#7aa3e5]"
+                  style={{ animationDelay: `${i * stepDelay}s` }}
+                />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Mobile: compact vertical chain — simplified, not hidden */}
+      <div className="flex md:hidden flex-col items-start mt-8 mb-1 mx-auto w-fit select-none" aria-hidden="true">
+        {stages.map((label, i) => (
+          <div key={label} className="flex items-start gap-2.5">
+            <div className="flex flex-col items-center">
+              <div
+                className="engine-dot w-2 h-2 rounded-full bg-[#2d5bb5]/25 shrink-0"
+                style={{ animationDelay: `${i * stepDelay}s` }}
+              />
+              {i < stages.length - 1 && (
+                <div className="w-px h-3 my-0.5 bg-white/10 relative overflow-hidden">
+                  <div
+                    className="engine-line-v absolute inset-0 bg-gradient-to-b from-[#4d7fd4] to-[#7aa3e5]"
+                    style={{ animationDelay: `${i * stepDelay}s` }}
+                  />
+                </div>
+              )}
+            </div>
+            <span
+              className="engine-node text-[10px] text-slate-500 tracking-wide leading-none -translate-y-[3px] pb-3"
+              style={{ animationDelay: `${i * stepDelay}s` }}
+            >
+              {label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
+
+
 export function HeroV2Section() {
   const onGetStarted = useGetStarted();
   return (
@@ -367,6 +563,7 @@ export function HeroV2Section() {
               Book a Free Workflow Review
             </a>
           </div>
+          <OperationsEngine />
           <div className="border-t border-white/[0.06] pt-6 max-w-lg mx-auto">
             <p className="text-[10px] font-semibold text-slate-600 uppercase tracking-[0.2em] mb-4">We adapt to the CRM and tools you already use</p>
             <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">

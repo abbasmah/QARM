@@ -1,16 +1,17 @@
 # QARM
 
-> QARM (Quality Assistance & Relationship Management) provides premium operational infrastructure — CRM coordination, pipeline management, workflow systems, and administrative support — for mortgage, real estate, and insurance professionals across Canada and the United States, with additional lending-operations support in the UK, UAE, and Australia.
+> QARM (Quality Assistance & Relationship Management) combines CRM automation, growth systems, and managed operations — for mortgage, real estate, financial services, and other relationship-driven professionals across Canada and the United States, with additional operations support in the UK, UAE, and Australia.
 
-QARM is not a virtual assistant agency or generic outsourcing service. It is a structured operations organization staffed by trained specialists, combining human operational support with AI-enhanced workflows.
+QARM is not a virtual assistant agency or generic outsourcing service. It is a structured operations organization staffed by trained specialists, combining human execution with AI-enhanced automation across four connected pillars: AI & CRM Automation, Growth & Marketing, Sales & Appointment Support, and Managed Operations. Mortgage operations remain QARM's founding specialization, extending naturally to real estate, financial services, and other pipeline-based industries.
 
 ## Services
-- [Services](https://www.theqarm.com/services): CRM & pipeline management, workflow coordination, document/condition fulfillment, underwriting support, compliance operations
+- [Services](https://www.theqarm.com/services): AI & CRM automation, growth marketing, sales & appointment support, managed operations, document/condition fulfillment, compliance operations
 - [Pricing](https://www.theqarm.com/pricing): Transparent part-time and full-time operations support plans, no setup fees, no lock-in contracts
 - [US Mortgage Operations](https://www.theqarm.com/us-mortgage-operations): Dedicated support for US mortgage loan originators (MLOs)
-- [Global Operations](https://www.theqarm.com/global-operations): Lending operations support for the UK, UAE, Australia, and emerging markets
-- [Broker Growth Services](https://www.theqarm.com/broker-growth): Websites, SEO, and social media management for mortgage brokers
+- [Global Operations](https://www.theqarm.com/global-operations): Operations support for the UK, UAE, Australia, and emerging markets
+- [Broker Growth Services](https://www.theqarm.com/broker-growth): Websites, SEO, and social media management for mortgage, real estate, and financial services professionals
 
 ## Company
 - [About](https://www.theqarm.com/about): Founded 2023, based in Toronto, Canada
 - [Contact](https://www.theqarm.com/contact): info@theqarm.com
+

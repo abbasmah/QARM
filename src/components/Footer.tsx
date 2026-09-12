@@ -123,6 +123,7 @@ export function Footer() {
               {[
                 { label: 'About QARM', href: '/about' },
                 { label: 'Pricing', href: '/pricing' },
+                { label: 'FAQ', href: '/#faq' },
                 { label: 'Contact', href: '/contact' },
                 { label: 'US Mortgage Operations', href: '/us-mortgage-operations' },
                 { label: 'Global Operations', href: '/global-operations' },
@@ -131,9 +132,6 @@ export function Footer() {
                   <Link to={item.href} className="text-sm text-slate-400 hover:text-white transition-colors">{item.label}</Link>
                 </li>
               ))}
-              <li>
-                <a href="mailto:info@theqarm.com" className="text-sm text-slate-400 hover:text-white transition-colors">info@theqarm.com</a>
-              </li>
             </ul>
           </div>
         </div>

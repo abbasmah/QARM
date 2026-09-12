@@ -5,6 +5,7 @@ interface GetStartedModalProps {
   isOpen: boolean;
   onClose: () => void;
   presetCapacity?: string;
+  presetIndustry?: string;
 }
 
 // Deployed Cloudflare Worker — receives the form POST and sends the email via Resend
@@ -67,7 +68,7 @@ function Chip({ label, active, onClick }: { label: string; active: boolean; onCl
   );
 }
 
-export function GetStartedModal({ isOpen, onClose, presetCapacity }: GetStartedModalProps) {
+export function GetStartedModal({ isOpen, onClose, presetCapacity, presetIndustry }: GetStartedModalProps) {
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'submitted' | 'error'>('idle');
   const [form, setForm] = useState(initialForm);
@@ -92,6 +93,12 @@ export function GetStartedModal({ isOpen, onClose, presetCapacity }: GetStartedM
       setForm((f) => ({ ...f, capacity: presetCapacity }));
     }
   }, [isOpen, presetCapacity]);
+
+  useEffect(() => {
+    if (isOpen && presetIndustry) {
+      setForm((f) => ({ ...f, industry: presetIndustry }));
+    }
+  }, [isOpen, presetIndustry]);
 
   const update = (field: string, value: string) => setForm((f) => ({ ...f, [field]: value }));
   const toggleSupport = (opt: string) =>

@@ -1,12 +1,18 @@
 import { Outlet, useLocation } from 'react-router-dom';
 import { Head } from 'vite-react-ssg';
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState, useRef, Suspense } from 'react';
 import { Nav } from './components/Nav';
 import { Footer } from './components/Footer';
 import { GetStartedModal } from './components/GetStartedModal';
 import { GetStartedProvider } from './context/GetStartedContext';
 
 interface PageMetaData { title: string; description: string; keywords: string; ogTitle?: string; ogDescription?: string; }
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
 
 const pageMeta: Record<string, PageMetaData> = {
   '/': { title: 'QARM | CRM Automation & Operations Support — Mortgage, Real Estate & Financial Services', description: 'QARM combines CRM automation, structured follow-up, and managed operations so mortgage, real estate, and financial services professionals stop losing opportunities to disorganized systems. Est. 2023.', keywords: 'CRM automation, mortgage operations support Canada, real estate operations support, financial services operations support, growth systems, lead follow-up automation, pipeline coordination, workflow systems, AI-enhanced operations, Filogix, Velocity, Finmo, back office support', ogTitle: 'QARM — Systems and Support for Relationship-Driven Businesses', ogDescription: 'CRM automation, growth systems, and managed operations — for professionals who run their business on relationships.' },
@@ -50,13 +56,54 @@ const PageLoader = () => (
 export default function Layout() {
   const [modalOpen, setModalOpen] = useState(false);
   const [presetCapacity, setPresetCapacity] = useState<string | undefined>(undefined);
-  const { pathname } = useLocation();
-  const onGetStarted = (preset?: string) => {
+  const [presetIndustry, setPresetIndustry] = useState<string | undefined>(undefined);
+  const [showStickyCta, setShowStickyCta] = useState(false);
+  const { pathname, hash } = useLocation();
+  const isFirstRender = useRef(true);
+  const onGetStarted = (preset?: string, industry?: string) => {
     setPresetCapacity(preset);
+    setPresetIndustry(industry);
     setModalOpen(true);
   };
 
-  useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }); }, [pathname]);
+  useEffect(() => {
+    const handler = () => setShowStickyCta(window.scrollY > 480);
+    window.addEventListener('scroll', handler);
+    return () => window.removeEventListener('scroll', handler);
+  }, []);
+
+  // GA4 + client-side routing: the base gtag snippet in index.html only fires
+  // once, on the initial full page load. Every subsequent in-app navigation
+  // (react-router, no reload) needs its own page_view event, or GA4 only
+  // ever sees the very first page a visitor lands on.
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'page_view', {
+        page_path: pathname,
+        page_location: window.location.href,
+        page_title: document.title,
+      });
+    }
+  }, [pathname]);
+
+  useEffect(() => {
+    if (hash) {
+      // Wait a tick for the target page's content to mount before scrolling to it
+      const id = hash.replace('#', '');
+      const scrollToHash = () => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        else window.scrollTo({ top: 0, behavior: 'instant' });
+      };
+      const t = setTimeout(scrollToHash, 50);
+      return () => clearTimeout(t);
+    }
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname, hash]);
 
   return (
     <div className="min-h-screen bg-[#0a0f1e] text-slate-200">
@@ -70,7 +117,22 @@ export default function Layout() {
           <Footer />
         </GetStartedProvider>
       </main>
-      <GetStartedModal isOpen={modalOpen} onClose={() => setModalOpen(false)} presetCapacity={presetCapacity} />
+      <GetStartedModal isOpen={modalOpen} onClose={() => setModalOpen(false)} presetCapacity={presetCapacity} presetIndustry={presetIndustry} />
+
+      {/* Sticky mobile CTA — appears after scrolling past the hero, hidden on desktop */}
+      <div
+        className={`lg:hidden fixed bottom-0 left-0 right-0 z-40 p-3 bg-[#080d1a]/98 backdrop-blur-xl border-t border-white/10 transition-transform duration-300 ${
+          showStickyCta && !modalOpen ? 'translate-y-0' : 'translate-y-full'
+        }`}
+      >
+        <button
+          onClick={() => onGetStarted()}
+          type="button"
+          className="w-full flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-5 py-3.5 rounded-lg text-sm font-semibold transition-all"
+        >
+          Get Your Support Plan
+        </button>
+      </div>
     </div>
   );
 }

@@ -140,7 +140,7 @@ export function HomePage() {
       </section>
 
       {/* 10. FAQ — kept unchanged */}
-      <section className="py-20 bg-[#080d18] border-y border-white/[0.05]">
+      <section id="faq" className="py-20 bg-[#080d18] border-y border-white/[0.05]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection className="text-center mb-14">
             <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-4">FAQ</p>
@@ -154,6 +154,15 @@ export function HomePage() {
             ))}
           </div>
         </div>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.q,
+            acceptedAnswer: { '@type': 'Answer', text: faq.a },
+          })),
+        }) }} />
       </section>
 
       {/* 11. FINAL CTA — new, replaces FAQ as the weak page-ending */}

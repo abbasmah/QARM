@@ -1,5 +1,6 @@
 import { ArrowRight, BarChart3, FileText, MessageSquare, Calendar, Megaphone } from 'lucide-react';
 import { AnimatedSection } from '../components/AnimatedSection';
+import { RelatedIndustries } from '../components/RelatedIndustries';
 import { useGetStarted } from '../context/GetStartedContext';
 
 const CALENDLY_URL = 'https://calendly.com/theqarm-info/30min';
@@ -90,6 +91,8 @@ export function ProfessionalServicesPage() {
         </div>
       </section>
 
+      <RelatedIndustries current="/professional-services" />
+
       {/* CTA */}
       <section className="py-20 border-t border-white/[0.06]">
         <div className="max-w-3xl mx-auto px-4 text-center">
@@ -97,7 +100,7 @@ export function ProfessionalServicesPage() {
             <h2 className="font-display font-bold text-3xl lg:text-4xl text-white mb-5">Ready to offload your operations?</h2>
             <p className="text-slate-400 mb-8">Book a free workflow review. We'll map your current workflow and show you exactly how QARM fits into your business.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button onClick={() => onGetStarted()} type="button"
+              <button onClick={() => onGetStarted(undefined, 'Professional Services')} type="button"
                 className="inline-flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all hover:shadow-xl hover:shadow-[#2d5bb5]/30">
                 Get Your Support Plan <ArrowRight size={18} />
               </button>

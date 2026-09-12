@@ -150,6 +150,21 @@ export function AboutPage() {
         </div>
       </section>
 
+      {/* Where We Operate */}
+      <section className="py-16 border-t border-white/[0.06]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <AnimatedSection>
+            <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-5">Where We Operate</p>
+            <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+              {['Canada', 'United States', 'United Kingdom', 'Australia', 'UAE'].map((c) => (
+                <span key={c} className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-sm text-slate-300">{c}</span>
+              ))}
+            </div>
+            <p className="text-slate-400 text-sm max-w-xl mx-auto">Supporting clients across Canada, the United States, and selected international markets — with mortgage operations as our founding specialization everywhere we work.</p>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 border-t border-white/[0.06] bg-[#080d18]">
         <div className="max-w-3xl mx-auto px-4 text-center">

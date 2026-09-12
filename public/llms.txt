@@ -6,12 +6,15 @@ QARM is not a virtual assistant agency or generic outsourcing service. It is a s
 
 ## Services
 - [Services](https://www.theqarm.com/services): AI & CRM automation, growth marketing, sales & appointment support, managed operations, document/condition fulfillment, compliance operations
+- [Industries](https://www.theqarm.com/industries): QARM's operating model applied across mortgage & lending, real estate, financial services & insurance, and professional services
+- [Mortgage & Lending](https://www.theqarm.com/mortgage): QARM's founding specialization — CRM, file, and client support for mortgage brokers and agents. Supporting clients across Canada, the United States, and selected international markets.
+- [Real Estate](https://www.theqarm.com/real-estate): CRM, listing coordination, and client follow-up for real estate professionals
+- [Financial Services & Insurance](https://www.theqarm.com/financial-services): CRM, policy and file coordination, and client communication for advisors and agents
+- [Professional Services](https://www.theqarm.com/professional-services): CRM, client communication, and scheduling for consultants and service-based professionals
 - [Pricing](https://www.theqarm.com/pricing): Transparent part-time and full-time operations support plans, no setup fees, no lock-in contracts
-- [US Mortgage Operations](https://www.theqarm.com/us-mortgage-operations): Dedicated support for US mortgage loan originators (MLOs)
-- [Global Operations](https://www.theqarm.com/global-operations): Operations support for the UK, UAE, Australia, and emerging markets
 - [Broker Growth Services](https://www.theqarm.com/broker-growth): Websites, SEO, and social media management for mortgage, real estate, and financial services professionals
 
 ## Company
-- [About](https://www.theqarm.com/about): Founded 2023, based in Toronto, Canada
+- [About](https://www.theqarm.com/about): Founded 2023, based in Toronto, Canada. Operates across Canada, the United States, United Kingdom, Australia, and UAE.
 - [Contact](https://www.theqarm.com/contact): info@theqarm.com
 

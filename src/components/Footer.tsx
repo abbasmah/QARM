@@ -96,11 +96,7 @@ export function Footer() {
                 { label: 'Document & Workflow Coordination', href: '/services#documents' },
                 { label: 'Client & Partner Communication', href: '/services#communication' },
                 { label: 'Lead & Appointment Coordination', href: '/services#scheduling' },
-                { label: 'Real Estate', href: '/real-estate' },
-                { label: 'Mortgage', href: '/mortgage' },
-                { label: 'Professional Services', href: '/professional-services' },
-                { label: 'US Mortgage Operations', href: '/us-mortgage-operations' },
-                { label: 'Global Operations', href: '/global-operations' },
+                { label: 'Industries', href: '/industries' },
               ].map((item) => (
                 <li key={item.href}>
                   <Link to={item.href} className="text-sm text-slate-400 hover:text-white transition-colors">{item.label}</Link>
@@ -117,6 +113,8 @@ export function Footer() {
                 { label: 'About QARM', href: '/about' },
                 { label: 'Pricing', href: '/pricing' },
                 { label: 'Contact', href: '/contact' },
+                { label: 'US Mortgage Operations', href: '/us-mortgage-operations' },
+                { label: 'Global Operations', href: '/global-operations' },
               ].map((item) => (
                 <li key={item.href}>
                   <Link to={item.href} className="text-sm text-slate-400 hover:text-white transition-colors">{item.label}</Link>

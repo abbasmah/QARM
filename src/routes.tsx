@@ -13,6 +13,8 @@ const GlobalOperationsPage = lazy(() => import('./pages/GlobalOperationsPage').t
 const RealEstatePage = lazy(() => import('./pages/RealEstatePage').then(m => ({ default: m.RealEstatePage })));
 const MortgagePage = lazy(() => import('./pages/MortgagePage').then(m => ({ default: m.MortgagePage })));
 const ProfessionalServicesPage = lazy(() => import('./pages/ProfessionalServicesPage').then(m => ({ default: m.ProfessionalServicesPage })));
+const IndustriesPage = lazy(() => import('./pages/IndustriesPage').then(m => ({ default: m.IndustriesPage })));
+const FinancialServicesPage = lazy(() => import('./pages/FinancialServicesPage').then(m => ({ default: m.FinancialServicesPage })));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage').then(m => ({ default: m.PrivacyPage })));
 const TermsPage = lazy(() => import('./pages/TermsPage').then(m => ({ default: m.TermsPage })));
 
@@ -42,6 +44,8 @@ export const routes: RouteRecord[] = [
       { path: 'real-estate', Component: RealEstatePage },
       { path: 'mortgage', Component: MortgagePage },
       { path: 'professional-services', Component: ProfessionalServicesPage },
+      { path: 'industries', Component: IndustriesPage },
+      { path: 'financial-services', Component: FinancialServicesPage },
       { path: 'privacy', Component: PrivacyPage },
       { path: 'terms', Component: TermsPage },
       { path: '*', Component: NotFound },

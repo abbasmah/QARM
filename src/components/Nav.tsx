@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { QarmLogo } from './QarmLogo';
 
 interface NavProps {
@@ -9,24 +9,9 @@ interface NavProps {
 
 const navLinks = [
   { label: 'Services', href: '/services' },
-  {
-    label: 'Industries',
-    children: [
-      { label: 'Real Estate', href: '/real-estate', desc: 'Listings, CRM, and client follow-up' },
-      { label: 'Mortgage', href: '/mortgage', desc: "QARM's founding specialization" },
-      { label: 'Professional Services', href: '/professional-services', desc: 'For relationship-driven professionals' },
-    ],
-  },
-  {
-    label: 'Markets',
-    children: [
-      { label: 'US Mortgage Operations', href: '/us-mortgage-operations', desc: 'Built for American MLOs' },
-      { label: 'Global Operations', href: '/global-operations', desc: 'UK, UAE & emerging markets' },
-    ],
-  },
+  { label: 'Industries', href: '/industries' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
 ];
 
 const socialLinks = [
@@ -53,7 +38,6 @@ const socialLinks = [
 export function Nav({ onGetStarted }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -64,7 +48,6 @@ export function Nav({ onGetStarted }: NavProps) {
 
   useEffect(() => {
     setMobileOpen(false);
-    setOpenDropdown(null);
   }, [location.pathname]);
 
   return (
@@ -87,56 +70,17 @@ export function Nav({ onGetStarted }: NavProps) {
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
-              link.children ? (
-                <div key={link.label} className="relative">
-                  <button
-                    onMouseEnter={() => setOpenDropdown(link.label)}
-                    onMouseLeave={() => setOpenDropdown(null)}
-                    className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] transition-all"
-                  >
-                    {link.label} <ChevronDown size={14} className={`transition-transform ${openDropdown === link.label ? 'rotate-180' : ''}`} />
-                  </button>
-                  {openDropdown === link.label && (
-                    <div
-                      onMouseEnter={() => setOpenDropdown(link.label)}
-                      onMouseLeave={() => setOpenDropdown(null)}
-                      className="absolute top-full left-0 mt-1 w-64 bg-[#0d1424]/98 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden"
-                    >
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          to={child.href}
-                          className="block px-5 py-4 hover:bg-white/[0.06] transition-colors border-b border-white/[0.04] last:border-0"
-                        >
-                          <p className="text-sm font-semibold text-white">{child.label}</p>
-                          <p className="text-xs text-slate-400 mt-0.5">{child.desc}</p>
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <Link
-                  key={link.href}
-                  to={link.href!}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    location.pathname === link.href ? 'text-white bg-white/[0.08]' : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              )
+              <Link
+                key={link.href}
+                to={link.href}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  location.pathname === link.href ? 'text-white bg-white/[0.08]' : 'text-slate-400 hover:text-white hover:bg-white/[0.06]'
+                }`}
+              >
+                {link.label}
+              </Link>
             ))}
-            <div className="w-px h-5 bg-white/10 mx-2" />
-            {/* Social icons */}
-            {socialLinks.map((s) => (
-              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                className="p-2 text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-white/[0.06]"
-                aria-label={s.label}>
-                {s.icon}
-              </a>
-            ))}
-            <div className="w-px h-5 bg-white/10 mx-2" />
+            <div className="w-px h-5 bg-white/10 mx-3" />
             <button
               onClick={() => onGetStarted()}
               type="button"
@@ -163,17 +107,7 @@ export function Nav({ onGetStarted }: NavProps) {
         <div className="lg:hidden bg-[#080d1a]/98 backdrop-blur-xl border-b border-white/[0.06] px-4 pb-6">
           <div className="space-y-1 pt-2">
             <Link to="/services" className="block px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:text-white">Services</Link>
-            <div className="px-4 py-2">
-              <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-2">Industries</p>
-              <Link to="/real-estate" className="block py-2 text-sm text-slate-400 hover:text-white">Real Estate</Link>
-              <Link to="/mortgage" className="block py-2 text-sm text-slate-400 hover:text-white">Mortgage</Link>
-              <Link to="/professional-services" className="block py-2 text-sm text-slate-400 hover:text-white">Professional Services</Link>
-            </div>
-            <div className="px-4 py-2">
-              <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-2">Markets</p>
-              <Link to="/us-mortgage-operations" className="block py-2 text-sm text-slate-400 hover:text-white">US Mortgage Operations</Link>
-              <Link to="/global-operations" className="block py-2 text-sm text-slate-400 hover:text-white">Global Operations</Link>
-            </div>
+            <Link to="/industries" className="block px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:text-white">Industries</Link>
             <Link to="/pricing" className="block px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:text-white">Pricing</Link>
             <Link to="/about" className="block px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:text-white">About</Link>
             <Link to="/contact" className="block px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:text-white">Contact</Link>

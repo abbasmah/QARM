@@ -11,7 +11,7 @@ interface GetStartedModalProps {
 const FORM_ENDPOINT = 'https://tight-boat-a9d2.winter-pine-b489.workers.dev/';
 const CALENDLY_URL = 'https://calendly.com/theqarm-info/30min';
 
-const industries = ['Mortgage', 'Real Estate', 'Insurance', 'Professional Services', 'Other'];
+const industries = ['Mortgage', 'Real Estate', 'Financial Services & Insurance', 'Professional Services', 'Other'];
 
 const roles = [
   'Independent professional',

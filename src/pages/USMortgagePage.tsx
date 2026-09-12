@@ -1,4 +1,4 @@
-import { ArrowRight, CheckCircle2, Star, BarChart3, FileText, MessageSquare, Target, Calendar, ShieldCheck } from 'lucide-react';
+import { ArrowRight, CheckCircle2, BarChart3, FileText, MessageSquare, Target, Calendar, ShieldCheck } from 'lucide-react';
 import { AnimatedSection } from '../components/AnimatedSection';
 import { CountUp } from '../components/CountUp';
 import { useGetStarted } from '../context/GetStartedContext';

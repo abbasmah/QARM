@@ -5,8 +5,7 @@ import { useGetStarted } from '../context/GetStartedContext';
 
 
 const IMGS = {
-  hero: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=900&q=55&auto=format&fit=crop',
-  mlo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=700&q=55&auto=format&fit=crop',
+  mlo: '/images/ai-human-execution-1400w.webp',
 };
 
 export function USMortgagePage() {
@@ -16,8 +15,12 @@ export function USMortgagePage() {
       {/* Hero */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={IMGS.hero} alt="US city skyline" width={1200} height={600} className="w-full h-full object-cover opacity-8" loading="eager" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/80 to-[#0a0f1e]" />
+          <img
+            src="/images/services-hero-1600w.webp"
+            srcSet="/images/services-hero-640w.webp 640w, /images/services-hero-900w.webp 900w, /images/services-hero-1600w.webp 1600w"
+            sizes="100vw"
+            alt="Modern office overlooking a city skyline" width={1600} height={902} className="w-full h-full object-cover opacity-[0.28]" loading="eager" fetchPriority="high" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/60 via-[#0a0f1e]/80 to-[#0a0f1e]" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-20" />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#f97316] rounded-full blur-[180px] opacity-[0.05] pointer-events-none" />

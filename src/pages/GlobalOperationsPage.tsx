@@ -42,8 +42,17 @@ export function GlobalOperationsPage() {
   return (
     <div className="min-h-screen bg-[#0a0f1e] pt-20">
       <section className="relative py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/growth-engine-1400w.webp"
+            srcSet="/images/growth-engine-800w.webp 800w, /images/growth-engine-1400w.webp 1400w"
+            sizes="100vw"
+            alt="Business professional walking along a modern glass walkway overlooking a city skyline"
+            width={1400} height={788} className="w-full h-full object-cover opacity-[0.30]" loading="eager" fetchPriority="high" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/55 via-[#0a0f1e]/75 to-[#0a0f1e]" />
+        </div>
         <div className="absolute inset-0 bg-grid opacity-25" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#1e3a8a] rounded-full blur-[160px] opacity-8 pointer-events-none" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#1e3a8a] rounded-full blur-[160px] opacity-[0.08] pointer-events-none" />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#f97316] rounded-full blur-[180px] opacity-[0.04] pointer-events-none" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <AnimatedSection>

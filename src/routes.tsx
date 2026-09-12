@@ -10,6 +10,9 @@ const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ defaul
 const BrokerGrowthPage = lazy(() => import('./pages/BrokerGrowthPage').then(m => ({ default: m.BrokerGrowthPage })));
 const USMortgagePage = lazy(() => import('./pages/USMortgagePage').then(m => ({ default: m.USMortgagePage })));
 const GlobalOperationsPage = lazy(() => import('./pages/GlobalOperationsPage').then(m => ({ default: m.GlobalOperationsPage })));
+const RealEstatePage = lazy(() => import('./pages/RealEstatePage').then(m => ({ default: m.RealEstatePage })));
+const MortgagePage = lazy(() => import('./pages/MortgagePage').then(m => ({ default: m.MortgagePage })));
+const ProfessionalServicesPage = lazy(() => import('./pages/ProfessionalServicesPage').then(m => ({ default: m.ProfessionalServicesPage })));
 const PrivacyPage = lazy(() => import('./pages/PrivacyPage').then(m => ({ default: m.PrivacyPage })));
 const TermsPage = lazy(() => import('./pages/TermsPage').then(m => ({ default: m.TermsPage })));
 
@@ -36,6 +39,9 @@ export const routes: RouteRecord[] = [
       { path: 'broker-growth', Component: BrokerGrowthPage },
       { path: 'us-mortgage-operations', Component: USMortgagePage },
       { path: 'global-operations', Component: GlobalOperationsPage },
+      { path: 'real-estate', Component: RealEstatePage },
+      { path: 'mortgage', Component: MortgagePage },
+      { path: 'professional-services', Component: ProfessionalServicesPage },
       { path: 'privacy', Component: PrivacyPage },
       { path: 'terms', Component: TermsPage },
       { path: '*', Component: NotFound },

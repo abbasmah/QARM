@@ -26,7 +26,11 @@ export function ServicesPage() {
       {/* Hero with photo */}
       <section className="relative py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0">
-          <img src={IMGS.hero} alt="Professional office" width={1200} height={600} className="w-full h-full object-cover opacity-35" loading="eager" />
+          <img
+            src={IMGS.hero}
+            srcSet="/images/services-hero-640w.webp 640w, /images/services-hero-900w.webp 900w, /images/services-hero-1600w.webp 1600w"
+            sizes="100vw"
+            alt="Professional office" width={1600} height={902} className="w-full h-full object-cover opacity-35" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/30 via-[#0a0f1e]/50 to-[#0a0f1e]" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-25" />
@@ -72,7 +76,7 @@ export function ServicesPage() {
                           <p className="text-slate-400 leading-relaxed text-sm">{svc.desc}</p>
                         </div>
                         <div>
-                          <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-4">What's included</p>
+                          <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">What's included</p>
                           <ul className="space-y-2.5">
                             {svc.deliverables.map((d) => (
                               <li key={d} className="flex items-start gap-3 text-sm text-slate-300">
@@ -96,7 +100,7 @@ export function ServicesPage() {
             ))}
           </div>
           <AnimatedSection>
-            <p className="text-center text-sm text-slate-500 mt-10 max-w-2xl mx-auto">QARM uses AI-enhanced tools to support this work — never to replace it. Every task is handled and reviewed by a real person on the QARM team.</p>
+            <p className="text-center text-sm text-slate-400 mt-10 max-w-2xl mx-auto">QARM uses AI-enhanced tools to support this work — never to replace it. Every task is handled and reviewed by a real person on the QARM team.</p>
           </AnimatedSection>
         </div>
       </section>

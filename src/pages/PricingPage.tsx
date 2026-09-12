@@ -23,7 +23,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
     <div className={`glass-card rounded-xl overflow-hidden transition-all duration-300 ${open ? 'border-[#2d5bb5]/30' : ''}`}>
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-6 text-left gap-4">
         <span className="font-display font-semibold text-white text-sm leading-relaxed">{q}</span>
-        {open ? <ChevronUp size={18} className="text-[#4d7fd4] shrink-0" /> : <ChevronDown size={18} className="text-slate-500 shrink-0" />}
+        {open ? <ChevronUp size={18} className="text-[#4d7fd4] shrink-0" /> : <ChevronDown size={18} className="text-slate-400 shrink-0" />}
       </button>
       {open && <div className="px-6 pb-6"><p className="text-slate-400 text-sm leading-relaxed">{a}</p></div>}
     </div>
@@ -144,9 +144,9 @@ export function PricingPage() {
         <div className="absolute inset-0">
           <img
             src="/images/pricing-bg-1600w.webp"
-            srcSet="/images/pricing-bg-900w.webp 900w, /images/pricing-bg-1600w.webp 1600w"
+            srcSet="/images/pricing-bg-640w.webp 640w, /images/pricing-bg-900w.webp 900w, /images/pricing-bg-1600w.webp 1600w"
             sizes="100vw"
-            alt="" width={1600} height={854} className="w-full h-full object-cover opacity-[0.22]" loading="eager" />
+            alt="" width={1600} height={854} className="w-full h-full object-cover opacity-[0.22]" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/70 via-[#0a0f1e]/85 to-[#0a0f1e]" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-25" />
@@ -175,16 +175,16 @@ export function PricingPage() {
                     <div className="absolute top-0 right-0 w-40 h-40 bg-[#2d5bb5] rounded-full blur-[80px] opacity-15 pointer-events-none" />
                   )}
                   <div className="flex items-start justify-between mb-4">
-                    <p className={`text-xs font-semibold uppercase tracking-widest ${tier.highlighted ? 'text-[#7aa3e5]' : 'text-slate-500'}`}>{tier.name}</p>
+                    <p className={`text-xs font-semibold uppercase tracking-widest ${tier.highlighted ? 'text-[#7aa3e5]' : 'text-slate-400'}`}>{tier.name}</p>
                     {tier.badge && (
                       <span className="bg-[#f97316] text-white text-[10px] font-bold uppercase tracking-wider py-1 px-2.5 rounded-full shrink-0">{tier.badge}</span>
                     )}
                   </div>
                   <div className="flex items-baseline gap-2 mb-1 flex-wrap">
                     <span className="text-4xl font-display font-bold text-white">{tier.price}</span>
-                    {tier.priceUnit && <span className="text-slate-500 text-sm">{tier.priceUnit}</span>}
+                    {tier.priceUnit && <span className="text-slate-400 text-sm">{tier.priceUnit}</span>}
                   </div>
-                  <p className="text-xs text-slate-600 mb-6">{tier.capacity}</p>
+                  <p className="text-xs text-slate-400 mb-6">{tier.capacity}</p>
                   <p className="text-slate-400 text-sm mb-6 leading-relaxed">{tier.description}</p>
                   <ul className="space-y-3 mb-8 flex-grow">
                     {tier.features.map((f) => (
@@ -202,10 +202,10 @@ export function PricingPage() {
                     {tier.cta}
                   </button>
                   {tier.name === 'Flexible Support' && (
-                    <p className="text-center text-xs text-slate-600 mt-3">Tell us what you need and receive a recommended scope and price within one business day.</p>
+                    <p className="text-center text-xs text-slate-400 mt-3">Tell us what you need and receive a recommended scope and price within one business day.</p>
                   )}
                   {tier.name === 'Custom Team' && (
-                    <p className="text-center text-xs text-slate-600 mt-3">We'll recommend a structure based on your volume, team, systems, and priorities.</p>
+                    <p className="text-center text-xs text-slate-400 mt-3">We'll recommend a structure based on your volume, team, systems, and priorities.</p>
                   )}
                 </div>
               </AnimatedSection>
@@ -221,7 +221,7 @@ export function PricingPage() {
             <div className="glass-card rounded-2xl p-8 sm:p-10 flex flex-col md:flex-row md:items-center gap-8">
               <div className="flex-1">
                 <p className="text-xs font-semibold text-[#4d7fd4] uppercase tracking-widest mb-3">Not Ready for Monthly Support?</p>
-                <h3 className="font-display font-bold text-2xl text-white mb-3">Start with a Focused Operations Pilot.</h3>
+                <h2 className="font-display font-bold text-2xl text-white mb-3">Start with a Focused Operations Pilot.</h2>
                 <p className="text-slate-400 text-sm leading-relaxed mb-5">
                   Address one defined operational priority and experience how QARM works before selecting an ongoing support plan.
                 </p>
@@ -230,14 +230,14 @@ export function PricingPage() {
                     <span key={p} className="text-xs text-slate-300 bg-white/[0.04] border border-white/[0.08] rounded-full px-3 py-1.5">{p}</span>
                   ))}
                 </div>
-                <p className="text-xs text-slate-600">If you upgrade to a monthly support plan within 14 days of completing the pilot, your $149 pilot fee is credited toward your first month.</p>
+                <p className="text-xs text-slate-400">If you upgrade to a monthly support plan within 14 days of completing the pilot, your $149 pilot fee is credited toward your first month.</p>
               </div>
               <div className="md:w-56 shrink-0 text-center md:border-l border-white/[0.08] md:pl-8">
                 <div className="flex items-baseline justify-center gap-2 mb-1">
                   <span className="text-4xl font-display font-bold text-white">$149</span>
-                  <span className="text-slate-500 text-sm">CAD</span>
+                  <span className="text-slate-400 text-sm">CAD</span>
                 </div>
-                <p className="text-xs text-slate-600 mb-6">Up to 10 hours</p>
+                <p className="text-xs text-slate-400 mb-6">Up to 10 hours</p>
                 <button onClick={() => onGetStarted('10-hour pilot')} type="button"
                   className="w-full py-3.5 text-center bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white rounded-lg text-sm font-semibold transition-all">
                   Start My Pilot
@@ -256,7 +256,7 @@ export function PricingPage() {
               <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
                 <div className="flex-1">
                   <p className="text-xs font-semibold text-orange-400 uppercase tracking-widest mb-3">Also Available</p>
-                  <h3 className="font-display font-bold text-2xl text-white mb-2">Websites & social media management</h3>
+                  <h2 className="font-display font-bold text-2xl text-white mb-2">Websites & social media management</h2>
                   <p className="text-slate-400 text-sm leading-relaxed">From $1,499 CAD for a website, from $599 CAD/month for social media — available as an add-on to any plan above, or on their own. Final pricing is scoped to your requirements.</p>
                 </div>
                 <div className="flex items-center gap-2 text-orange-400 font-semibold text-sm shrink-0 group-hover:gap-3 transition-all">

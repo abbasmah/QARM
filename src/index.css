@@ -170,38 +170,48 @@
 }
 .engine-line-v { transform-origin: top; animation: engine-line-fill-v 9s ease-in-out infinite; }
 
+/* --- Loop variant for People+Systems+Automation (reuses the same pulse/fade shape, custom duration/color) --- */
+@keyframes psa-loop-final {
+  0%, 83.33%, 100% { background-color: rgba(148,163,184,0.25); box-shadow: none; }
+  4%, 12.5% { background-color: #f97316; box-shadow: 0 0 16px 3px rgba(249,115,22,0.5); }
+}
+.psa-loop-dot { animation: engine-dot 8s ease-in-out infinite; }
+.psa-loop-dot.psa-final { animation: psa-loop-final 8s ease-in-out infinite; }
+.psa-loop-label { animation: engine-pulse 8s ease-in-out infinite; }
+.psa-loop-line { transform-origin: left; animation: engine-line-fill 8s ease-in-out infinite; }
+.psa-loop-line-v { transform-origin: top; animation: engine-line-fill-v 8s ease-in-out infinite; }
+
 /* --- Scroll-activated progress line (How QARM Works) --- */
 .progress-line-v { transform: scaleY(0); transform-origin: top; transition: transform 1.4s cubic-bezier(0.4,0,0.2,1); }
 .progress-line-v.active { transform: scaleY(1); }
 .progress-line-h { transform: scaleX(0); transform-origin: left; transition: transform 1.4s cubic-bezier(0.4,0,0.2,1); }
 .progress-line-h.active { transform: scaleX(1); }
 
+/* Loop variant — fills, holds, empties, repeats. Starts only once scrolled into view. */
+@keyframes line-loop-fill-h {
+  0% { transform: scaleX(0); }
+  45% { transform: scaleX(1); }
+  70% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+@keyframes line-loop-fill-v {
+  0% { transform: scaleY(0); }
+  45% { transform: scaleY(1); }
+  70% { transform: scaleY(1); }
+  100% { transform: scaleY(0); }
+}
+.progress-line-h.looping { transition: none; transform-origin: left; animation: line-loop-fill-h 4s ease-in-out infinite; }
+.progress-line-v.looping { transition: none; transform-origin: top; animation: line-loop-fill-v 4s ease-in-out infinite; }
+
 /* --- People + Systems + Automation node diagram --- */
-.psa-node-dot {
-  transition: background-color 0.6s ease, box-shadow 0.6s ease, transform 0.6s ease;
-  background-color: rgba(122,163,229,0.15);
-}
-.psa-node-dot.active {
-  background-color: #7aa3e5;
-  box-shadow: 0 0 16px 3px rgba(122,163,229,0.45);
-  transform: scale(1.1);
-}
-.psa-node-dot.active.psa-final {
-  background-color: #f97316;
-  box-shadow: 0 0 20px 4px rgba(249,115,22,0.45);
-}
-.psa-node-label { transition: color 0.6s ease, opacity 0.6s ease; opacity: 0.45; }
-.psa-node-label.active { opacity: 1; color: #fff; }
-.psa-line { transform: scaleX(0); transform-origin: left; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); background: linear-gradient(90deg, #4d7fd4, #7aa3e5); }
-.psa-line.active { transform: scaleX(1); }
-.psa-line-v { transform: scaleY(0); transform-origin: top; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); background: linear-gradient(180deg, #4d7fd4, #7aa3e5); }
-.psa-line-v.active { transform: scaleY(1); }
 @media (prefers-reduced-motion: reduce) {
-  .engine-node, .engine-dot, .engine-line, .engine-line-v, .animate-float {
+  .engine-node, .engine-dot, .engine-line, .engine-line-v, .animate-float,
+  .psa-loop-dot, .psa-loop-label, .psa-loop-line, .psa-loop-line-v {
     animation: none !important;
   }
-  .progress-line-v, .progress-line-h, .psa-node-dot, .psa-node-label, .psa-line {
+  .progress-line-v, .progress-line-h, .psa-loop-dot, .psa-loop-label, .psa-loop-line, .psa-loop-line-v {
     transition: none !important;
+    animation: none !important;
     transform: none !important;
   }
   * {

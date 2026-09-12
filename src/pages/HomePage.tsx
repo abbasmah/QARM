@@ -23,7 +23,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
     <div className={`glass-card rounded-xl overflow-hidden transition-all duration-300 ${open ? 'border-[#2d5bb5]/30' : ''}`}>
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between p-6 text-left gap-4">
         <span className="font-display font-semibold text-white text-sm leading-relaxed">{q}</span>
-        {open ? <ChevronUp size={18} className="text-[#4d7fd4] shrink-0" /> : <ChevronDown size={18} className="text-slate-500 shrink-0" />}
+        {open ? <ChevronUp size={18} className="text-[#4d7fd4] shrink-0" /> : <ChevronDown size={18} className="text-slate-400 shrink-0" />}
       </button>
       {open && <div className="px-6 pb-6"><p className="text-slate-400 text-sm leading-relaxed">{a}</p></div>}
     </div>
@@ -60,7 +60,7 @@ export function HomePage() {
             ))}
           </div>
           <AnimatedSection>
-            <p className="text-center text-sm text-slate-500 mt-10 max-w-lg mx-auto">QARM builds support around the areas creating the most pressure — not around a generic task list.</p>
+            <p className="text-center text-sm text-slate-400 mt-10 max-w-lg mx-auto">QARM builds support around the areas creating the most pressure — not around a generic task list.</p>
           </AnimatedSection>
         </div>
       </section>
@@ -98,9 +98,9 @@ export function HomePage() {
                 { label: 'Custom', price: 'Quote', sub: 'Scalable', orange: false },
               ].map((t) => (
                 <div key={t.label} className={`rounded-2xl p-6 border text-center ${t.orange ? 'bg-orange-400/[0.05] border-orange-400/20' : 'glass-card'}`}>
-                  <p className={`text-xs font-semibold uppercase tracking-widest mb-3 ${t.orange ? 'text-orange-400' : 'text-slate-500'}`}>{t.label}</p>
+                  <p className={`text-xs font-semibold uppercase tracking-widest mb-3 ${t.orange ? 'text-orange-400' : 'text-slate-400'}`}>{t.label}</p>
                   <p className="text-2xl font-display font-bold text-white">{t.price}</p>
-                  <p className="text-xs text-slate-500 mt-1">{t.sub}</p>
+                  <p className="text-xs text-slate-400 mt-1">{t.sub}</p>
                 </div>
               ))}
             </div>

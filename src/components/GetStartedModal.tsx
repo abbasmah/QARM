@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'motion/react';
 import { X, CheckCircle2, ArrowRight, ArrowLeft } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
@@ -72,6 +71,20 @@ export function GetStartedModal({ isOpen, onClose, presetCapacity }: GetStartedM
   const [step, setStep] = useState(1);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'submitted' | 'error'>('idle');
   const [form, setForm] = useState(initialForm);
+  const [shouldRender, setShouldRender] = useState(isOpen);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setShouldRender(true);
+      // double rAF ensures the browser paints the hidden state first, so the transition actually plays
+      requestAnimationFrame(() => requestAnimationFrame(() => setVisible(true)));
+    } else {
+      setVisible(false);
+      const t = setTimeout(() => setShouldRender(false), 200);
+      return () => clearTimeout(t);
+    }
+  }, [isOpen]);
   const totalSteps = 3;
 
   useEffect(() => {
@@ -132,15 +145,16 @@ export function GetStartedModal({ isOpen, onClose, presetCapacity }: GetStartedM
     }
   };
 
+  if (!shouldRender) return null;
+
   return (
-    <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            onClick={handleClose} className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
-          <motion.div initial={{ opacity: 0, scale: 0.96, y: 16 }} animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.96, y: 16 }} transition={{ duration: 0.2 }}
-            className="relative w-full max-w-xl bg-[#0d1424] border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
+      <div onClick={handleClose}
+        className={`absolute inset-0 bg-black/70 backdrop-blur-sm transition-opacity duration-200 ease-out ${visible ? 'opacity-100' : 'opacity-0'}`} />
+      <div
+        className={`relative w-full max-w-xl bg-[#0d1424] border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] transition-all duration-200 ease-out ${
+          visible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-[0.96] translate-y-4'
+        }`}>
 
             <div className="flex items-center justify-between p-6 sm:p-7 border-b border-white/[0.08]">
               <div>
@@ -151,7 +165,7 @@ export function GetStartedModal({ isOpen, onClose, presetCapacity }: GetStartedM
                     : 'Tell us where your workload is getting stuck. QARM will review your requirements and recommend an appropriate scope and support plan within one business day.'}
                 </p>
               </div>
-              <button onClick={handleClose} className="p-2 text-slate-500 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors shrink-0" type="button">
+              <button onClick={handleClose} className="p-2 text-slate-400 hover:text-white hover:bg-white/[0.06] rounded-lg transition-colors shrink-0" type="button" aria-label="Close">
                 <X size={20} />
               </button>
             </div>
@@ -306,13 +320,11 @@ export function GetStartedModal({ isOpen, onClose, presetCapacity }: GetStartedM
                       </button>
                     )}
                   </div>
-                  <p className="text-center text-xs text-slate-600">Your information will only be used to review your support requirements and respond to your enquiry.</p>
+                  <p className="text-center text-xs text-slate-400">Your information will only be used to review your support requirements and respond to your enquiry.</p>
                 </div>
               )}
             </div>
-          </motion.div>
+          </div>
         </div>
-      )}
-    </AnimatePresence>
-  );
-}
+      );
+    }

@@ -67,7 +67,7 @@ export function GlobalOperationsPage() {
       {/* Consistent deliverables */}
       <section className="border-y border-white/[0.05] bg-white/[0.02] py-14">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-xs font-semibold text-slate-500 uppercase tracking-widest mb-10">What QARM delivers in every market</p>
+          <p className="text-center text-xs font-semibold text-slate-400 uppercase tracking-widest mb-10">What QARM delivers in every market</p>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
               { title: 'CRM & Pipeline Hygiene', desc: 'Accurate, current client records in whatever system you use — always.', orange: false },
@@ -119,7 +119,7 @@ export function GlobalOperationsPage() {
                           </div>
                         </div>
                         <div>
-                          <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-4">Built for</p>
+                          <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">Built for</p>
                           <ul className="space-y-2.5">
                             {market.context.map((c) => (
                               <li key={c} className="flex items-start gap-3 text-sm text-slate-300">
@@ -156,7 +156,7 @@ export function GlobalOperationsPage() {
                 <div className={`rounded-2xl p-5 border ${m.orange ? 'bg-orange-400/5 border-orange-400/20' : 'glass-card'}`}>
                   <span className="text-2xl mb-3 block">{m.flag}</span>
                   <p className={`font-display font-bold text-sm mb-1 ${m.orange ? 'text-orange-400' : 'text-white'}`}>{m.market}</p>
-                  <p className="text-[10px] text-slate-500">{m.status}</p>
+                  <p className="text-[10px] text-slate-400">{m.status}</p>
                 </div>
               </AnimatedSection>
             ))}
@@ -167,7 +167,7 @@ export function GlobalOperationsPage() {
       {/* Service boundary */}
       <section className="py-12 border-t border-white/[0.06]">
         <div className="max-w-3xl mx-auto px-4">
-          <p className="text-xs text-slate-600 leading-relaxed text-center">Administrative and operational support is provided under client-approved procedures and the direction and final approval of the appropriately licensed professional.</p>
+          <p className="text-xs text-slate-400 leading-relaxed text-center">Administrative and operational support is provided under client-approved procedures and the direction and final approval of the appropriately licensed professional.</p>
         </div>
       </section>
 

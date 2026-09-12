@@ -10,6 +10,14 @@ interface NavProps {
 const navLinks = [
   { label: 'Services', href: '/services' },
   {
+    label: 'Industries',
+    children: [
+      { label: 'Real Estate', href: '/real-estate', desc: 'Listings, CRM, and client follow-up' },
+      { label: 'Mortgage', href: '/mortgage', desc: "QARM's founding specialization" },
+      { label: 'Professional Services', href: '/professional-services', desc: 'For relationship-driven professionals' },
+    ],
+  },
+  {
     label: 'Markets',
     children: [
       { label: 'US Mortgage Operations', href: '/us-mortgage-operations', desc: 'Built for American MLOs' },
@@ -45,7 +53,7 @@ const socialLinks = [
 export function Nav({ onGetStarted }: NavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -56,7 +64,7 @@ export function Nav({ onGetStarted }: NavProps) {
 
   useEffect(() => {
     setMobileOpen(false);
-    setSolutionsOpen(false);
+    setOpenDropdown(null);
   }, [location.pathname]);
 
   return (
@@ -82,16 +90,16 @@ export function Nav({ onGetStarted }: NavProps) {
               link.children ? (
                 <div key={link.label} className="relative">
                   <button
-                    onMouseEnter={() => setSolutionsOpen(true)}
-                    onMouseLeave={() => setSolutionsOpen(false)}
+                    onMouseEnter={() => setOpenDropdown(link.label)}
+                    onMouseLeave={() => setOpenDropdown(null)}
                     className="flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-white/[0.06] transition-all"
                   >
-                    {link.label} <ChevronDown size={14} className={`transition-transform ${solutionsOpen ? 'rotate-180' : ''}`} />
+                    {link.label} <ChevronDown size={14} className={`transition-transform ${openDropdown === link.label ? 'rotate-180' : ''}`} />
                   </button>
-                  {solutionsOpen && (
+                  {openDropdown === link.label && (
                     <div
-                      onMouseEnter={() => setSolutionsOpen(true)}
-                      onMouseLeave={() => setSolutionsOpen(false)}
+                      onMouseEnter={() => setOpenDropdown(link.label)}
+                      onMouseLeave={() => setOpenDropdown(null)}
                       className="absolute top-full left-0 mt-1 w-64 bg-[#0d1424]/98 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl overflow-hidden"
                     >
                       {link.children.map((child) => (
@@ -101,7 +109,7 @@ export function Nav({ onGetStarted }: NavProps) {
                           className="block px-5 py-4 hover:bg-white/[0.06] transition-colors border-b border-white/[0.04] last:border-0"
                         >
                           <p className="text-sm font-semibold text-white">{child.label}</p>
-                          <p className="text-xs text-slate-500 mt-0.5">{child.desc}</p>
+                          <p className="text-xs text-slate-400 mt-0.5">{child.desc}</p>
                         </Link>
                       ))}
                     </div>
@@ -123,7 +131,7 @@ export function Nav({ onGetStarted }: NavProps) {
             {/* Social icons */}
             {socialLinks.map((s) => (
               <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                className="p-2 text-slate-500 hover:text-white transition-colors rounded-lg hover:bg-white/[0.06]"
+                className="p-2 text-slate-400 hover:text-white transition-colors rounded-lg hover:bg-white/[0.06]"
                 aria-label={s.label}>
                 {s.icon}
               </a>
@@ -139,7 +147,12 @@ export function Nav({ onGetStarted }: NavProps) {
           </div>
 
           {/* Mobile Toggle */}
-          <button className="lg:hidden p-2 text-slate-400 hover:text-white transition-colors" onClick={() => setMobileOpen(!mobileOpen)}>
+          <button
+            className="lg:hidden p-2 text-slate-400 hover:text-white transition-colors"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileOpen}
+          >
             {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
@@ -151,7 +164,13 @@ export function Nav({ onGetStarted }: NavProps) {
           <div className="space-y-1 pt-2">
             <Link to="/services" className="block px-4 py-3 rounded-lg text-sm font-medium text-slate-400 hover:text-white">Services</Link>
             <div className="px-4 py-2">
-              <p className="text-xs font-semibold text-slate-600 uppercase tracking-widest mb-2">Markets</p>
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-2">Industries</p>
+              <Link to="/real-estate" className="block py-2 text-sm text-slate-400 hover:text-white">Real Estate</Link>
+              <Link to="/mortgage" className="block py-2 text-sm text-slate-400 hover:text-white">Mortgage</Link>
+              <Link to="/professional-services" className="block py-2 text-sm text-slate-400 hover:text-white">Professional Services</Link>
+            </div>
+            <div className="px-4 py-2">
+              <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-2">Markets</p>
               <Link to="/us-mortgage-operations" className="block py-2 text-sm text-slate-400 hover:text-white">US Mortgage Operations</Link>
               <Link to="/global-operations" className="block py-2 text-sm text-slate-400 hover:text-white">Global Operations</Link>
             </div>

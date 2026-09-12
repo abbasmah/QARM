@@ -68,9 +68,9 @@ export function ContactPage() {
         <div className="absolute inset-0">
           <img
             src="/images/contact-consultation-1600w.webp"
-            srcSet="/images/contact-consultation-900w.webp 900w, /images/contact-consultation-1600w.webp 1600w"
+            srcSet="/images/contact-consultation-640w.webp 640w, /images/contact-consultation-900w.webp 900w, /images/contact-consultation-1600w.webp 1600w"
             sizes="100vw"
-            alt="" width={1600} height={854} className="w-full h-full object-cover opacity-[0.25]" loading="eager" />
+            alt="" width={1600} height={854} className="w-full h-full object-cover opacity-[0.25]" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/65 via-[#0a0f1e]/85 to-[#0a0f1e]" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-25" />
@@ -88,6 +88,7 @@ export function ContactPage() {
       {/* Content */}
       <section className="pb-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="sr-only">Contact details and support request form</h2>
           <div className="grid lg:grid-cols-5 gap-12 items-start">
 
             {/* Info column */}
@@ -98,7 +99,7 @@ export function ContactPage() {
                 </div>
                 <h3 className="font-display font-semibold text-white mb-2">Email</h3>
                 <a href="mailto:info@theqarm.com" className="text-[#7aa3e5] text-sm hover:text-white transition-colors">info@theqarm.com</a>
-                <p className="text-slate-500 text-xs mt-2">We respond within one business day.</p>
+                <p className="text-slate-400 text-xs mt-2">We respond within one business day.</p>
               </div>
 
               <div className="glass-card rounded-2xl p-7">
@@ -147,8 +148,8 @@ export function ContactPage() {
                   </div>
                 ) : (
                   <>
-                    <h2 className="font-display font-bold text-xl text-white mb-2">Build Your QARM Support Plan</h2>
-                    <p className="text-slate-500 text-sm mb-8">Tell us where your workload is getting stuck. QARM will review your requirements and recommend an appropriate scope and support plan within one business day.</p>
+                    <h3 className="font-display font-bold text-xl text-white mb-2">Build Your QARM Support Plan</h3>
+                    <p className="text-slate-400 text-sm mb-8">Tell us where your workload is getting stuck. QARM will review your requirements and recommend an appropriate scope and support plan within one business day.</p>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                       {/* Honeypot */}
@@ -157,12 +158,12 @@ export function ContactPage() {
 
                       <div className="grid sm:grid-cols-2 gap-5">
                         <div>
-                          <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Full Name</label>
+                          <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Full Name</label>
                           <input type="text" required value={form.name} onChange={(e) => update('name', e.target.value)} placeholder="Jane Smith"
                             className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#2d5bb5] focus:ring-1 focus:ring-[#2d5bb5] transition-all" />
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Business Email</label>
+                          <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Business Email</label>
                           <input type="email" required value={form.email} onChange={(e) => update('email', e.target.value)} placeholder="jane@company.com"
                             className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#2d5bb5] focus:ring-1 focus:ring-[#2d5bb5] transition-all" />
                         </div>
@@ -170,12 +171,12 @@ export function ContactPage() {
 
                       <div className="grid sm:grid-cols-2 gap-5">
                         <div>
-                          <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Phone Number</label>
+                          <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Phone Number</label>
                           <input type="tel" required value={form.phone} onChange={(e) => update('phone', e.target.value)} placeholder="(416) 555-0100"
                             className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#2d5bb5] focus:ring-1 focus:ring-[#2d5bb5] transition-all" />
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Company Name</label>
+                          <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Company Name</label>
                           <input type="text" value={form.company} onChange={(e) => update('company', e.target.value)} placeholder="Pinnacle Group"
                             className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#2d5bb5] focus:ring-1 focus:ring-[#2d5bb5] transition-all" />
                         </div>
@@ -183,54 +184,54 @@ export function ContactPage() {
 
                       <div className="grid sm:grid-cols-2 gap-5">
                         <div>
-                          <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Country</label>
+                          <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Country</label>
                           <input type="text" required value={form.country} onChange={(e) => update('country', e.target.value)} placeholder="Canada"
                             className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#2d5bb5] focus:ring-1 focus:ring-[#2d5bb5] transition-all" />
                         </div>
                         <div>
-                          <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Province / State / Region</label>
+                          <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Province / State / Region</label>
                           <input type="text" required value={form.region} onChange={(e) => update('region', e.target.value)} placeholder="Ontario"
                             className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#2d5bb5] focus:ring-1 focus:ring-[#2d5bb5] transition-all" />
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-3">Industry</label>
+                        <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Industry</label>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                           {industries.map((i) => <Chip key={i} label={i} active={form.industry === i} onClick={() => update('industry', i)} />)}
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-3">Role</label>
+                        <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Role</label>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                           {roles.map((r) => <Chip key={r} label={r} active={form.role === r} onClick={() => update('role', r)} />)}
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-3">Type of Support Required (select all that apply)</label>
+                        <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Type of Support Required (select all that apply)</label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                           {supportOptions.map((s) => <Chip key={s} label={s} active={form.support.includes(s)} onClick={() => toggleSupport(s)} />)}
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-3">Preferred Monthly Capacity</label>
+                        <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Preferred Monthly Capacity</label>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
                           {capacities.map((c) => <Chip key={c} label={c} active={form.capacity === c} onClick={() => update('capacity', c)} />)}
                         </div>
                       </div>
 
                       <div>
-                        <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Main Operational Challenge</label>
+                        <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-2">Main Operational Challenge</label>
                         <textarea rows={4} value={form.challenge} onChange={(e) => update('challenge', e.target.value)}
                           placeholder="Tell us about your current workflow and where you're losing the most time..."
                           className="w-full bg-white/[0.04] border border-white/[0.08] rounded-lg px-4 py-3 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-[#2d5bb5] focus:ring-1 focus:ring-[#2d5bb5] transition-all resize-none" />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-3">Preferred Next Step</label>
+                        <label className="block text-xs font-medium text-slate-400 uppercase tracking-wider mb-3">Preferred Next Step</label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                           {nextSteps.map((n) => <Chip key={n} label={n} active={form.nextStep === n} onClick={() => update('nextStep', n)} />)}
                         </div>
@@ -244,7 +245,7 @@ export function ContactPage() {
                         className="w-full flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] disabled:opacity-60 text-white font-semibold py-4 rounded-lg transition-all hover:shadow-lg hover:shadow-[#2d5bb5]/25">
                         {status === 'submitting' ? 'Sending...' : 'Get My Support Recommendation'} {status !== 'submitting' && <ArrowRight size={18} />}
                       </button>
-                      <p className="text-center text-xs text-slate-600">Your information will only be used to review your support requirements and respond to your enquiry.</p>
+                      <p className="text-center text-xs text-slate-400">Your information will only be used to review your support requirements and respond to your enquiry.</p>
                     </form>
                   </>
                 )}

@@ -77,7 +77,7 @@ function MicroFlow({ stages, orange }: { stages: string[]; orange: boolean }) {
               style={{ transitionDelay: `${i * 120}ms` }}
             />
             <span
-              className="text-[9px] text-slate-600 group-hover:text-slate-300 whitespace-nowrap transition-colors duration-300 ease-out"
+              className="text-[9px] text-slate-400 group-hover:text-slate-300 whitespace-nowrap transition-colors duration-300 ease-out"
               style={{ transitionDelay: `${i * 120}ms` }}
             >
               {label}
@@ -185,7 +185,7 @@ export function AIHumanExecutionSection() {
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-[#2d5bb5]/20 text-[#7aa3e5] flex items-center justify-center shrink-0"><Cpu size={16} /></div>
                   <div>
-                    <p className="text-[9px] text-slate-500 uppercase tracking-widest leading-tight">Systems</p>
+                    <p className="text-[9px] text-slate-400 uppercase tracking-widest leading-tight">Systems</p>
                     <p className="text-sm font-display font-bold text-white leading-tight">Scale &amp; efficiency</p>
                   </div>
                 </div>
@@ -194,7 +194,7 @@ export function AIHumanExecutionSection() {
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-orange-400/15 text-orange-400 flex items-center justify-center shrink-0"><Users size={16} /></div>
                   <div>
-                    <p className="text-[9px] text-slate-500 uppercase tracking-widest leading-tight">People</p>
+                    <p className="text-[9px] text-slate-400 uppercase tracking-widest leading-tight">People</p>
                     <p className="text-sm font-display font-bold text-white leading-tight">Judgment &amp; relationships</p>
                   </div>
                 </div>
@@ -241,7 +241,7 @@ export function IndustriesSection() {
           ))}
         </div>
         <AnimatedSection>
-          <p className="text-center text-sm text-slate-500 mt-10 max-w-lg mx-auto">Canadian mortgage operations remain a core specialization — the same systems extend naturally to real estate and other relationship-driven professionals.</p>
+          <p className="text-center text-sm text-slate-400 mt-10 max-w-lg mx-auto">Canadian mortgage operations remain a core specialization — the same systems extend naturally to real estate and other relationship-driven professionals.</p>
         </AnimatedSection>
       </div>
     </section>
@@ -330,7 +330,7 @@ export function FinalCTASection() {
       <div className="absolute inset-0">
         <img
           src="/images/final-cta-1600w.webp"
-          srcSet="/images/final-cta-900w.webp 900w, /images/final-cta-1600w.webp 1600w"
+          srcSet="/images/final-cta-640w.webp 640w, /images/final-cta-900w.webp 900w, /images/final-cta-1600w.webp 1600w"
           sizes="100vw"
           alt="Premium rooftop terrace at dusk overlooking a city skyline"
           width={1600} height={900} className="w-full h-full object-cover opacity-[0.30]" loading="lazy" />
@@ -366,7 +366,7 @@ function ScrollProgressLine({ orientation, className }: { orientation: 'h' | 'v'
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
-  return <div ref={ref} className={`${className} ${orientation === 'h' ? 'progress-line-h' : 'progress-line-v'} ${active ? 'active' : ''}`} />;
+  return <div ref={ref} className={`${className} ${orientation === 'h' ? 'progress-line-h' : 'progress-line-v'} ${active ? 'looping' : ''}`} />;
 }
 /* ============================================================
    PEOPLE + SYSTEMS + AUTOMATION — connected-node diagram.
@@ -378,22 +378,22 @@ function ScrollProgressLine({ orientation, className }: { orientation: 'h' | 'v'
 function PeopleSystemsAutomationDiagram() {
   const nodes = ['Human Expertise', 'CRM', 'Workflow Automation', 'Client Experience', 'Growth'];
   const ref = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(false);
+  const [looping, setLooping] = useState(false);
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setActive(true); observer.disconnect(); } },
+      ([entry]) => { if (entry.isIntersecting) { setLooping(true); observer.disconnect(); } },
       { threshold: 0.35 }
     );
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
-  const stepMs = 220; // stagger between each node/line activating
+  const stepDelay = 1.6; // seconds; 5 nodes × 1.6s = 8s full loop, matches index.css keyframes
 
   return (
     <div ref={ref} className="mt-20 pt-16 border-t border-white/[0.06]">
-      <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest text-center mb-10">How the system connects</p>
+      <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-widest text-center mb-10">How the system connects</p>
 
       {/* Desktop: horizontal chain */}
       <div className="hidden md:flex items-start justify-center gap-0">
@@ -403,19 +403,22 @@ function PeopleSystemsAutomationDiagram() {
             <div key={label} className="flex items-start">
               <div className="flex flex-col items-center gap-3 w-28">
                 <div
-                  className={`psa-node-dot w-4 h-4 rounded-full ${active ? 'active' : ''} ${isFinal ? 'psa-final' : ''}`}
-                  style={{ transitionDelay: `${i * stepMs}ms` }}
+                  className={`w-4 h-4 rounded-full bg-[#2d5bb5]/25 ${looping ? `psa-loop-dot ${isFinal ? 'psa-final' : ''}` : ''}`}
+                  style={looping ? { animationDelay: `${i * stepDelay}s` } : undefined}
                 />
                 <span
-                  className={`psa-node-label text-xs font-medium text-center leading-tight ${active ? 'active' : ''}`}
-                  style={{ transitionDelay: `${i * stepMs}ms` }}
+                  className={`text-xs font-medium text-center leading-tight text-slate-400 ${looping ? 'psa-loop-label' : ''}`}
+                  style={looping ? { animationDelay: `${i * stepDelay}s` } : undefined}
                 >
                   {label}
                 </span>
               </div>
               {!isFinal && (
-                <div className="w-10 lg:w-16 h-0.5 mt-[7px] rounded-full overflow-hidden">
-                  <div className={`psa-line h-full ${active ? 'active' : ''}`} style={{ transitionDelay: `${i * stepMs + 100}ms` }} />
+                <div className="w-10 lg:w-16 h-0.5 mt-[7px] rounded-full overflow-hidden bg-white/10">
+                  <div
+                    className={`h-full bg-gradient-to-r from-[#4d7fd4] to-[#7aa3e5] ${looping ? 'psa-loop-line' : ''}`}
+                    style={looping ? { animationDelay: `${i * stepDelay + 0.1}s` } : { transform: 'scaleX(0)' }}
+                  />
                 </div>
               )}
             </div>
@@ -431,18 +434,21 @@ function PeopleSystemsAutomationDiagram() {
             <div key={label} className="flex items-start gap-4">
               <div className="flex flex-col items-center">
                 <div
-                  className={`psa-node-dot w-4 h-4 rounded-full shrink-0 ${active ? 'active' : ''} ${isFinal ? 'psa-final' : ''}`}
-                  style={{ transitionDelay: `${i * stepMs}ms` }}
+                  className={`w-4 h-4 rounded-full shrink-0 bg-[#2d5bb5]/25 ${looping ? `psa-loop-dot ${isFinal ? 'psa-final' : ''}` : ''}`}
+                  style={looping ? { animationDelay: `${i * stepDelay}s` } : undefined}
                 />
                 {!isFinal && (
-                  <div className="w-0.5 h-8 rounded-full overflow-hidden">
-                    <div className={`psa-line-v w-full ${active ? 'active' : ''}`} style={{ transitionDelay: `${i * stepMs + 100}ms` }} />
+                  <div className="w-0.5 h-8 rounded-full overflow-hidden bg-white/10">
+                    <div
+                      className={`w-full bg-gradient-to-b from-[#4d7fd4] to-[#7aa3e5] ${looping ? 'psa-loop-line-v' : ''}`}
+                      style={looping ? { animationDelay: `${i * stepDelay + 0.1}s` } : { transform: 'scaleY(0)' }}
+                    />
                   </div>
                 )}
               </div>
               <span
-                className={`psa-node-label text-sm font-medium pt-0 pb-6 ${active ? 'active' : ''}`}
-                style={{ transitionDelay: `${i * stepMs}ms` }}
+                className={`text-sm font-medium pt-0 pb-6 text-slate-400 ${looping ? 'psa-loop-label' : ''}`}
+                style={looping ? { animationDelay: `${i * stepDelay}s` } : undefined}
               >
                 {label}
               </span>
@@ -473,7 +479,7 @@ function OperationsEngine() {
                 style={{ animationDelay: `${i * stepDelay}s` }}
               />
               <span
-                className="engine-node text-[10px] text-slate-500 tracking-wide whitespace-nowrap"
+                className="engine-node text-[10px] text-slate-400 tracking-wide whitespace-nowrap"
                 style={{ animationDelay: `${i * stepDelay}s` }}
               >
                 {label}
@@ -510,7 +516,7 @@ function OperationsEngine() {
               )}
             </div>
             <span
-              className="engine-node text-[10px] text-slate-500 tracking-wide leading-none -translate-y-[3px] pb-3"
+              className="engine-node text-[10px] text-slate-400 tracking-wide leading-none -translate-y-[3px] pb-3"
               style={{ animationDelay: `${i * stepDelay}s` }}
             >
               {label}
@@ -531,11 +537,11 @@ export function HeroV2Section() {
       <div className="absolute inset-0">
         <img
           src="/images/hero-operations-1600w.webp"
-          srcSet="/images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
+          srcSet="/images/hero-operations-640w.webp 640w, /images/hero-operations-900w.webp 900w, /images/hero-operations-1600w.webp 1600w"
           sizes="100vw"
           alt="Placeholder hero background — to be replaced with new growth-themed photography"
           width={1600} height={900} className="w-full h-full object-cover"
-          style={{ filter: 'brightness(1.15) saturate(1.2)' }} loading="eager" />
+          style={{ filter: 'brightness(1.15) saturate(1.2)' }} loading="eager" fetchPriority="high" />
         {/* Lightened radial + linear masks vs. old hero (0.94 center / 0.60 top) — let more of the photo read through */}
         <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 900px 700px at 50% 42%, rgba(10,15,30,0.85) 0%, rgba(10,15,30,0.68) 38%, rgba(10,15,30,0.35) 68%, rgba(10,15,30,0.10) 100%)' }} />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/45 via-transparent to-[#0a0f1e]" />
@@ -552,7 +558,7 @@ export function HeroV2Section() {
           <p className="text-lg text-slate-400 leading-relaxed mb-4 max-w-xl mx-auto">
             Your CRM, your follow-up, your pipeline — QARM keeps it all moving with CRM automation and a dedicated team behind it.
           </p>
-          <p className="text-sm text-slate-500 mb-8">Flexible support from $349 CAD/month. No long-term commitment.</p>
+          <p className="text-sm text-slate-400 mb-8">Flexible support from $349 CAD/month. No long-term commitment.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
             <button onClick={() => onGetStarted()} type="button"
               className="flex items-center justify-center gap-2 bg-[#2d5bb5] hover:bg-[#4d7fd4] text-white px-8 py-4 rounded-lg text-sm font-semibold transition-all duration-200 hover:shadow-xl hover:shadow-[#2d5bb5]/30">
@@ -565,16 +571,16 @@ export function HeroV2Section() {
           </div>
           <OperationsEngine />
           <div className="border-t border-white/[0.06] pt-6 max-w-lg mx-auto">
-            <p className="text-[10px] font-semibold text-slate-600 uppercase tracking-[0.2em] mb-4">We adapt to the CRM and tools you already use</p>
+            <p className="text-[10px] font-semibold text-slate-400 uppercase tracking-[0.2em] mb-4">We adapt to the CRM and tools you already use</p>
             <div className="flex flex-wrap gap-x-6 gap-y-2 justify-center">
               {['Filogix', 'Velocity', 'Finmo', 'GoHighLevel', 'HubSpot', 'Salesforce'].map((tool) => (
-                <span key={tool} className="font-display font-bold text-xs text-slate-500 tracking-wide">{tool}</span>
+                <span key={tool} className="font-display font-bold text-xs text-slate-400 tracking-wide">{tool}</span>
               ))}
             </div>
           </div>
           <div className="flex items-center justify-center gap-3 mt-6">
             <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#2d5bb5] to-[#1c2a4a] flex items-center justify-center text-white font-display font-bold text-xs border border-[#2d5bb5]/40">A</div>
-            <p className="text-xs text-slate-500">QARM Corp. · Operational support since 2023 · Currently accepting new clients</p>
+            <p className="text-xs text-slate-400">QARM Corp. · Operational support since 2023 · Currently accepting new clients</p>
           </div>
         </AnimatedSection>
       </div>
@@ -590,7 +596,7 @@ export function GrowthSectionsPreviewPage() {
   return (
     <div className="min-h-screen bg-[#0a0f1e] pt-20">
       <div className="max-w-3xl mx-auto px-4 pt-10 pb-4 text-center">
-        <p className="text-xs text-slate-500 uppercase tracking-widest">Internal Preview — Draft sections, not yet live</p>
+        <p className="text-xs text-slate-400 uppercase tracking-widest">Internal Preview — Draft sections, not yet live</p>
       </div>
       <GrowthEngineSection />
       <SolutionsSection />

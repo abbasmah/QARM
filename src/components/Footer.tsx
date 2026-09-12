@@ -46,7 +46,7 @@ export function Footer() {
       {/* Security trust bar */}
       <div className="border-b border-white/[0.06] bg-white/[0.01]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-slate-500">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-slate-400">
             <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#4d7fd4]" />Confidentiality agreements</span>
             <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#4d7fd4]" />Role-based access</span>
             <span className="flex items-center gap-2"><span className="w-1 h-1 rounded-full bg-[#4d7fd4]" />Multi-factor authentication</span>
@@ -89,13 +89,16 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-5">Services</h4>
+            <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-5">Services</h3>
             <ul className="space-y-3">
               {[
                 { label: 'CRM & Pipeline Management', href: '/services#crm' },
                 { label: 'Document & Workflow Coordination', href: '/services#documents' },
                 { label: 'Client & Partner Communication', href: '/services#communication' },
                 { label: 'Lead & Appointment Coordination', href: '/services#scheduling' },
+                { label: 'Real Estate', href: '/real-estate' },
+                { label: 'Mortgage', href: '/mortgage' },
+                { label: 'Professional Services', href: '/professional-services' },
                 { label: 'US Mortgage Operations', href: '/us-mortgage-operations' },
                 { label: 'Global Operations', href: '/global-operations' },
               ].map((item) => (
@@ -108,7 +111,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-5">Company</h4>
+            <h3 className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-5">Company</h3>
             <ul className="space-y-3">
               {[
                 { label: 'About QARM', href: '/about' },
@@ -128,12 +131,12 @@ export function Footer() {
 
         <div className="hr-brand mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-slate-600">
+          <p className="text-xs text-slate-400">
             © {new Date().getFullYear()} QARM Corp. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="text-xs text-slate-600 hover:text-slate-400 transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-xs text-slate-600 hover:text-slate-400 transition-colors">Terms of Service</Link>
+            <Link to="/privacy" className="text-xs text-slate-400 hover:text-slate-400 transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="text-xs text-slate-400 hover:text-slate-400 transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

@@ -123,7 +123,7 @@ export function USMortgagePage() {
       {/* Regulatory disclaimer */}
       <section className="py-12 border-t border-white/[0.06]">
         <div className="max-w-3xl mx-auto px-4">
-          <p className="text-xs text-slate-600 leading-relaxed text-center">Mortgage-related services are limited to administrative and operational support performed under the direction and final approval of the licensed mortgage professional. QARM does not independently provide mortgage advice, lender approval, or licensed underwriting services.</p>
+          <p className="text-xs text-slate-400 leading-relaxed text-center">Mortgage-related services are limited to administrative and operational support performed under the direction and final approval of the licensed mortgage professional. QARM does not independently provide mortgage advice, lender approval, or licensed underwriting services.</p>
         </div>
       </section>
 

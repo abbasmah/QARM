@@ -18,10 +18,10 @@ export function AboutPage() {
         <div className="absolute inset-0">
           <img
             src="/images/about-hero-1600w.webp"
-            srcSet="/images/about-hero-900w.webp 900w, /images/about-hero-1600w.webp 1600w"
+            srcSet="/images/about-hero-640w.webp 640w, /images/about-hero-900w.webp 900w, /images/about-hero-1600w.webp 1600w"
             sizes="100vw"
             alt="Toronto skyline at dusk — QARM's Canadian home base"
-            width={1600} height={854} className="w-full h-full object-cover" loading="eager" />
+            width={1600} height={854} className="w-full h-full object-cover" loading="eager" fetchPriority="high" />
           <div className="absolute inset-0 bg-gradient-to-b from-[#0a0f1e]/55 via-[#0a0f1e]/75 to-[#0a0f1e]" />
         </div>
         <div className="absolute inset-0 bg-grid opacity-25" />
@@ -62,7 +62,7 @@ export function AboutPage() {
                     <div key={v.label} className={`rounded-xl p-4 border ${v.orange ? 'bg-orange-400/5 border-orange-400/20' : 'glass-card'}`}>
                       <div className={`w-7 h-7 rounded-lg flex items-center justify-center mb-3 ${v.orange ? 'bg-orange-400/15 text-orange-400' : 'bg-[#2d5bb5]/15 text-[#7aa3e5]'}`}>{v.icon}</div>
                       <h3 className="font-display font-semibold text-white text-xs mb-1">{v.label}</h3>
-                      <p className="text-slate-500 text-[10px] leading-relaxed">{v.desc}</p>
+                      <p className="text-slate-400 text-[10px] leading-relaxed">{v.desc}</p>
                     </div>
                   ))}
                 </div>
@@ -105,12 +105,12 @@ export function AboutPage() {
             <AnimatedSection>
               <p className="text-3xl font-display font-bold mb-1 text-[#7aa3e5]">2023</p>
               <p className="text-sm font-semibold text-slate-300 mb-1">Established</p>
-              <p className="text-xs text-slate-500">QARM Corp.</p>
+              <p className="text-xs text-slate-400">QARM Corp.</p>
             </AnimatedSection>
             <AnimatedSection delay={80}>
               <p className="text-3xl font-display font-bold mb-1 text-[#7aa3e5]">Days, not weeks</p>
               <p className="text-sm font-semibold text-slate-300 mb-1">Onboarding</p>
-              <p className="text-xs text-slate-500">From confirmation to live</p>
+              <p className="text-xs text-slate-400">From confirmation to live</p>
             </AnimatedSection>
             <AnimatedSection delay={160}>
               <p className="text-sm font-semibold text-slate-300 mb-3">Supporting Clients Across Multiple Markets</p>

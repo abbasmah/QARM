@@ -97,11 +97,11 @@ export function BrokerGrowthPage() {
                           <p className="text-slate-400 leading-relaxed text-sm mb-5">{svc.desc}</p>
                           <div className={`inline-block rounded-xl px-4 py-3 ${svc.orange ? 'bg-orange-400/10' : 'bg-[#2d5bb5]/10'}`}>
                             <p className={`text-lg font-display font-bold ${svc.orange ? 'text-orange-400' : 'text-[#7aa3e5]'}`}>{svc.price}</p>
-                            <p className="text-xs text-slate-500 mt-1 max-w-[220px]">{svc.priceNote}</p>
+                            <p className="text-xs text-slate-400 mt-1 max-w-[220px]">{svc.priceNote}</p>
                           </div>
                         </div>
                         <div>
-                          <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-4">What's included</p>
+                          <p className="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-4">What's included</p>
                           <ul className="space-y-2.5">
                             {svc.includes.map((d) => (
                               <li key={d} className="flex items-start gap-3 text-sm text-slate-300">

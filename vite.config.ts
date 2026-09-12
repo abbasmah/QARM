@@ -25,7 +25,6 @@ export default defineConfig(({ mode, isSsrBuild }) => {
           : {
               manualChunks: {
                 vendor: ['react', 'react-dom', 'react-router-dom'],
-                motion: ['motion'],
               },
             },
       },

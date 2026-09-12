@@ -79,6 +79,7 @@ export function TermsPage() {
               <a href="mailto:info@theqarm.com" className="inline-flex items-center gap-2 text-[#7aa3e5] hover:text-white text-sm transition-colors">
                 <Mail size={14} /> info@theqarm.com
               </a>
+              <p className="text-xs text-slate-400 mt-4">Registered Address: 1440 Fleury Street, Regina, SK, S4N 5B1, Canada</p>
             </div>
           </Section>
         </AnimatedSection>

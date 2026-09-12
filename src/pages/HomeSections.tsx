@@ -213,10 +213,10 @@ export function AIHumanExecutionSection() {
    ============================================================ */
 export function IndustriesSection() {
   const industries = [
-    { name: 'Real Estate', img: '/images/industry-real-estate-1.webp', orange: false },
-    { name: 'Mortgage', img: '/images/industry-mortgage.webp', orange: true },
-    { name: 'Financial Services', img: '/images/industry-financial-services.webp', orange: false },
-    { name: 'Professional Services', img: '/images/industry-professional-services.webp', orange: true },
+    { name: 'Real Estate', img: '/images/industry-real-estate-1.webp', href: '/real-estate', orange: false },
+    { name: 'Mortgage', img: '/images/industry-mortgage.webp', href: '/mortgage', orange: true },
+    { name: 'Financial Services', img: '/images/industry-financial-services.webp', href: '/financial-services', orange: false },
+    { name: 'Professional Services', img: '/images/industry-professional-services.webp', href: '/professional-services', orange: true },
   ];
   return (
     <section className="py-28 relative overflow-hidden">
@@ -229,14 +229,14 @@ export function IndustriesSection() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {industries.map((ind, i) => (
             <AnimatedSection key={ind.name} delay={i * 70}>
-              <div className={`group relative rounded-2xl overflow-hidden aspect-[3/4] border transition-all duration-300 ${ind.orange ? 'border-orange-400/20 hover:border-orange-400/40' : 'border-[#2d5bb5]/20 hover:border-[#2d5bb5]/50'}`}>
+              <Link to={ind.href} className={`group relative block rounded-2xl overflow-hidden aspect-[3/4] border transition-all duration-300 ${ind.orange ? 'border-orange-400/20 hover:border-orange-400/40' : 'border-[#2d5bb5]/20 hover:border-[#2d5bb5]/50'}`}>
                 <img src={ind.img} alt={ind.name} width={500} height={667} loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e] via-[#0a0f1e]/25 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-4">
                   <p className="font-display font-semibold text-white text-sm leading-tight">{ind.name}</p>
                 </div>
-              </div>
+              </Link>
             </AnimatedSection>
           ))}
         </div>
